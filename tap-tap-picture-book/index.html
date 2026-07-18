@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tap-Tap Picture Book</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background: #fdf8f3;
+      color: #2c2c2c;
+      line-height: 1.75;
+    }
+
+    header {
+      background: #ff7b54;
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px 40px;
+    }
+
+    header .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #fff;
+      opacity: 0.85;
+      text-decoration: none;
+    }
+
+    header .back-link:hover { text-decoration: underline; }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .lang-switch button {
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      background: transparent;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-switch button.active,
+    .lang-switch button:hover {
+      background: #fff;
+      color: #ff7b54;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 0;
+      background: #fdf8f3;
+      padding: 12px 0;
+      z-index: 10;
+    }
+
+    .tab-btn {
+      border: 1.5px solid #ffd8c9;
+      background: #fff;
+      color: #cc4e2a;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: #ff7b54;
+      color: #fff;
+      border-color: #ff7b54;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .panel-intro {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 32px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: #5a5a5a;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 20px 18px 56px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      font-size: 0.92rem;
+      color: #3a3a3a;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #ff7b54;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .note-box {
+      background: #fff7f4;
+      border-left: 4px solid #ff7b54;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      font-size: 0.88rem;
+      color: #cc4e2a;
+    }
+
+    .app-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      background: #ffe5db;
+      color: #cc4e2a;
+    }
+
+    .btn-disabled {
+      background: #eee;
+      color: #999;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+
+    footer a { color: #ff7b54; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    [data-i18n] { display: none; }
+    html[data-lang="en"] [data-i18n="en"],
+    html[data-lang="ja"] [data-i18n="ja"],
+    html[data-lang="ko"] [data-i18n="ko"] {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="../index.html">
+    <span data-i18n="en">&larr; Back to Apps</span>
+    <span data-i18n="ja">&larr; アプリ一覧に戻る</span>
+    <span data-i18n="ko">&larr; 앱 목록으로</span>
+  </a>
+  <h1>🐣 Tap-Tap Picture Book</h1>
+  <p>
+    <span data-i18n="en">A gentle tap-to-play picture book for young children.</span>
+    <span data-i18n="ja">小さなお子さま向けの、やさしいタップ絵本です。</span>
+    <span data-i18n="ko">어린 아이를 위한 부드러운 탭 그림책입니다.</span>
+  </p>
+  <div class="lang-switch">
+    <button type="button" data-set-lang="en">EN</button>
+    <button type="button" data-set-lang="ja">日本語</button>
+    <button type="button" data-set-lang="ko">한국어</button>
+  </div>
+</header>
+
+<main>
+
+  <div class="tab-nav">
+    <button type="button" class="tab-btn" data-set-tab="overview">
+      <span data-i18n="en">Overview</span>
+      <span data-i18n="ja">概要</span>
+      <span data-i18n="ko">개요</span>
+    </button>
+    <button type="button" class="tab-btn" data-set-tab="rules">
+      <span data-i18n="en">How to Play</span>
+      <span data-i18n="ja">遊び方</span>
+      <span data-i18n="ko">사용 방법</span>
+    </button>
+    <button type="button" class="tab-btn" data-set-tab="stages">
+      <span data-i18n="en">Scenes</span>
+      <span data-i18n="ja">おはなし</span>
+      <span data-i18n="ko">이야기 목록</span>
+    </button>
+    <button type="button" class="tab-btn" data-set-tab="items">
+      <span data-i18n="en">Items</span>
+      <span data-i18n="ja">アイテム</span>
+      <span data-i18n="ko">아이템</span>
+    </button>
+  </div>
+
+  <!-- Overview -->
+  <section class="tab-panel" data-tab-panel="overview">
+    <p class="panel-intro">
+      <span data-i18n="en">Tap-Tap Picture Book is a simple, screen-time-friendly picture book for toddlers and young children. There's nothing to fail and no score to chase — just gentle sounds and animations that respond to a tap.</span>
+      <span data-i18n="ja">タップタップ絵本は、小さなお子さまでも安心して楽しめるシンプルな絵本アプリです。失敗もスコアもなく、画面をタップするとやさしい音とアニメーションが返ってきます。</span>
+      <span data-i18n="ko">탭탭 그림책은 유아와 어린 아이가 편하게 즐길 수 있는 심플한 그림책 앱입니다. 실패도 점수도 없이, 화면을 탭하면 부드러운 소리와 애니메이션이 반응합니다.</span>
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">👆</div>
+        <h3>
+          <span data-i18n="en">Simple Tap Interaction</span>
+          <span data-i18n="ja">シンプルなタップ操作</span>
+          <span data-i18n="ko">간단한 탭 조작</span>
+        </h3>
+        <p>
+          <span data-i18n="en">No swipes or gestures to learn — just tap anywhere on the page.</span>
+          <span data-i18n="ja">複雑な操作は不要。画面のどこをタップしても反応します。</span>
+          <span data-i18n="ko">복잡한 조작 없이 화면 어디든 탭하면 반응합니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h3>
+          <span data-i18n="en">Gentle Sounds &amp; Animation</span>
+          <span data-i18n="ja">やさしい音とアニメーション</span>
+          <span data-i18n="ko">부드러운 소리와 애니메이션</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Every tap brings a soft sound effect and a small, friendly animation.</span>
+          <span data-i18n="ja">タップするたびに、やさしい効果音とかわいいアニメーションが流れます。</span>
+          <span data-i18n="ko">탭할 때마다 부드러운 효과음과 귀여운 애니메이션이 재생됩니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🌙</div>
+        <h3>
+          <span data-i18n="en">No Pressure, No Timers</span>
+          <span data-i18n="ja">タイマーもプレッシャーもなし</span>
+          <span data-i18n="ko">타이머와 압박이 없어요</span>
+        </h3>
+        <p>
+          <span data-i18n="en">There's no way to "lose" — kids can explore each scene at their own pace.</span>
+          <span data-i18n="ja">「失敗」の概念がないので、お子さまのペースでゆっくり楽しめます。</span>
+          <span data-i18n="ko">'실패'라는 개념이 없어 아이의 속도에 맞춰 천천히 즐길 수 있습니다.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules / How to Play -->
+  <section class="tab-panel" data-tab-panel="rules">
+    <p class="panel-intro">
+      <span data-i18n="en">There are no rules to memorize — just a few simple ways to explore each page.</span>
+      <span data-i18n="ja">覚えるルールはありません。いくつかのシンプルな操作でページを楽しめます。</span>
+      <span data-i18n="ko">외울 규칙은 없습니다. 몇 가지 간단한 방법으로 각 페이지를 즐길 수 있어요.</span>
+    </p>
+    <ol class="step-list">
+      <li>
+        <span data-i18n="en">Choose a scene from the bookshelf to open it.</span>
+        <span data-i18n="ja">本棚から好きなおはなしを選んで開きます。</span>
+        <span data-i18n="ko">책장에서 원하는 이야기를 선택해 엽니다.</span>
+      </li>
+      <li>
+        <span data-i18n="en">Tap anywhere on the page to hear a sound and see an animation.</span>
+        <span data-i18n="ja">ページのどこかをタップすると、音とアニメーションが再生されます。</span>
+        <span data-i18n="ko">페이지 어디든 탭하면 소리와 애니메이션이 재생됩니다.</span>
+      </li>
+      <li>
+        <span data-i18n="en">Swipe left or right to move between pages within a scene.</span>
+        <span data-i18n="ja">左右にスワイプすると、おはなしの中のページを移動できます。</span>
+        <span data-i18n="ko">좌우로 스와이프하면 이야기 속 페이지를 이동할 수 있습니다.</span>
+      </li>
+      <li>
+        <span data-i18n="en">Tap the home button anytime to return to the bookshelf.</span>
+        <span data-i18n="ja">いつでもホームボタンをタップすると本棚に戻れます。</span>
+        <span data-i18n="ko">언제든 홈 버튼을 탭하면 책장으로 돌아갑니다.</span>
+      </li>
+    </ol>
+    <div class="note-box">
+      <span data-i18n="en">Tip for parents: sit with your child and let them tap freely — there's no wrong answer.</span>
+      <span data-i18n="ja">保護者の方へ: お子さまと一緒に座って、自由にタップさせてあげてください。正解・不正解はありません。</span>
+      <span data-i18n="ko">보호자를 위한 팁: 아이와 함께 앉아 자유롭게 탭하도록 해주세요. 정답과 오답은 없습니다.</span>
+    </div>
+  </section>
+
+  <!-- Stage / Scene description -->
+  <section class="tab-panel" data-tab-panel="stages">
+    <p class="panel-intro">
+      <span data-i18n="en">Each scene is a mini picture book with its own theme, characters, and sounds.</span>
+      <span data-i18n="ja">それぞれのおはなしには、テーマやキャラクター、音が用意されています。</span>
+      <span data-i18n="ko">각 이야기는 저마다의 주제와 캐릭터, 소리를 가진 작은 그림책입니다.</span>
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🐮</div>
+        <h3>
+          <span data-i18n="en">Farm</span>
+          <span data-i18n="ja">のうじょう</span>
+          <span data-i18n="ko">농장</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Cows, chickens, and tractors — tap to hear friendly farm sounds.</span>
+          <span data-i18n="ja">牛やニワトリ、トラクターなど、やさしい農場の音が楽しめます。</span>
+          <span data-i18n="ko">소, 닭, 트랙터 등 정겨운 농장 소리를 들어보세요.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🐬</div>
+        <h3>
+          <span data-i18n="en">Ocean</span>
+          <span data-i18n="ja">うみ</span>
+          <span data-i18n="ko">바다</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Dolphins, fish, and waves fill this gentle underwater scene.</span>
+          <span data-i18n="ja">イルカや魚、波の音など、やさしい海の世界です。</span>
+          <span data-i18n="ko">돌고래, 물고기, 파도가 있는 잔잔한 바닷속 이야기입니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🦉</div>
+        <h3>
+          <span data-i18n="en">Forest</span>
+          <span data-i18n="ja">もり</span>
+          <span data-i18n="ko">숲</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Meet owls, rabbits, and rustling leaves in a quiet woodland.</span>
+          <span data-i18n="ja">フクロウやウサギ、木の葉の音など、静かな森の世界です。</span>
+          <span data-i18n="ko">부엉이, 토끼, 나뭇잎 소리가 있는 고요한 숲 이야기입니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🎈</div>
+        <h3>
+          <span data-i18n="en">Sky</span>
+          <span data-i18n="ja">そら</span>
+          <span data-i18n="ko">하늘</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Balloons, clouds, and birds drift across a bright sky scene.</span>
+          <span data-i18n="ja">風船や雲、鳥たちが浮かぶ明るい空のおはなしです。</span>
+          <span data-i18n="ko">풍선과 구름, 새들이 떠다니는 밝은 하늘 이야기입니다.</span>
+        </p>
+      </div>
+    </div>
+    <div class="note-box">
+      <span data-i18n="en">More scenes will be added in future updates.</span>
+      <span data-i18n="ja">今後のアップデートで、おはなしが追加されていく予定です。</span>
+      <span data-i18n="ko">앞으로 업데이트를 통해 새로운 이야기가 추가될 예정입니다.</span>
+    </div>
+  </section>
+
+  <!-- Items -->
+  <section class="tab-panel" data-tab-panel="items">
+    <p class="panel-intro">
+      <span data-i18n="en">Every scene is filled with small tappable items that react with their own sound and animation.</span>
+      <span data-i18n="ja">それぞれのおはなしには、タップできる小さなアイテムがたくさん登場します。</span>
+      <span data-i18n="ko">각 이야기에는 탭할 수 있는 작은 아이템들이 가득합니다.</span>
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🐾</div>
+        <h3>
+          <span data-i18n="en">Animals</span>
+          <span data-i18n="ja">どうぶつ</span>
+          <span data-i18n="ko">동물</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Tap an animal to hear its sound and see it move.</span>
+          <span data-i18n="ja">動物をタップすると、鳴き声や動きが楽しめます。</span>
+          <span data-i18n="ko">동물을 탭하면 울음소리와 움직임을 볼 수 있습니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🚗</div>
+        <h3>
+          <span data-i18n="en">Vehicles</span>
+          <span data-i18n="ja">のりもの</span>
+          <span data-i18n="ko">탈것</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Cars, trains, and boats each have their own gentle sound effect.</span>
+          <span data-i18n="ja">車や電車、船など、それぞれやさしい音が鳴ります。</span>
+          <span data-i18n="ko">자동차, 기차, 배마다 고유한 부드러운 효과음이 있습니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🍎</div>
+        <h3>
+          <span data-i18n="en">Fruits &amp; Food</span>
+          <span data-i18n="ja">くだもの・たべもの</span>
+          <span data-i18n="ko">과일과 음식</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Playful items that bounce and chime when tapped.</span>
+          <span data-i18n="ja">タップすると跳ねたり音が鳴ったりする楽しいアイテムです。</span>
+          <span data-i18n="ko">탭하면 통통 튀며 소리가 나는 재미있는 아이템입니다.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="icon">🔷</div>
+        <h3>
+          <span data-i18n="en">Shapes &amp; Colors</span>
+          <span data-i18n="ja">かたち・いろ</span>
+          <span data-i18n="ko">모양과 색깔</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Simple shapes that light up and shift color on tap.</span>
+          <span data-i18n="ja">タップすると光ったり色が変わったりするシンプルな図形です。</span>
+          <span data-i18n="ko">탭하면 빛나거나 색이 바뀌는 심플한 도형입니다.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-links">
+    <span class="btn btn-disabled">
+      <span data-i18n="en">▶ Google Play — Coming Soon</span>
+      <span data-i18n="ja">▶ Google Play — 近日公開</span>
+      <span data-i18n="ko">▶ Google Play — 출시 예정</span>
+    </span>
+    <a class="btn btn-secondary" href="privacy-policy.html">
+      <span data-i18n="en">Privacy Policy</span>
+      <span data-i18n="ja">プライバシーポリシー</span>
+      <span data-i18n="ko">개인정보 처리방침</span>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <span data-i18n="en">Questions? Contact:</span>
+    <span data-i18n="ja">お問い合わせ:</span>
+    <span data-i18n="ko">문의:</span>
+    &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
+  </p>
+  <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
+</footer>
+
+<script>
+  (function () {
+    var supported = ['en', 'ja', 'ko'];
+    var html = document.documentElement;
+    var langButtons = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang) {
+      if (supported.indexOf(lang) === -1) lang = 'ja';
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang);
+      langButtons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      try { localStorage.setItem('crobmaster-lang', lang); } catch (e) {}
+    }
+
+    langButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+
+    var savedLang = null;
+    try { savedLang = localStorage.getItem('crobmaster-lang'); } catch (e) {}
+    var browserLang = (navigator.language || 'ja').slice(0, 2);
+    setLang(savedLang || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+
+    var tabButtons = document.querySelectorAll('[data-set-tab]');
+    var tabPanels = document.querySelectorAll('[data-tab-panel]');
+
+    function setTab(tab) {
+      tabButtons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-set-tab') === tab);
+      });
+      tabPanels.forEach(function (panel) {
+        panel.classList.toggle('active', panel.getAttribute('data-tab-panel') === tab);
+      });
+      try { localStorage.setItem('taptap-tab', tab); } catch (e) {}
+    }
+
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setTab(btn.getAttribute('data-set-tab'));
+      });
+    });
+
+    var savedTab = null;
+    try { savedTab = localStorage.getItem('taptap-tab'); } catch (e) {}
+    setTab(savedTab && document.querySelector('[data-tab-panel="' + savedTab + '"]') ? savedTab : 'overview');
+  })();
+</script>
+
+</body>
+</html>
