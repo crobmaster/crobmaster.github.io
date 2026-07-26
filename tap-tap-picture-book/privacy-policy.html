@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en, ja, ko">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,6 +32,43 @@
       margin-top: 8px;
       font-size: 0.95rem;
       opacity: 0.9;
+    }
+
+    .lang-switch {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .lang-switch button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      background: transparent;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-switch button.active,
+    .lang-switch button:hover {
+      background: #fff;
+      color: #ff7b54;
+    }
+
+    .lang-switch .flag {
+      width: 18px;
+      height: 13px;
+      object-fit: cover;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     main {
@@ -89,241 +126,416 @@
 
     a { color: #ff7b54; text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    [data-i18n] { display: none; }
+    html[data-lang="en"] [data-i18n="en"],
+    html[data-lang="ja"] [data-i18n="ja"],
+    html[data-lang="ko"] [data-i18n="ko"],
+    html[data-lang="es"] [data-i18n="es"],
+    html[data-lang="pt"] [data-i18n="pt"],
+    html[data-lang="fr"] [data-i18n="fr"],
+    html[data-lang="de"] [data-i18n="de"] {
+      display: block;
+    }
+
+    html[data-lang="en"] h2 [data-i18n="en"],
+    html[data-lang="ja"] h2 [data-i18n="ja"],
+    html[data-lang="ko"] h2 [data-i18n="ko"],
+    html[data-lang="es"] h2 [data-i18n="es"],
+    html[data-lang="pt"] h2 [data-i18n="pt"],
+    html[data-lang="fr"] h2 [data-i18n="fr"],
+    html[data-lang="de"] h2 [data-i18n="de"] {
+      display: inline;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>🐣 Tap-Tap Picture Book</h1>
-  <p>Privacy Policy &nbsp;|&nbsp; プライバシーポリシー &nbsp;|&nbsp; 개인정보 처리방침</p>
+  <p>
+    <span data-i18n="en">Privacy Policy</span>
+    <span data-i18n="ja">プライバシーポリシー</span>
+    <span data-i18n="ko">개인정보 처리방침</span>
+    <span data-i18n="es">Política de Privacidad</span>
+    <span data-i18n="pt">Política de Privacidade</span>
+    <span data-i18n="fr">Politique de Confidentialité</span>
+    <span data-i18n="de">Datenschutzrichtlinie</span>
+  </p>
+  <div class="lang-switch">
+    <button type="button" data-set-lang="en"><img class="flag" src="https://flagcdn.com/us.svg" alt="" /> English</button>
+    <button type="button" data-set-lang="ja"><img class="flag" src="https://flagcdn.com/jp.svg" alt="" /> 日本語</button>
+    <button type="button" data-set-lang="ko"><img class="flag" src="https://flagcdn.com/kr.svg" alt="" /> 한국어</button>
+    <button type="button" data-set-lang="es"><img class="flag" src="https://flagcdn.com/es.svg" alt="" /> Español</button>
+    <button type="button" data-set-lang="pt"><img class="flag" src="https://flagcdn.com/br.svg" alt="" /> Português</button>
+    <button type="button" data-set-lang="fr"><img class="flag" src="https://flagcdn.com/fr.svg" alt="" /> Français</button>
+    <button type="button" data-set-lang="de"><img class="flag" src="https://flagcdn.com/de.svg" alt="" /> Deutsch</button>
+  </div>
 </header>
 
 <main>
 
   <section>
     <div class="highlight-box">
-      <p>Tap-Tap Picture Book itself does not collect personal information, but displays ads through Google AdMob, which may collect certain data as described below.</p>
-      <p style="font-weight:400; margin-top:6px; color:#555;">
-        タップタップ絵本自体は個人情報を収集しませんが、Google AdMobによる広告を表示しており、下記の通り一部のデータが収集される場合があります。
+      <p data-i18n="en">Tap-Tap Picture Book itself does not collect personal information, but displays ads through Google AdMob, which may collect certain data as described below.</p>
+      <p data-i18n="ja">タップタップ絵本自体は個人情報を収集しませんが、Google AdMobによる広告を表示しており、下記の通り一部のデータが収集される場合があります。</p>
+      <p data-i18n="ko">탭탭 그림책 자체는 개인정보를 수집하지 않지만, Google AdMob을 통해 광고를 표시하며 아래와 같이 일부 데이터가 수집될 수 있습니다.</p>
+      <p data-i18n="es">Tap-Tap Picture Book en sí no recopila información personal, pero muestra anuncios a través de Google AdMob, que puede recopilar ciertos datos como se describe a continuación.</p>
+      <p data-i18n="pt">O próprio Tap-Tap Picture Book não coleta informações pessoais, mas exibe anúncios através do Google AdMob, que pode coletar determinados dados conforme descrito abaixo.</p>
+      <p data-i18n="fr">Tap-Tap Picture Book en lui-même ne collecte aucune information personnelle, mais affiche des publicités via Google AdMob, qui peut collecter certaines données comme décrit ci-dessous.</p>
+      <p data-i18n="de">Tap-Tap Picture Book selbst sammelt keine persönlichen Informationen, zeigt jedoch Werbung über Google AdMob an, die möglicherweise bestimmte Daten wie unten beschrieben erfasst.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span data-i18n="en">1. Information We Collect</span>
+      <span data-i18n="ja">1. 収集する情報</span>
+      <span data-i18n="ko">1. 수집하는 정보</span>
+      <span data-i18n="es">1. Información que Recopilamos</span>
+      <span data-i18n="pt">1. Informações que Coletamos</span>
+      <span data-i18n="fr">1. Informations que Nous Collectons</span>
+      <span data-i18n="de">1. Informationen, die wir sammeln</span>
+    </h2>
+
+    <div data-i18n="en">
+      <p>Tap-Tap Picture Book does not directly collect names, email addresses, or other information you provide.</p>
+      <p style="margin-top: 10px;">However, the app displays ads via Google AdMob, which may automatically collect the following for the purpose of delivering and measuring ads:</p>
+      <ul style="margin-top: 10px;">
+        <li>Device identifiers (such as the Advertising ID)</li>
+        <li>Approximate location</li>
+        <li>App interaction data</li>
+      </ul>
+    </div>
+
+    <div data-i18n="ja">
+      <p>タップタップ絵本自体は、氏名やメールアドレスなど、お客様が入力する情報を直接収集することはありません。</p>
+      <p style="margin-top: 10px;">ただし、本アプリはGoogle AdMobによる広告を表示しており、広告配信・効果測定のために以下の情報が自動的に収集される場合があります。</p>
+      <ul style="margin-top: 10px;">
+        <li>端末識別子（広告IDなど）</li>
+        <li>おおよその位置情報</li>
+        <li>アプリの利用状況</li>
+      </ul>
+    </div>
+
+    <div data-i18n="ko">
+      <p>탭탭 그림책 자체는 이름, 이메일 주소 등 사용자가 직접 입력하는 정보를 수집하지 않습니다.</p>
+      <p style="margin-top: 10px;">다만, 본 앱은 Google AdMob을 통해 광고를 표시하며, 광고 게재 및 효과 측정을 위해 다음 정보가 자동으로 수집될 수 있습니다.</p>
+      <ul style="margin-top: 10px;">
+        <li>기기 식별자(광고 ID 등)</li>
+        <li>대략적인 위치 정보</li>
+        <li>앱 이용 정보</li>
+      </ul>
+    </div>
+
+    <div data-i18n="es">
+      <p>Tap-Tap Picture Book no recopila directamente nombres, direcciones de correo electrónico ni otra información que usted proporcione.</p>
+      <p style="margin-top: 10px;">Sin embargo, la aplicación muestra anuncios a través de Google AdMob, que puede recopilar automáticamente la siguiente información con el fin de mostrar y medir anuncios:</p>
+      <ul style="margin-top: 10px;">
+        <li>Identificadores de dispositivo (como el ID de publicidad)</li>
+        <li>Ubicación aproximada</li>
+        <li>Datos de interacción con la aplicación</li>
+      </ul>
+    </div>
+
+    <div data-i18n="pt">
+      <p>O Tap-Tap Picture Book não coleta diretamente nomes, endereços de e-mail ou outras informações fornecidas por você.</p>
+      <p style="margin-top: 10px;">No entanto, o aplicativo exibe anúncios através do Google AdMob, que pode coletar automaticamente as seguintes informações para fins de veiculação e mensuração de anúncios:</p>
+      <ul style="margin-top: 10px;">
+        <li>Identificadores de dispositivo (como o ID de publicidade)</li>
+        <li>Localização aproximada</li>
+        <li>Dados de interação com o aplicativo</li>
+      </ul>
+    </div>
+
+    <div data-i18n="fr">
+      <p>Tap-Tap Picture Book ne collecte pas directement de noms, d'adresses e-mail ou d'autres informations que vous fournissez.</p>
+      <p style="margin-top: 10px;">Cependant, l'application affiche des publicités via Google AdMob, qui peut collecter automatiquement les informations suivantes afin de diffuser et de mesurer les publicités :</p>
+      <ul style="margin-top: 10px;">
+        <li>Identifiants d'appareil (tels que l'ID publicitaire)</li>
+        <li>Localisation approximative</li>
+        <li>Données d'interaction avec l'application</li>
+      </ul>
+    </div>
+
+    <div data-i18n="de">
+      <p>Tap-Tap Picture Book sammelt nicht direkt Namen, E-Mail-Adressen oder andere von Ihnen bereitgestellte Informationen.</p>
+      <p style="margin-top: 10px;">Die App zeigt jedoch Werbung über Google AdMob an, die zum Zweck der Anzeigenbereitstellung und -messung automatisch Folgendes erfassen kann:</p>
+      <ul style="margin-top: 10px;">
+        <li>Geräte-Kennungen (z. B. die Werbe-ID)</li>
+        <li>Ungefährer Standort</li>
+        <li>App-Interaktionsdaten</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span data-i18n="en">2. Third-Party Services</span>
+      <span data-i18n="ja">2. サードパーティサービス</span>
+      <span data-i18n="ko">2. 제3자 서비스</span>
+      <span data-i18n="es">2. Servicios de Terceros</span>
+      <span data-i18n="pt">2. Serviços de Terceiros</span>
+      <span data-i18n="fr">2. Services Tiers</span>
+      <span data-i18n="de">2. Dienste Dritter</span>
+    </h2>
+
+    <div data-i18n="en">
+      <p>This app uses Google AdMob to display ads.</p>
+      <p style="margin-top: 10px;">AdMob may use cookies and device identifiers to serve and measure ads, in accordance with Google's own privacy policy.</p>
+      <p style="margin-top: 10px;">
+        For details, see
+        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's Ads Policy</a>
+        and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
       </p>
-      <p style="font-weight:400; margin-top:6px; color:#555;">
-        탭탭 그림책 자체는 개인정보를 수집하지 않지만, Google AdMob을 통해 광고를 표시하며 아래와 같이 일부 데이터가 수집될 수 있습니다.
+    </div>
+
+    <div data-i18n="ja">
+      <p>本アプリは、広告表示のためにGoogle AdMobを使用しています。</p>
+      <p style="margin-top: 10px;">AdMobは、広告の配信・効果測定のためにCookieや端末識別子を使用する場合があり、これはGoogle自身のプライバシーポリシーに基づいて行われます。</p>
+      <p style="margin-top: 10px;">
+        詳細は
+        <a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener">Googleの広告ポリシー</a>
+        および<a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Googleプライバシーポリシー</a>をご確認ください。
+      </p>
+    </div>
+
+    <div data-i18n="ko">
+      <p>본 앱은 광고 표시를 위해 Google AdMob을 사용합니다.</p>
+      <p style="margin-top: 10px;">AdMob은 광고 게재 및 효과 측정을 위해 쿠키나 기기 식별자를 사용할 수 있으며, 이는 Google 자체의 개인정보 처리방침에 따라 이루어집니다.</p>
+      <p style="margin-top: 10px;">
+        자세한 내용은
+        <a href="https://policies.google.com/technologies/ads?hl=ko" target="_blank" rel="noopener">Google 광고 정책</a> 및
+        <a href="https://policies.google.com/privacy?hl=ko" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.
+      </p>
+    </div>
+
+    <div data-i18n="es">
+      <p>Esta aplicación utiliza Google AdMob para mostrar anuncios.</p>
+      <p style="margin-top: 10px;">AdMob puede utilizar cookies e identificadores de dispositivo para mostrar y medir anuncios, de acuerdo con la propia política de privacidad de Google.</p>
+      <p style="margin-top: 10px;">
+        Para más detalles, consulte
+        <a href="https://policies.google.com/technologies/ads?hl=es" target="_blank" rel="noopener">la Política de Anuncios de Google</a>
+        y <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">la Política de Privacidad de Google</a>.
+      </p>
+    </div>
+
+    <div data-i18n="pt">
+      <p>Este aplicativo utiliza o Google AdMob para exibir anúncios.</p>
+      <p style="margin-top: 10px;">O AdMob pode usar cookies e identificadores de dispositivo para veicular e medir anúncios, de acordo com a própria política de privacidade do Google.</p>
+      <p style="margin-top: 10px;">
+        Para mais detalhes, consulte
+        <a href="https://policies.google.com/technologies/ads?hl=pt" target="_blank" rel="noopener">a Política de Anúncios do Google</a>
+        e <a href="https://policies.google.com/privacy?hl=pt" target="_blank" rel="noopener">a Política de Privacidade do Google</a>.
+      </p>
+    </div>
+
+    <div data-i18n="fr">
+      <p>Cette application utilise Google AdMob pour afficher des publicités.</p>
+      <p style="margin-top: 10px;">AdMob peut utiliser des cookies et des identifiants d'appareil pour diffuser et mesurer les publicités, conformément à la politique de confidentialité de Google.</p>
+      <p style="margin-top: 10px;">
+        Pour plus de détails, consultez
+        <a href="https://policies.google.com/technologies/ads?hl=fr" target="_blank" rel="noopener">la Politique relative aux annonces de Google</a>
+        et <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener">la Politique de confidentialité de Google</a>.
+      </p>
+    </div>
+
+    <div data-i18n="de">
+      <p>Diese App verwendet Google AdMob zur Anzeige von Werbung.</p>
+      <p style="margin-top: 10px;">AdMob kann Cookies und Geräte-Kennungen verwenden, um Werbung bereitzustellen und zu messen, gemäß der eigenen Datenschutzrichtlinie von Google.</p>
+      <p style="margin-top: 10px;">
+        Weitere Details finden Sie in den
+        <a href="https://policies.google.com/technologies/ads?hl=de" target="_blank" rel="noopener">Werberichtlinien von Google</a>
+        und der <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzrichtlinie von Google</a>.
       </p>
     </div>
   </section>
 
   <section>
-    <h2>1. Information We Collect / 収集する情報 / 수집하는 정보</h2>
-    <p>
-      Tap-Tap Picture Book does not directly collect names, email addresses,
-      or other information you provide.
-    </p>
-    <p style="margin-top: 10px;">
-      However, the app displays ads via Google AdMob, which may automatically
-      collect the following for the purpose of delivering and measuring ads:
-    </p>
-    <ul style="margin-top: 10px;">
-      <li>Device identifiers (such as the Advertising ID)</li>
-      <li>Approximate location</li>
-      <li>App interaction data</li>
-    </ul>
+    <h2>
+      <span data-i18n="en">3. Internet Connection</span>
+      <span data-i18n="ja">3. インターネット接続</span>
+      <span data-i18n="ko">3. 인터넷 연결</span>
+      <span data-i18n="es">3. Conexión a Internet</span>
+      <span data-i18n="pt">3. Conexão com a Internet</span>
+      <span data-i18n="fr">3. Connexion Internet</span>
+      <span data-i18n="de">3. Internetverbindung</span>
+    </h2>
 
-    <p style="margin-top: 20px;">
-      タップタップ絵本自体は、氏名やメールアドレスなど、お客様が入力する情報を
-      直接収集することはありません。
-    </p>
-    <p style="margin-top: 10px;">
-      ただし、本アプリはGoogle AdMobによる広告を表示しており、広告配信・
-      効果測定のために以下の情報が自動的に収集される場合があります。
-    </p>
-    <ul style="margin-top: 10px;">
-      <li>端末識別子（広告IDなど）</li>
-      <li>おおよその位置情報</li>
-      <li>アプリの利用状況</li>
-    </ul>
+    <div data-i18n="en">
+      <p>The picture book content itself works offline.</p>
+      <p style="margin-top: 10px;">However, an internet connection is required to load and display ads through Google AdMob.</p>
+    </div>
 
-    <p style="margin-top: 20px;">
-      탭탭 그림책 자체는 이름, 이메일 주소 등 사용자가 직접 입력하는 정보를
-      수집하지 않습니다.
-    </p>
-    <p style="margin-top: 10px;">
-      다만, 본 앱은 Google AdMob을 통해 광고를 표시하며, 광고 게재 및 효과
-      측정을 위해 다음 정보가 자동으로 수집될 수 있습니다.
-    </p>
-    <ul style="margin-top: 10px;">
-      <li>기기 식별자(광고 ID 등)</li>
-      <li>대략적인 위치 정보</li>
-      <li>앱 이용 정보</li>
-    </ul>
+    <div data-i18n="ja">
+      <p>絵本のコンテンツ自体はオフラインで動作します。</p>
+      <p style="margin-top: 10px;">ただし、Google AdMobによる広告の読み込み・表示にはインターネット接続が必要です。</p>
+    </div>
+
+    <div data-i18n="ko">
+      <p>그림책 콘텐츠 자체는 오프라인에서도 동작합니다.</p>
+      <p style="margin-top: 10px;">다만 Google AdMob을 통한 광고를 불러오고 표시하려면 인터넷 연결이 필요합니다.</p>
+    </div>
+
+    <div data-i18n="es">
+      <p>El contenido del cuento ilustrado en sí funciona sin conexión.</p>
+      <p style="margin-top: 10px;">Sin embargo, se requiere una conexión a Internet para cargar y mostrar anuncios a través de Google AdMob.</p>
+    </div>
+
+    <div data-i18n="pt">
+      <p>O próprio conteúdo do livro ilustrado funciona offline.</p>
+      <p style="margin-top: 10px;">No entanto, é necessária uma conexão com a Internet para carregar e exibir anúncios através do Google AdMob.</p>
+    </div>
+
+    <div data-i18n="fr">
+      <p>Le contenu du livre d'images fonctionne hors ligne.</p>
+      <p style="margin-top: 10px;">Cependant, une connexion Internet est nécessaire pour charger et afficher les publicités via Google AdMob.</p>
+    </div>
+
+    <div data-i18n="de">
+      <p>Der Bilderbuchinhalt selbst funktioniert offline.</p>
+      <p style="margin-top: 10px;">Eine Internetverbindung ist jedoch erforderlich, um Werbung über Google AdMob zu laden und anzuzeigen.</p>
+    </div>
   </section>
 
   <section>
-    <h2>2. Third-Party Services / サードパーティサービス / 제3자 서비스</h2>
-    <p>
-      This app uses Google AdMob to display ads.
-    </p>
-    <p style="margin-top: 10px;">
-      AdMob may use cookies and device identifiers to serve and measure ads,
-      in accordance with Google's own privacy policy.
-    </p>
-    <p style="margin-top: 10px;">
-      For details, see
-      <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's Ads Policy</a>
-      and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
-    </p>
+    <h2>
+      <span data-i18n="en">4. Children's Privacy</span>
+      <span data-i18n="ja">4. 子どものプライバシー</span>
+      <span data-i18n="ko">4. 아동 개인정보 보호</span>
+      <span data-i18n="es">4. Privacidad de los Niños</span>
+      <span data-i18n="pt">4. Privacidade das Crianças</span>
+      <span data-i18n="fr">4. Confidentialité des Enfants</span>
+      <span data-i18n="de">4. Datenschutz für Kinder</span>
+    </h2>
 
-    <p style="margin-top: 20px;">
-      本アプリは、広告表示のためにGoogle AdMobを使用しています。
-    </p>
-    <p style="margin-top: 10px;">
-      AdMobは、広告の配信・効果測定のためにCookieや端末識別子を使用する場合が
-      あり、これはGoogle自身のプライバシーポリシーに基づいて行われます。
-    </p>
-    <p style="margin-top: 10px;">
-      詳細は
-      <a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener">Googleの広告ポリシー</a>
-      および<a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Googleプライバシーポリシー</a>をご確認ください。
-    </p>
+    <div data-i18n="en">
+      <p>While the picture book content is family-friendly, Tap-Tap Picture Book is not directed primarily at children under 13, and ads are not specifically targeted at children under 13.</p>
+      <p style="margin-top: 10px;">We do not knowingly collect personal information from children under 13.</p>
+      <p style="margin-top: 10px;">If you are a parent or guardian and believe your child has provided personal information, please contact us using the information below.</p>
+    </div>
 
-    <p style="margin-top: 20px;">
-      본 앱은 광고 표시를 위해 Google AdMob을 사용합니다.
-    </p>
-    <p style="margin-top: 10px;">
-      AdMob은 광고 게재 및 효과 측정을 위해 쿠키나 기기 식별자를 사용할 수
-      있으며, 이는 Google 자체의 개인정보 처리방침에 따라 이루어집니다.
-    </p>
-    <p style="margin-top: 10px;">
-      자세한 내용은
-      <a href="https://policies.google.com/technologies/ads?hl=ko" target="_blank" rel="noopener">Google 광고 정책</a> 및
-      <a href="https://policies.google.com/privacy?hl=ko" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.
-    </p>
+    <div data-i18n="ja">
+      <p>絵本のコンテンツはご家族でお楽しみいただける内容ですが、タップタップ絵本は主に13歳未満の子どもを対象としたアプリではなく、広告も13歳未満の子どもを特に対象としたものではありません。</p>
+      <p style="margin-top: 10px;">13歳未満の子どもの個人情報を意図的に収集することはありません。</p>
+      <p style="margin-top: 10px;">保護者の方でお子様が個人情報を提供したと思われる場合は、下記の連絡先までお問い合わせください。</p>
+    </div>
+
+    <div data-i18n="ko">
+      <p>그림책 콘텐츠는 온 가족이 즐길 수 있는 내용이지만, 탭탭 그림책은 주로 만 13세 미만 아동을 대상으로 하는 앱이 아니며, 광고 역시 만 13세 미만 아동을 특별히 대상으로 하지 않습니다.</p>
+      <p style="margin-top: 10px;">만 13세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+      <p style="margin-top: 10px;">자녀가 개인정보를 제공했다고 판단되는 보호자께서는 아래 연락처로 문의해 주시기 바랍니다.</p>
+    </div>
+
+    <div data-i18n="es">
+      <p>Aunque el contenido del cuento ilustrado es apto para toda la familia, Tap-Tap Picture Book no está dirigido principalmente a niños menores de 13 años, y los anuncios no están dirigidos específicamente a niños menores de 13 años.</p>
+      <p style="margin-top: 10px;">No recopilamos conscientemente información personal de niños menores de 13 años.</p>
+      <p style="margin-top: 10px;">Si usted es padre, madre o tutor y cree que su hijo ha proporcionado información personal, póngase en contacto con nosotros utilizando la información a continuación.</p>
+    </div>
+
+    <div data-i18n="pt">
+      <p>Embora o conteúdo do livro ilustrado seja adequado para toda a família, o Tap-Tap Picture Book não é direcionado principalmente a crianças menores de 13 anos, e os anúncios não são especificamente direcionados a crianças menores de 13 anos.</p>
+      <p style="margin-top: 10px;">Não coletamos conscientemente informações pessoais de crianças menores de 13 anos.</p>
+      <p style="margin-top: 10px;">Se você é pai, mãe ou responsável e acredita que seu filho forneceu informações pessoais, entre em contato conosco usando as informações abaixo.</p>
+    </div>
+
+    <div data-i18n="fr">
+      <p>Bien que le contenu du livre d'images convienne à toute la famille, Tap-Tap Picture Book ne s'adresse pas principalement aux enfants de moins de 13 ans, et les publicités ne ciblent pas spécifiquement les enfants de moins de 13 ans.</p>
+      <p style="margin-top: 10px;">Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 13 ans.</p>
+      <p style="margin-top: 10px;">Si vous êtes parent ou tuteur et pensez que votre enfant a fourni des informations personnelles, veuillez nous contacter en utilisant les informations ci-dessous.</p>
+    </div>
+
+    <div data-i18n="de">
+      <p>Obwohl der Bilderbuchinhalt familienfreundlich ist, richtet sich Tap-Tap Picture Book nicht in erster Linie an Kinder unter 13 Jahren, und die Werbung zielt nicht speziell auf Kinder unter 13 Jahren ab.</p>
+      <p style="margin-top: 10px;">Wir sammeln wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren.</p>
+      <p style="margin-top: 10px;">Wenn Sie Elternteil oder Erziehungsberechtigter sind und glauben, dass Ihr Kind persönliche Informationen bereitgestellt hat, kontaktieren Sie uns bitte über die unten stehenden Informationen.</p>
+    </div>
   </section>
 
   <section>
-    <h2>3. Internet Connection / インターネット接続 / 인터넷 연결</h2>
-    <p>
-      The picture book content itself works offline.
-    </p>
-    <p style="margin-top: 10px;">
-      However, an internet connection is required to load and display ads
-      through Google AdMob.
-    </p>
+    <h2>
+      <span data-i18n="en">5. Security</span>
+      <span data-i18n="ja">5. セキュリティ</span>
+      <span data-i18n="ko">5. 보안</span>
+      <span data-i18n="es">5. Seguridad</span>
+      <span data-i18n="pt">5. Segurança</span>
+      <span data-i18n="fr">5. Sécurité</span>
+      <span data-i18n="de">5. Sicherheit</span>
+    </h2>
 
-    <p style="margin-top: 20px;">
-      絵本のコンテンツ自体はオフラインで動作します。
-    </p>
-    <p style="margin-top: 10px;">
-      ただし、Google AdMobによる広告の読み込み・表示にはインターネット接続が
-      必要です。
-    </p>
+    <div data-i18n="en">
+      <p>Tap-Tap Picture Book does not operate its own servers or store personal data.</p>
+      <p style="margin-top: 10px;">Data collected by third-party ad services is handled under their own security practices; please refer to Google's privacy policy linked above for details.</p>
+    </div>
 
-    <p style="margin-top: 20px;">
-      그림책 콘텐츠 자체는 오프라인에서도 동작합니다.
-    </p>
-    <p style="margin-top: 10px;">
-      다만 Google AdMob을 통한 광고를 불러오고 표시하려면 인터넷 연결이
-      필요합니다.
-    </p>
+    <div data-i18n="ja">
+      <p>タップタップ絵本は独自のサーバーを運用しておらず、個人データを保存することもありません。</p>
+      <p style="margin-top: 10px;">第三者の広告サービスによって収集されるデータは、各サービス自身のセキュリティ対策のもとで取り扱われます。詳細は上記のGoogleプライバシーポリシーをご確認ください。</p>
+    </div>
+
+    <div data-i18n="ko">
+      <p>탭탭 그림책은 자체 서버를 운영하지 않으며 개인 데이터를 저장하지도 않습니다.</p>
+      <p style="margin-top: 10px;">제3자 광고 서비스가 수집하는 데이터는 해당 서비스 자체의 보안 정책에 따라 처리됩니다. 자세한 내용은 위의 Google 개인정보처리방침을 참고하세요.</p>
+    </div>
+
+    <div data-i18n="es">
+      <p>Tap-Tap Picture Book no opera sus propios servidores ni almacena datos personales.</p>
+      <p style="margin-top: 10px;">Los datos recopilados por los servicios publicitarios de terceros se gestionan según sus propias prácticas de seguridad; consulte la política de privacidad de Google enlazada anteriormente para más detalles.</p>
+    </div>
+
+    <div data-i18n="pt">
+      <p>O Tap-Tap Picture Book não opera seus próprios servidores nem armazena dados pessoais.</p>
+      <p style="margin-top: 10px;">Os dados coletados por serviços de publicidade de terceiros são tratados de acordo com suas próprias práticas de segurança; consulte a política de privacidade do Google mencionada acima para mais detalhes.</p>
+    </div>
+
+    <div data-i18n="fr">
+      <p>Tap-Tap Picture Book n'exploite pas ses propres serveurs et ne stocke aucune donnée personnelle.</p>
+      <p style="margin-top: 10px;">Les données collectées par les services publicitaires tiers sont traitées selon leurs propres pratiques de sécurité ; veuillez consulter la politique de confidentialité de Google mentionnée ci-dessus pour plus de détails.</p>
+    </div>
+
+    <div data-i18n="de">
+      <p>Tap-Tap Picture Book betreibt keine eigenen Server und speichert keine persönlichen Daten.</p>
+      <p style="margin-top: 10px;">Von Drittanbieter-Werbediensten gesammelte Daten werden gemäß deren eigenen Sicherheitspraktiken behandelt; Einzelheiten finden Sie in der oben verlinkten Datenschutzrichtlinie von Google.</p>
+    </div>
   </section>
 
   <section>
-    <h2>4. Children's Privacy / 子どものプライバシー / 아동 개인정보 보호</h2>
-    <p>
-      While the picture book content is family-friendly, Tap-Tap Picture Book
-      is not directed primarily at children under 13, and ads are not
-      specifically targeted at children under 13.
-    </p>
-    <p style="margin-top: 10px;">
-      We do not knowingly collect personal information from children under 13.
-    </p>
-    <p style="margin-top: 10px;">
-      If you are a parent or guardian and believe your child has provided
-      personal information, please contact us using the information below.
-    </p>
+    <h2>
+      <span data-i18n="en">6. Changes to This Policy</span>
+      <span data-i18n="ja">6. ポリシーの変更</span>
+      <span data-i18n="ko">6. 방침 변경</span>
+      <span data-i18n="es">6. Cambios en esta Política</span>
+      <span data-i18n="pt">6. Alterações nesta Política</span>
+      <span data-i18n="fr">6. Modifications de cette Politique</span>
+      <span data-i18n="de">6. Änderungen dieser Richtlinie</span>
+    </h2>
 
-    <p style="margin-top: 20px;">
-      絵本のコンテンツはご家族でお楽しみいただける内容ですが、タップタップ絵本は
-      主に13歳未満の子どもを対象としたアプリではなく、広告も13歳未満の子どもを
-      特に対象としたものではありません。
-    </p>
-    <p style="margin-top: 10px;">
-      13歳未満の子どもの個人情報を意図的に収集することはありません。
-    </p>
-    <p style="margin-top: 10px;">
-      保護者の方でお子様が個人情報を提供したと思われる場合は、下記の連絡先まで
-      お問い合わせください。
-    </p>
-
-    <p style="margin-top: 20px;">
-      그림책 콘텐츠는 온 가족이 즐길 수 있는 내용이지만, 탭탭 그림책은 주로 만 13세
-      미만 아동을 대상으로 하는 앱이 아니며, 광고 역시 만 13세 미만 아동을 특별히
-      대상으로 하지 않습니다.
-    </p>
-    <p style="margin-top: 10px;">
-      만 13세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.
-    </p>
-    <p style="margin-top: 10px;">
-      자녀가 개인정보를 제공했다고 판단되는 보호자께서는 아래 연락처로 문의해
-      주시기 바랍니다.
-    </p>
+    <p data-i18n="en">This privacy policy may be updated occasionally. Any changes will be posted on this page with an updated effective date.</p>
+    <p data-i18n="ja">本プライバシーポリシーは変更される場合があります。変更がある場合はこのページにて告知し、最終更新日はページ下部に表示されます。</p>
+    <p data-i18n="ko">본 개인정보 처리방침은 변경될 수 있으며, 변경 시 이 페이지를 통해 공지합니다. 최종 수정일은 페이지 하단에서 확인하실 수 있습니다.</p>
+    <p data-i18n="es">Esta política de privacidad puede actualizarse ocasionalmente. Cualquier cambio se publicará en esta página con una fecha de vigencia actualizada.</p>
+    <p data-i18n="pt">Esta política de privacidade pode ser atualizada ocasionalmente. Quaisquer alterações serão publicadas nesta página com uma data de vigência atualizada.</p>
+    <p data-i18n="fr">Cette politique de confidentialité peut être mise à jour occasionnellement. Toute modification sera publiée sur cette page avec une date d'entrée en vigueur mise à jour.</p>
+    <p data-i18n="de">Diese Datenschutzrichtlinie kann gelegentlich aktualisiert werden. Änderungen werden auf dieser Seite mit einem aktualisierten Gültigkeitsdatum veröffentlicht.</p>
   </section>
 
   <section>
-    <h2>5. Security / セキュリティ / 보안</h2>
-    <p>
-      Tap-Tap Picture Book does not operate its own servers or store personal
-      data.
-    </p>
-    <p style="margin-top: 10px;">
-      Data collected by third-party ad services is handled under their own
-      security practices; please refer to Google's privacy policy linked
-      above for details.
-    </p>
-
-    <p style="margin-top: 20px;">
-      タップタップ絵本は独自のサーバーを運用しておらず、個人データを保存する
-      こともありません。
-    </p>
-    <p style="margin-top: 10px;">
-      第三者の広告サービスによって収集されるデータは、各サービス自身の
-      セキュリティ対策のもとで取り扱われます。詳細は上記のGoogle
-      プライバシーポリシーをご確認ください。
-    </p>
-
-    <p style="margin-top: 20px;">
-      탭탭 그림책은 자체 서버를 운영하지 않으며 개인 데이터를 저장하지도
-      않습니다.
-    </p>
-    <p style="margin-top: 10px;">
-      제3자 광고 서비스가 수집하는 데이터는 해당 서비스 자체의 보안 정책에
-      따라 처리됩니다. 자세한 내용은 위의 Google 개인정보처리방침을
-      참고하세요.
-    </p>
-  </section>
-
-  <section>
-    <h2>6. Changes to This Policy / ポリシーの変更 / 방침 변경</h2>
-    <p>
-      This privacy policy may be updated occasionally. Any changes will be
-      posted on this page with an updated effective date.
-    </p>
-    <p style="margin-top: 10px;">
-      本プライバシーポリシーは変更される場合があります。変更がある場合は
-      このページにて告知し、最終更新日はページ下部に表示されます。
-    </p>
-    <p style="margin-top: 10px;">
-      본 개인정보 처리방침은 변경될 수 있으며, 변경 시 이 페이지를 통해 공지합니다.
-      최종 수정일은 페이지 하단에서 확인하실 수 있습니다.
-    </p>
-  </section>
-
-  <section>
-    <h2>7. Contact / お問い合わせ / 문의</h2>
-    <p>
-      If you have any questions about this privacy policy, please contact us at:<br />
-      プライバシーポリシーに関するお問い合わせは、下記のメールアドレスまでご連絡ください。<br />
-      개인정보 처리방침에 관한 문의사항이 있으시면 아래 이메일로 연락해 주세요.
-    </p>
+    <h2>
+      <span data-i18n="en">7. Contact</span>
+      <span data-i18n="ja">7. お問い合わせ</span>
+      <span data-i18n="ko">7. 문의</span>
+      <span data-i18n="es">7. Contacto</span>
+      <span data-i18n="pt">7. Contato</span>
+      <span data-i18n="fr">7. Contact</span>
+      <span data-i18n="de">7. Kontakt</span>
+    </h2>
+    <p data-i18n="en">If you have any questions about this privacy policy, please contact us at:</p>
+    <p data-i18n="ja">プライバシーポリシーに関するお問い合わせは、下記のメールアドレスまでご連絡ください。</p>
+    <p data-i18n="ko">개인정보 처리방침에 관한 문의사항이 있으시면 아래 이메일로 연락해 주세요.</p>
+    <p data-i18n="es">Si tiene alguna pregunta sobre esta política de privacidad, contáctenos en:</p>
+    <p data-i18n="pt">Se você tiver alguma dúvida sobre esta política de privacidade, entre em contato conosco em:</p>
+    <p data-i18n="fr">Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à :</p>
+    <p data-i18n="de">Bei Fragen zu dieser Datenschutzrichtlinie kontaktieren Sie uns bitte unter:</p>
     <p style="margin-top: 10px;">
       <a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
     </p>
@@ -332,9 +544,46 @@
 </main>
 
 <footer>
-  <p>Last updated / 最終更新日 / 최종 수정일: 2026-07-14</p>
+  <p>
+    <span data-i18n="en">Last updated: 2026-07-14</span>
+    <span data-i18n="ja">最終更新日: 2026-07-14</span>
+    <span data-i18n="ko">최종 수정일: 2026-07-14</span>
+    <span data-i18n="es">Última actualización: 2026-07-14</span>
+    <span data-i18n="pt">Última atualização: 2026-07-14</span>
+    <span data-i18n="fr">Dernière mise à jour : 2026-07-14</span>
+    <span data-i18n="de">Zuletzt aktualisiert: 2026-07-14</span>
+  </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
+
+<script>
+  (function () {
+    var supported = ['en', 'ja', 'ko', 'es', 'pt', 'fr', 'de'];
+    var html = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang) {
+      if (supported.indexOf(lang) === -1) lang = 'ja';
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang);
+      buttons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      try { localStorage.setItem('crobmaster-lang', lang); } catch (e) {}
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+
+    var saved = null;
+    try { saved = localStorage.getItem('crobmaster-lang'); } catch (e) {}
+    var browserLang = (navigator.language || 'ja').slice(0, 2);
+    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+  })();
+</script>
 
 </body>
 </html>
