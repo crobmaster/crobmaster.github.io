@@ -109,13 +109,6 @@
       margin-bottom: 20px;
     }
 
-    .app-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -145,6 +138,71 @@
       color: #999;
       cursor: default;
       pointer-events: none;
+    }
+
+    .app-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .action-item {
+      width: 332px;
+    }
+
+    .action-label {
+      font-size: 0.8rem;
+      color: #8a8a8a;
+      margin-bottom: 8px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .action-label::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #ffb599;
+    }
+
+    .action-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 332px;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      background: #fffaf7;
+      border: 1px solid #ffe5db;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .action-box:hover {
+      opacity: 0.85;
+    }
+
+    .action-box-secondary {
+      justify-content: center;
+    }
+
+    .action-box-play {
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .app-qr {
+      display: block;
+      width: 300px;
+      height: 300px;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid #eee;
+      flex-shrink: 0;
     }
 
     .app-card.placeholder {
@@ -219,17 +277,36 @@
         <span data-i18n="ja">小さなお子さま向けの、シンプルな絵本アプリです。画面をタップすると、やさしい音とアニメーションが楽しめます。</span>
         <span data-i18n="ko">어린 아이를 위한 심플한 그림책 앱입니다. 화면을 탭하면 부드러운 소리와 애니메이션을 즐길 수 있습니다.</span>
       </p>
-      <div class="app-links">
-        <span class="btn btn-disabled">
-          <span data-i18n="en">▶ Google Play — Coming Soon</span>
-          <span data-i18n="ja">▶ Google Play — 近日公開</span>
-          <span data-i18n="ko">▶ Google Play — 출시 예정</span>
-        </span>
-        <a class="btn btn-secondary" href="tap-tap-picture-book/privacy-policy.html">
-          <span data-i18n="en">Privacy Policy</span>
-          <span data-i18n="ja">プライバシーポリシー</span>
-          <span data-i18n="ko">개인정보 처리방침</span>
-        </a>
+      <div class="app-actions">
+        <div class="action-item">
+          <p class="action-label">
+            <span data-i18n="en">Download or scan the QR code to get the app</span>
+            <span data-i18n="ja">ダウンロード、またはQRコードをスキャンして入手</span>
+            <span data-i18n="ko">다운로드하거나 QR코드를 스캔해서 받기</span>
+          </p>
+          <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook">
+            <span class="btn btn-primary">
+              <span data-i18n="en">▶ Google Play</span>
+              <span data-i18n="ja">▶ Google Play</span>
+              <span data-i18n="ko">▶ Google Play</span>
+            </span>
+            <img class="app-qr" src="tap-tap-picture-book/qr-code.png" alt="QR code linking to Tap-Tap Picture Book on Google Play" width="300" height="300">
+          </a>
+        </div>
+        <div class="action-item">
+          <p class="action-label">
+            <span data-i18n="en">How this app handles your data</span>
+            <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
+            <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
+          </p>
+          <a class="action-box action-box-secondary" href="tap-tap-picture-book/privacy-policy.html">
+            <span class="btn btn-secondary">
+              <span data-i18n="en">Privacy Policy</span>
+              <span data-i18n="ja">プライバシーポリシー</span>
+              <span data-i18n="ko">개인정보 처리방침</span>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
 
