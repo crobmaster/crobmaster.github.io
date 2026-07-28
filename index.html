@@ -149,7 +149,8 @@
     }
 
     .action-item {
-      width: 332px;
+      width: 100%;
+      max-width: 332px;
     }
 
     .action-label {
@@ -171,7 +172,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      width: 332px;
+      width: 100%;
       box-sizing: border-box;
       padding: 14px 16px;
       background: #fffaf7;
@@ -197,12 +198,13 @@
 
     .app-qr {
       display: block;
-      width: 300px;
-      height: 300px;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      aspect-ratio: 1 / 1;
       border-radius: 6px;
       background: #fff;
       border: 1px solid #eee;
-      flex-shrink: 0;
     }
 
     .app-card.placeholder {
