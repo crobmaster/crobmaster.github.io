@@ -11,7 +11,7 @@
 
     html { scroll-behavior: smooth; }
 
-    #screenshots, #features, #items, #bricks, #modes, #rules, #download { scroll-margin-top: 24px; }
+    #overview, #features, #items, #bricks, #modes, #rules, #download { scroll-margin-top: 24px; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -186,6 +186,42 @@
       color: #2c2c2c;
       margin-bottom: 20px;
       padding-right: 20px;
+    }
+
+    .overview-subhead {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #7a5c3a;
+      text-align: center;
+      margin-bottom: 10px;
+      padding-right: 20px;
+    }
+
+    .overview-grid {
+      background: #faf5ea;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 0 20px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .overview-item {
+      position: relative;
+      padding-left: 16px;
+      font-size: 0.88rem;
+      color: #5a5a5a;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .overview-item::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #e8c14a;
+      font-weight: 700;
     }
 
     .screenshot-row {
@@ -382,6 +418,7 @@
       border-radius: 12px;
       padding: 20px 14px;
       text-align: center;
+      overflow: hidden;
     }
 
     .item-icon {
@@ -544,7 +581,7 @@
 
     @keyframes brick-jelly-squash {
       0% { transform: scale(1, 1); }
-      15% { transform: scale(1.35, 0.65); }
+      15% { transform: scale(1.15, 0.8); }
       30% { transform: scale(1, 1); }
       100% { transform: scale(1, 1); }
     }
@@ -891,15 +928,15 @@
 
 <nav class="page-nav-top">
  <div class="page-nav-top-inner">
+  <a href="#overview">
+    <span data-i18n="en">Overview</span>
+    <span data-i18n="ja">概要</span>
+    <span data-i18n="ko">개요</span>
+  </a>
   <a href="#features">
     <span data-i18n="en">Features</span>
     <span data-i18n="ja">特徴</span>
     <span data-i18n="ko">특징</span>
-  </a>
-  <a href="#screenshots">
-    <span data-i18n="en">Screenshots</span>
-    <span data-i18n="ja">スクリーンショット</span>
-    <span data-i18n="ko">스크린샷</span>
   </a>
   <a href="#rules">
     <span data-i18n="en">How to Play</span>
@@ -932,15 +969,15 @@
 <main>
 
   <nav class="page-nav">
+    <a href="#overview">
+      <span data-i18n="en">Overview</span>
+      <span data-i18n="ja">概要</span>
+      <span data-i18n="ko">개요</span>
+    </a>
     <a href="#features">
       <span data-i18n="en">Features</span>
       <span data-i18n="ja">特徴</span>
       <span data-i18n="ko">특징</span>
-    </a>
-    <a href="#screenshots">
-      <span data-i18n="en">Screenshots</span>
-      <span data-i18n="ja">スクリーンショット</span>
-      <span data-i18n="ko">스크린샷</span>
     </a>
     <a href="#rules">
       <span data-i18n="en">How to Play</span>
@@ -970,6 +1007,53 @@
   </nav>
 
   <div class="page-content">
+
+  <div class="screenshots-section" id="overview">
+    <h2>
+      <span data-i18n="en">Overview &amp; Screenshots</span>
+      <span data-i18n="ja">概要＆スクリーンショット</span>
+      <span data-i18n="ko">개요 &amp; 스크린샷</span>
+    </h2>
+    <p class="overview-subhead">
+      <span data-i18n="en">Overview</span>
+      <span data-i18n="ja">概要</span>
+      <span data-i18n="ko">개요</span>
+    </p>
+    <div class="overview-grid">
+      <div class="overview-item">
+        <span data-i18n="en">A casual brick-breaker where every brick is a piece of picture book art.</span>
+        <span data-i18n="ja">絵本のイラストでできたブロックを壊す、カジュアルなブロック崩しゲームです。</span>
+        <span data-i18n="ko">그림책 일러스트로 만들어진 벽돌을 깨는 캐주얼 벽돌깨기 게임입니다.</span>
+      </div>
+      <div class="overview-item">
+        <span data-i18n="en">200+ stages to bounce your way through.</span>
+        <span data-i18n="ja">200以上のステージに挑戦できます。</span>
+        <span data-i18n="ko">200개 이상의 스테이지에 도전할 수 있습니다.</span>
+      </div>
+      <div class="overview-item">
+        <span data-i18n="en">Collect power-up items, and choose Item Mode or Classic Mode.</span>
+        <span data-i18n="ja">パワーアップアイテムを集めながら、アイテムモード・クラシックモードから遊び方を選べます。</span>
+        <span data-i18n="ko">파워업 아이템을 모으며 아이템 모드와 클래식 모드 중 원하는 방식을 선택할 수 있습니다.</span>
+      </div>
+      <div class="overview-item">
+        <span data-i18n="en">5 colorful worlds to explore, plus a rotating Daily world.</span>
+        <span data-i18n="ja">5つのカラフルなワールドと、日替わりのデイリーワールドを探検できます。</span>
+        <span data-i18n="ko">5개의 컬러풀한 월드와 매일 바뀌는 데일리 월드를 탐험할 수 있습니다.</span>
+      </div>
+    </div>
+    <p class="overview-subhead">
+      <span data-i18n="en">Screenshots</span>
+      <span data-i18n="ja">スクリーンショット</span>
+      <span data-i18n="ko">스크린샷</span>
+    </p>
+    <div class="screenshot-row">
+      <img data-shot="1" src="src/screenshots/ja/shot-1.jpg" width="640" height="1138" alt="" />
+      <img data-shot="2" src="src/screenshots/ja/shot-2.jpg" width="640" height="1138" alt="" />
+      <img data-shot="3" src="src/screenshots/ja/shot-3.jpg" width="640" height="1138" alt="" />
+      <img data-shot="4" src="src/screenshots/ja/shot-4.jpg" width="640" height="1138" alt="" />
+      <img data-shot="5" src="src/screenshots/ja/shot-5.jpg" width="640" height="1138" alt="" />
+    </div>
+  </div>
 
   <div class="features-section" id="features">
     <h2>
@@ -1045,21 +1129,6 @@
         <span data-i18n="ko">진행하며 새로운 월드를 해금할 수 있습니다.</span>
       </p>
     </div>
-    </div>
-  </div>
-
-  <div class="screenshots-section" id="screenshots">
-    <h2>
-      <span data-i18n="en">Screenshots</span>
-      <span data-i18n="ja">スクリーンショット</span>
-      <span data-i18n="ko">스크린샷</span>
-    </h2>
-    <div class="screenshot-row">
-      <img data-shot="1" src="src/screenshots/ja/shot-1.jpg" width="640" height="1138" alt="" />
-      <img data-shot="2" src="src/screenshots/ja/shot-2.jpg" width="640" height="1138" alt="" />
-      <img data-shot="3" src="src/screenshots/ja/shot-3.jpg" width="640" height="1138" alt="" />
-      <img data-shot="4" src="src/screenshots/ja/shot-4.jpg" width="640" height="1138" alt="" />
-      <img data-shot="5" src="src/screenshots/ja/shot-5.jpg" width="640" height="1138" alt="" />
     </div>
   </div>
 
@@ -1201,6 +1270,11 @@
       <span data-i18n="ja">モード＆ワールド</span>
       <span data-i18n="ko">모드 &amp; 월드</span>
     </h2>
+    <p class="overview-subhead">
+      <span data-i18n="en">Modes</span>
+      <span data-i18n="ja">モード</span>
+      <span data-i18n="ko">모드</span>
+    </p>
     <div class="modes-grid">
       <div class="mode-card" style="--mode-color:#7AD994;">
         <div class="mode-label">
@@ -1237,6 +1311,11 @@
       </div>
     </div>
 
+    <p class="overview-subhead">
+      <span data-i18n="en">Worlds</span>
+      <span data-i18n="ja">ワールド</span>
+      <span data-i18n="ko">월드</span>
+    </p>
     <p class="worlds-label">
       <span data-i18n="en">5 worlds to explore, plus a rotating Daily world</span>
       <span data-i18n="ja">5つのワールドに加えて、日替わりの「デイリー」ワールドも</span>
