@@ -335,15 +335,10 @@
     }
 
     .items-grid,
-    .bricks-grid,
     .rules-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 16px;
-    }
-
-    .bricks-grid {
-      grid-template-columns: repeat(4, 1fr);
     }
 
     @media (max-width: 1000px) {
@@ -351,18 +346,19 @@
       .rules-grid {
         grid-template-columns: repeat(3, 1fr);
       }
-
-      .bricks-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (max-width: 560px) {
       .items-grid,
-      .bricks-grid,
       .rules-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
+
+    .bricks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
     }
 
     .item-card {
@@ -373,8 +369,134 @@
     }
 
     .item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
       font-size: 1.8rem;
       margin-bottom: 10px;
+    }
+
+    .bricks-grid .item-icon {
+      height: 57px;
+    }
+
+    .brick-balloon-track,
+    .brick-moving-track,
+    .brick-jelly-track,
+    .brick-basic-examples {
+      min-width: 200px;
+    }
+
+    .brick-balloon-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brick-icon {
+      position: relative;
+      width: 64px;
+      height: 18px;
+      border-radius: 5px;
+      border: 2px solid #2d336c;
+      box-shadow: 1px 2px 2px rgba(45, 51, 108, 0.35);
+    }
+
+    .brick-basic {
+      background: #8fc6eb;
+    }
+
+    .brick-basic-examples {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .brick-basic-chip {
+      width: 64px;
+      height: 18px;
+      border-radius: 5px;
+      background: #8fc6eb;
+      border: 2px solid #2d336c;
+      box-shadow: 1px 2px 2px rgba(45, 51, 108, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #1a2452;
+    }
+
+    .brick-basic-chip.dur-2 {
+      border-width: 3px;
+      border-color: #3f9d5c;
+    }
+
+    .brick-balloon-track {
+      position: relative;
+      height: 20px;
+    }
+
+    .brick-balloon {
+      background: #f29d94;
+    }
+
+    .brick-balloon-track img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    .brick-moving-track {
+      position: relative;
+      width: 200px;
+      height: 18px;
+    }
+
+    .brick-moving {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 0;
+      background: #8ce3b1;
+      animation: brick-moving-ping-pong 2.4s linear infinite alternate;
+    }
+
+    @keyframes brick-moving-ping-pong {
+      from { transform: translateX(0); }
+      to { transform: translateX(136px); }
+    }
+
+    .brick-jelly-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+    }
+
+    .brick-jelly {
+      width: 128px;
+      min-width: 0;
+      height: 48px;
+      border-radius: 24px;
+      border-width: 4px;
+      border-color: #b5930b;
+      background: #f7df7b;
+      animation: brick-jelly-squash 1.8s ease-in-out infinite;
+    }
+
+    @keyframes brick-jelly-squash {
+      0% { transform: scale(1, 1); }
+      15% { transform: scale(1.35, 0.65); }
+      30% { transform: scale(1, 1); }
+      100% { transform: scale(1, 1); }
     }
 
     .item-card h3 {
@@ -918,21 +1040,31 @@
     </h2>
     <div class="bricks-grid">
       <div class="item-card">
-        <div class="item-icon">🧱</div>
+        <div class="item-icon">
+          <div class="brick-basic-examples">
+            <div class="brick-basic-chip"></div>
+            <div class="brick-basic-chip dur-2">2</div>
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Basic</span>
           <span data-i18n="ja">通常</span>
           <span data-i18n="ko">기본</span>
         </h3>
         <p>
-          <span data-i18n="en">A standard brick — one hit and it's gone.</span>
-          <span data-i18n="ja">1回当てるだけで壊れる、基本のブロックです。</span>
-          <span data-i18n="ko">한 번만 맞으면 부서지는 기본 벽돌입니다.</span>
+          <span data-i18n="en">Takes one or more hits to break — a ring and number show how many hits remain.</span>
+          <span data-i18n="ja">ブロックによって耐久が異なり、壊れるまでの回数がリングと数字で表示されます。</span>
+          <span data-i18n="ko">벽돌마다 내구도가 다르며, 링과 숫자로 남은 타격 횟수를 확인할 수 있습니다.</span>
         </p>
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🎈</div>
+        <div class="item-icon">
+          <div class="brick-balloon-track">
+            <div class="brick-icon brick-balloon"></div>
+            <img src="src/brick-icons/balloon.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Balloon</span>
           <span data-i18n="ja">風船</span>
@@ -946,7 +1078,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">↔️</div>
+        <div class="item-icon">
+          <div class="brick-moving-track">
+            <div class="brick-icon brick-moving"></div>
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Moving</span>
           <span data-i18n="ja">移動</span>
@@ -960,7 +1096,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🍮</div>
+        <div class="item-icon">
+          <div class="brick-jelly-track">
+            <div class="brick-icon brick-jelly"></div>
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Jelly</span>
           <span data-i18n="ja">ゼリー</span>
