@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>トントン絵本 - かわいいブロック崩し – Crob Apps</title>
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background: #f2f9fb;
+      color: #2c2c2c;
+      line-height: 1.75;
+    }
+
+    header {
+      background: #2f7f99;
+      color: #fff;
+      text-align: center;
+      padding: 20px 24px 48px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .app-icon-lg {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header .tagline {
+      margin: 10px auto 0;
+      font-size: 1rem;
+      opacity: 0.92;
+      max-width: 460px;
+    }
+
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .lang-switch button {
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      background: transparent;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-switch button.active,
+    .lang-switch button:hover {
+      background: #fff;
+      color: #2f7f99;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 26px 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #5a5a5a;
+    }
+
+    .download-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .download-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-primary {
+      background: #2f7f99;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff3c4;
+      color: #8a6d1f;
+    }
+
+    .app-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .action-item {
+      width: 100%;
+      max-width: 332px;
+      margin: 0 auto;
+    }
+
+    .action-label {
+      font-size: 0.8rem;
+      color: #8a8a8a;
+      margin-bottom: 8px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .action-label::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #e8c14a;
+    }
+
+    .action-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      background: #f6fbfd;
+      border: 1px solid #d8eef5;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .action-box:hover {
+      opacity: 0.85;
+    }
+
+    .action-box-secondary {
+      justify-content: center;
+    }
+
+    .action-box-play {
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .app-qr {
+      display: block;
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid #eee;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+
+    footer a { color: #2f7f99; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    [data-i18n] { display: none; }
+    html[data-lang="en"] [data-i18n="en"],
+    html[data-lang="ja"] [data-i18n="ja"],
+    html[data-lang="ko"] [data-i18n="ko"] {
+      display: block;
+    }
+
+    html[data-lang="en"] span[data-i18n="en"],
+    html[data-lang="ja"] span[data-i18n="ja"],
+    html[data-lang="ko"] span[data-i18n="ko"] {
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="../index.html">
+    <span data-i18n="en">&larr; Back to Crob Apps</span>
+    <span data-i18n="ja">&larr; Crob Apps に戻る</span>
+    <span data-i18n="ko">&larr; Crob Apps로 돌아가기</span>
+  </a>
+  <div>
+    <img class="app-icon-lg" src="icon.png" alt="" />
+    <h1>
+      <span data-i18n="en">Tap Tap Picture Book</span>
+      <span data-i18n="ja">トントン絵本 - かわいいブロック崩し</span>
+      <span data-i18n="ko">톡톡 그림책 - 힐링 벽돌깨기</span>
+    </h1>
+    <p class="tagline">
+      <span data-i18n="en">A casual brick-breaker where every brick is a piece of picture book art. Bounce the ball, break through beautifully illustrated bricks, and clear each stage!</span>
+      <span data-i18n="ja">絵本のイラストでできたブロックを壊す、カジュアルなブロック崩しゲーム。ボールを弾いて、カラフルな絵本ブロックを壊しながらステージをクリアしよう！</span>
+      <span data-i18n="ko">그림책 일러스트로 만들어진 벽돌을 깨는 캐주얼 벽돌깨기 게임. 공을 튕겨 알록달록한 그림책 벽돌을 깨고 스테이지를 클리어하세요!</span>
+    </p>
+  </div>
+  <div class="lang-switch">
+    <button type="button" data-set-lang="en">EN</button>
+    <button type="button" data-set-lang="ja">日本語</button>
+    <button type="button" data-set-lang="ko">한국어</button>
+  </div>
+</header>
+
+<main>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#e3f2fd;">🎨</div>
+      <h3>
+        <span data-i18n="en">200+ Stages</span>
+        <span data-i18n="ja">200以上のステージ</span>
+        <span data-i18n="ko">200개 이상의 스테이지</span>
+      </h3>
+      <p>
+        <span data-i18n="en">Break through beautifully illustrated bricks across more than 200 stages.</span>
+        <span data-i18n="ja">絵本イラストでできたカラフルなブロックを壊しながら、200以上のステージに挑戦できます。</span>
+        <span data-i18n="ko">아름다운 일러스트 벽돌을 깨며 200개 이상의 스테이지에 도전하세요.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#fff3c4;">🕹️</div>
+      <h3>
+        <span data-i18n="en">One-Tap Controls</span>
+        <span data-i18n="ja">シンプルなワンタップ操作</span>
+        <span data-i18n="ko">간단한 원터치 조작</span>
+      </h3>
+      <p>
+        <span data-i18n="en">Simple, one-tap controls — easy to pick up, fun to master.</span>
+        <span data-i18n="ja">誰でも気軽に、長く楽しめるシンプルな操作性です。</span>
+        <span data-i18n="ko">누구나 쉽게, 오래도록 즐길 수 있는 간단한 조작입니다.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#f1ebfa;">🎁</div>
+      <h3>
+        <span data-i18n="en">Power-Up Items</span>
+        <span data-i18n="ja">アイテムで盛り上げる</span>
+        <span data-i18n="ko">아이템으로 파워업</span>
+      </h3>
+      <p>
+        <span data-i18n="en">Collect and use a variety of items to power up your run.</span>
+        <span data-i18n="ja">さまざまなアイテムを集めて使えば、プレイがもっと楽しくなります。</span>
+        <span data-i18n="ko">다양한 아이템을 모아 사용하면 플레이가 더욱 풍성해집니다.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#e6f7ec;">🌍</div>
+      <h3>
+        <span data-i18n="en">Unlock New Worlds</span>
+        <span data-i18n="ja">新しいワールドを解放</span>
+        <span data-i18n="ko">새로운 월드 해금</span>
+      </h3>
+      <p>
+        <span data-i18n="en">Unlock new worlds as you progress.</span>
+        <span data-i18n="ja">進めるごとに新しいワールドが解放されます。</span>
+        <span data-i18n="ko">진행하며 새로운 월드를 해금할 수 있습니다.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="download-section">
+    <h2>
+      <span data-i18n="en">Get the app</span>
+      <span data-i18n="ja">アプリを入手</span>
+      <span data-i18n="ko">앱 받기</span>
+    </h2>
+    <div class="app-actions">
+      <div class="action-item">
+        <p class="action-label">
+          <span data-i18n="en">Download or scan the QR code to get the app</span>
+          <span data-i18n="ja">ダウンロード、またはQRコードをスキャンして入手</span>
+          <span data-i18n="ko">다운로드하거나 QR코드를 스캔해서 받기</span>
+        </p>
+        <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook">
+          <span class="btn btn-primary">
+            <span data-i18n="en">▶ Google Play</span>
+            <span data-i18n="ja">▶ Google Play</span>
+            <span data-i18n="ko">▶ Google Play</span>
+          </span>
+          <img class="app-qr" src="qr-code.png" alt="QR code linking to Tap Tap Picture Book on Google Play" width="260" height="260">
+        </a>
+      </div>
+      <div class="action-item">
+        <p class="action-label">
+          <span data-i18n="en">How this app handles your data</span>
+          <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
+          <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
+        </p>
+        <a class="action-box action-box-secondary" href="privacy-policy.html">
+          <span class="btn btn-secondary">
+            <span data-i18n="en">Privacy Policy</span>
+            <span data-i18n="ja">プライバシーポリシー</span>
+            <span data-i18n="ko">개인정보 처리방침</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <span data-i18n="en">Questions? Contact:</span>
+    <span data-i18n="ja">お問い合わせ:</span>
+    <span data-i18n="ko">문의:</span>
+    &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
+  </p>
+  <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
+</footer>
+
+<script>
+  (function () {
+    var supported = ['en', 'ja', 'ko'];
+    var titles = {
+      en: 'Tap Tap Picture Book – Crob Apps',
+      ja: 'トントン絵本 - かわいいブロック崩し – Crob Apps',
+      ko: '톡톡 그림책 - 힐링 벽돌깨기 – Crob Apps'
+    };
+    var html = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang) {
+      if (supported.indexOf(lang) === -1) lang = 'ja';
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang);
+      document.title = titles[lang];
+      buttons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      try { localStorage.setItem('crobmaster-lang', lang); } catch (e) {}
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+
+    var saved = null;
+    try { saved = localStorage.getItem('crobmaster-lang'); } catch (e) {}
+    var browserLang = (navigator.language || 'ja').slice(0, 2);
+    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+  })();
+</script>
+
+</body>
+</html>
