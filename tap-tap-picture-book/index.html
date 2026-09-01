@@ -334,7 +334,6 @@
       margin-bottom: 20px;
     }
 
-    .items-grid,
     .rules-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -342,23 +341,26 @@
     }
 
     @media (max-width: 1000px) {
-      .items-grid,
       .rules-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (max-width: 560px) {
-      .items-grid,
       .rules-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
+    .items-grid,
     .bricks-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 16px;
+    }
+
+    .items-grid .item-icon {
+      min-width: 200px;
     }
 
     .item-card {
@@ -379,6 +381,36 @@
 
     .bricks-grid .item-icon {
       height: 57px;
+    }
+
+    .item-capsule {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      flex-shrink: 0;
+    }
+
+    .item-capsule::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--capsule-color, #999);
+      transform: translate(-50%, -50%);
+    }
+
+    .item-capsule img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 32px;
+      height: 32px;
+      transform: translate(-50%, -50%);
     }
 
     .brick-balloon-track,
@@ -1123,7 +1155,11 @@
     </h2>
     <div class="items-grid">
       <div class="item-card">
-        <div class="item-icon">🔵</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#4C99FF;">
+            <img src="src/item-icons/multi_ball.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Multi Ball</span>
           <span data-i18n="ja">マルチボール</span>
@@ -1137,7 +1173,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🏓</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#4CE566;">
+            <img src="src/item-icons/paddle_expand.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Paddle+</span>
           <span data-i18n="ja">パドル+</span>
@@ -1151,7 +1191,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🚀</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#FFD933;">
+            <img src="src/item-icons/missile.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Missile</span>
           <span data-i18n="ja">ミサイル</span>
@@ -1165,7 +1209,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🛡️</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#33CCE6;">
+            <img src="src/item-icons/shield.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Shield</span>
           <span data-i18n="ja">シールド</span>
@@ -1179,7 +1227,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">❤️</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#F24C80;">
+            <img src="src/item-icons/bonus_life.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Bonus Life</span>
           <span data-i18n="ja">ボーナスライフ</span>
@@ -1193,7 +1245,11 @@
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🟠</div>
+        <div class="item-icon">
+          <div class="item-capsule" style="--capsule-color:#CC80FF;">
+            <img src="src/item-icons/ball_size_up.png" alt="" />
+          </div>
+        </div>
         <h3>
           <span data-i18n="en">Ball Size Up</span>
           <span data-i18n="ja">ボールサイズアップ</span>
