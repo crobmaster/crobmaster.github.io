@@ -11,7 +11,7 @@
 
     html { scroll-behavior: smooth; }
 
-    #screenshots, #features, #download { scroll-margin-top: 24px; }
+    #screenshots, #features, #items, #bricks, #modes, #rules, #download { scroll-margin-top: 24px; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -90,7 +90,7 @@
       margin: 0 auto;
       padding: 56px 0 80px;
       display: grid;
-      grid-template-columns: 130px 1fr 130px;
+      grid-template-columns: 170px 1fr 170px;
       align-items: start;
       gap: 16px;
     }
@@ -131,7 +131,7 @@
     }
 
     .page-nav-top-inner {
-      width: calc(min(94%, 1800px) - 292px);
+      width: calc(min(94%, 1800px) - 372px);
       margin: 0 auto;
       display: flex;
     }
@@ -311,6 +311,142 @@
       color: #5a5a5a;
     }
 
+    .items-section,
+    .bricks-section,
+    .modes-section,
+    .rules-section {
+      background: #fff;
+      border: 1.5px solid #c2a06e;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 56px;
+    }
+
+    .items-section h2,
+    .bricks-section h2,
+    .modes-section h2,
+    .rules-section h2 {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: 20px;
+    }
+
+    .items-grid,
+    .bricks-grid,
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .bricks-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 1000px) {
+      .items-grid,
+      .rules-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .bricks-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .items-grid,
+      .bricks-grid,
+      .rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .item-card {
+      background: #faf5ea;
+      border-radius: 12px;
+      padding: 20px 14px;
+      text-align: center;
+    }
+
+    .item-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .item-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .item-card p {
+      font-size: 0.78rem;
+      color: #5a5a5a;
+      line-height: 1.5;
+    }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 560px) {
+      .modes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mode-card {
+      background: #faf5ea;
+      border-radius: 12px;
+      padding: 22px 20px;
+    }
+
+    .mode-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #7a5c3a;
+    }
+
+    .mode-card p {
+      font-size: 0.88rem;
+      color: #5a5a5a;
+    }
+
+    .worlds-label {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8a8a8a;
+      margin-bottom: 14px;
+    }
+
+    .worlds-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .world-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #f6f0e2;
+      border: 1px solid #e6d7b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7a5c3a;
+    }
+
     .download-section {
       background: #fff;
       border-radius: 16px;
@@ -472,15 +608,35 @@
 
 <nav class="page-nav-top">
  <div class="page-nav-top-inner">
+  <a href="#features">
+    <span data-i18n="en">Features</span>
+    <span data-i18n="ja">特徴</span>
+    <span data-i18n="ko">특징</span>
+  </a>
   <a href="#screenshots">
     <span data-i18n="en">Screenshots</span>
     <span data-i18n="ja">スクリーンショット</span>
     <span data-i18n="ko">스크린샷</span>
   </a>
-  <a href="#features">
-    <span data-i18n="en">Features</span>
-    <span data-i18n="ja">特徴</span>
-    <span data-i18n="ko">특징</span>
+  <a href="#rules">
+    <span data-i18n="en">How to Play</span>
+    <span data-i18n="ja">遊び方</span>
+    <span data-i18n="ko">플레이 방법</span>
+  </a>
+  <a href="#modes">
+    <span data-i18n="en">Modes</span>
+    <span data-i18n="ja">モード</span>
+    <span data-i18n="ko">모드</span>
+  </a>
+  <a href="#bricks">
+    <span data-i18n="en">Bricks</span>
+    <span data-i18n="ja">ブロック</span>
+    <span data-i18n="ko">벽돌</span>
+  </a>
+  <a href="#items">
+    <span data-i18n="en">Items</span>
+    <span data-i18n="ja">アイテム</span>
+    <span data-i18n="ko">아이템</span>
   </a>
   <a href="#download">
     <span data-i18n="en">Get the app</span>
@@ -493,15 +649,35 @@
 <main>
 
   <nav class="page-nav">
+    <a href="#features">
+      <span data-i18n="en">Features</span>
+      <span data-i18n="ja">特徴</span>
+      <span data-i18n="ko">특징</span>
+    </a>
     <a href="#screenshots">
       <span data-i18n="en">Screenshots</span>
       <span data-i18n="ja">スクリーンショット</span>
       <span data-i18n="ko">스크린샷</span>
     </a>
-    <a href="#features">
-      <span data-i18n="en">Features</span>
-      <span data-i18n="ja">特徴</span>
-      <span data-i18n="ko">특징</span>
+    <a href="#rules">
+      <span data-i18n="en">How to Play</span>
+      <span data-i18n="ja">遊び方</span>
+      <span data-i18n="ko">플레이 방법</span>
+    </a>
+    <a href="#modes">
+      <span data-i18n="en">Modes</span>
+      <span data-i18n="ja">モード</span>
+      <span data-i18n="ko">모드</span>
+    </a>
+    <a href="#bricks">
+      <span data-i18n="en">Bricks</span>
+      <span data-i18n="ja">ブロック</span>
+      <span data-i18n="ko">벽돌</span>
+    </a>
+    <a href="#items">
+      <span data-i18n="en">Items</span>
+      <span data-i18n="ja">アイテム</span>
+      <span data-i18n="ko">아이템</span>
     </a>
     <a href="#download">
       <span data-i18n="en">Get the app</span>
@@ -511,21 +687,6 @@
   </nav>
 
   <div class="page-content">
-
-  <div class="screenshots-section" id="screenshots">
-    <h2>
-      <span data-i18n="en">Screenshots</span>
-      <span data-i18n="ja">スクリーンショット</span>
-      <span data-i18n="ko">스크린샷</span>
-    </h2>
-    <div class="screenshot-row">
-      <img data-shot="1" src="src/screenshots/ja/shot-1.jpg" width="640" height="1138" alt="" />
-      <img data-shot="2" src="src/screenshots/ja/shot-2.jpg" width="640" height="1138" alt="" />
-      <img data-shot="3" src="src/screenshots/ja/shot-3.jpg" width="640" height="1138" alt="" />
-      <img data-shot="4" src="src/screenshots/ja/shot-4.jpg" width="640" height="1138" alt="" />
-      <img data-shot="5" src="src/screenshots/ja/shot-5.jpg" width="640" height="1138" alt="" />
-    </div>
-  </div>
 
   <div class="features-section" id="features">
     <h2>
@@ -589,6 +750,321 @@
         <span data-i18n="ko">진행하며 새로운 월드를 해금할 수 있습니다.</span>
       </p>
     </div>
+    </div>
+  </div>
+
+  <div class="screenshots-section" id="screenshots">
+    <h2>
+      <span data-i18n="en">Screenshots</span>
+      <span data-i18n="ja">スクリーンショット</span>
+      <span data-i18n="ko">스크린샷</span>
+    </h2>
+    <div class="screenshot-row">
+      <img data-shot="1" src="src/screenshots/ja/shot-1.jpg" width="640" height="1138" alt="" />
+      <img data-shot="2" src="src/screenshots/ja/shot-2.jpg" width="640" height="1138" alt="" />
+      <img data-shot="3" src="src/screenshots/ja/shot-3.jpg" width="640" height="1138" alt="" />
+      <img data-shot="4" src="src/screenshots/ja/shot-4.jpg" width="640" height="1138" alt="" />
+      <img data-shot="5" src="src/screenshots/ja/shot-5.jpg" width="640" height="1138" alt="" />
+    </div>
+  </div>
+
+  <div class="rules-section" id="rules">
+    <h2>
+      <span data-i18n="en">How to Play</span>
+      <span data-i18n="ja">遊び方</span>
+      <span data-i18n="ko">플레이 방법</span>
+    </h2>
+    <div class="rules-grid">
+      <div class="item-card">
+        <div class="item-icon">🎯</div>
+        <h3>
+          <span data-i18n="en">Goal</span>
+          <span data-i18n="ja">目的</span>
+          <span data-i18n="ko">목표</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Clear a stage by destroying every breakable brick before you run out of lives.</span>
+          <span data-i18n="ja">壊せるブロックをすべて壊せばステージクリア。ライフがなくなる前に頑張ろう。</span>
+          <span data-i18n="ko">라이프가 다 떨어지기 전에 부술 수 있는 벽돌을 모두 없애면 스테이지 클리어!</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">👆</div>
+        <h3>
+          <span data-i18n="en">Aim &amp; Launch</span>
+          <span data-i18n="ja">狙って発射</span>
+          <span data-i18n="ko">조준 &amp; 발사</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Drag to aim your paddle, then release to launch the ball.</span>
+          <span data-i18n="ja">画面をドラッグしてパドルを動かし、指を離すとボールが発射されます。</span>
+          <span data-i18n="ko">화면을 드래그해 패들을 움직인 뒤, 손을 떼면 공이 발사됩니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">❤️</div>
+        <h3>
+          <span data-i18n="en">Lives</span>
+          <span data-i18n="ja">ライフ</span>
+          <span data-i18n="ko">라이프</span>
+        </h3>
+        <p>
+          <span data-i18n="en">You start with 3 lives — lose one each time the ball drops off the bottom.</span>
+          <span data-i18n="ja">ライフは3つスタート。ボールを落とすたびに1つ減ります。</span>
+          <span data-i18n="ko">라이프는 3개로 시작하며, 공을 놓칠 때마다 하나씩 줄어듭니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🔥</div>
+        <h3>
+          <span data-i18n="en">Combo</span>
+          <span data-i18n="ja">コンボ</span>
+          <span data-i18n="ko">콤보</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Hit bricks back-to-back without touching the paddle for bonus combo points.</span>
+          <span data-i18n="ja">パドルに当てずにブロックを連続で壊すと、コンボボーナスがもらえます。</span>
+          <span data-i18n="ko">패들에 닿지 않고 벽돌을 연속으로 맞히면 콤보 보너스 점수를 받을 수 있어요.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">⭐</div>
+        <h3>
+          <span data-i18n="en">Star Rating</span>
+          <span data-i18n="ja">星評価</span>
+          <span data-i18n="ko">별 등급</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Clear without losing a life for 3 stars — fewer hearts left means fewer stars.</span>
+          <span data-i18n="ja">ライフを1つも失わずにクリアすれば★3つ。減るほど星の数も減ります。</span>
+          <span data-i18n="ko">라이프를 하나도 잃지 않고 클리어하면 별 3개. 잃을수록 별이 줄어듭니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">📺</div>
+        <h3>
+          <span data-i18n="en">Revive</span>
+          <span data-i18n="ja">復活</span>
+          <span data-i18n="ko">부활</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Out of lives? Watch an ad to revive with 2 hearts and keep going.</span>
+          <span data-i18n="ja">ライフが尽きても、広告を見ればハート2つで復活して続きから挑戦できます。</span>
+          <span data-i18n="ko">라이프가 다 떨어져도 광고를 보면 하트 2개로 부활해 이어서 도전할 수 있어요.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modes-section" id="modes">
+    <h2>
+      <span data-i18n="en">Modes &amp; Worlds</span>
+      <span data-i18n="ja">モード＆ワールド</span>
+      <span data-i18n="ko">모드 &amp; 월드</span>
+    </h2>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <h3>
+          <span data-i18n="en">Item Mode</span>
+          <span data-i18n="ja">アイテムモード</span>
+          <span data-i18n="ko">아이템 모드</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Bricks drop power-up items as you play — collect them to power through each stage.</span>
+          <span data-i18n="ja">ブロックからアイテムが出現。集めながらステージを攻略しましょう。</span>
+          <span data-i18n="ko">벽돌에서 아이템이 등장해요. 모으면서 스테이지를 공략해 보세요.</span>
+        </p>
+      </div>
+
+      <div class="mode-card">
+        <h3>
+          <span data-i18n="en">Classic Mode</span>
+          <span data-i18n="ja">クラシックモード</span>
+          <span data-i18n="ko">클래식 모드</span>
+        </h3>
+        <p>
+          <span data-i18n="en">No items, just you, the paddle, and the ball — pure brick-breaking.</span>
+          <span data-i18n="ja">アイテムなしのシンプルな対決。純粋なブロック崩しを楽しめます。</span>
+          <span data-i18n="ko">아이템 없이 순수하게 즐기는 클래식한 벽돌깨기입니다.</span>
+        </p>
+      </div>
+    </div>
+
+    <p class="worlds-label">
+      <span data-i18n="en">5 worlds to explore, plus a rotating Daily world</span>
+      <span data-i18n="ja">5つのワールドに加えて、日替わりの「デイリー」ワールドも</span>
+      <span data-i18n="ko">5개의 월드와, 매일 바뀌는 데일리 월드까지</span>
+    </p>
+    <div class="worlds-row">
+      <span class="world-chip">🌱 <span data-i18n="en">Beginning</span><span data-i18n="ja">始まり</span><span data-i18n="ko">시작</span></span>
+      <span class="world-chip">🌿 <span data-i18n="en">Nature</span><span data-i18n="ja">自然</span><span data-i18n="ko">자연</span></span>
+      <span class="world-chip">🌊 <span data-i18n="en">Sea</span><span data-i18n="ja">海</span><span data-i18n="ko">바다</span></span>
+      <span class="world-chip">🍰 <span data-i18n="en">Food</span><span data-i18n="ja">食べ物</span><span data-i18n="ko">음식</span></span>
+      <span class="world-chip">☁️ <span data-i18n="en">Sky</span><span data-i18n="ja">空</span><span data-i18n="ko">하늘</span></span>
+      <span class="world-chip">📅 <span data-i18n="en">Daily</span><span data-i18n="ja">デイリー</span><span data-i18n="ko">데일리</span></span>
+    </div>
+  </div>
+
+  <div class="bricks-section" id="bricks">
+    <h2>
+      <span data-i18n="en">Bricks</span>
+      <span data-i18n="ja">ブロックの種類</span>
+      <span data-i18n="ko">벽돌 종류</span>
+    </h2>
+    <div class="bricks-grid">
+      <div class="item-card">
+        <div class="item-icon">🧱</div>
+        <h3>
+          <span data-i18n="en">Basic</span>
+          <span data-i18n="ja">通常</span>
+          <span data-i18n="ko">기본</span>
+        </h3>
+        <p>
+          <span data-i18n="en">A standard brick — one hit and it's gone.</span>
+          <span data-i18n="ja">1回当てるだけで壊れる、基本のブロックです。</span>
+          <span data-i18n="ko">한 번만 맞으면 부서지는 기본 벽돌입니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🎈</div>
+        <h3>
+          <span data-i18n="en">Balloon</span>
+          <span data-i18n="ja">風船</span>
+          <span data-i18n="ko">풍선</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Inflates before popping — destroying it also damages nearby bricks.</span>
+          <span data-i18n="ja">少し膨らんでから弾け、周囲のブロックにもダメージが広がります。</span>
+          <span data-i18n="ko">부풀어 오르다 터지며, 주변 벽돌에도 피해를 줍니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">↔️</div>
+        <h3>
+          <span data-i18n="en">Moving</span>
+          <span data-i18n="ja">移動</span>
+          <span data-i18n="ko">이동</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Slides back and forth, so timing your hit takes a little more skill.</span>
+          <span data-i18n="ja">左右に動き回るブロック。当てるにはタイミングが必要です。</span>
+          <span data-i18n="ko">좌우로 움직이는 벽돌이라 타이밍을 맞춰야 해요.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🍮</div>
+        <h3>
+          <span data-i18n="en">Jelly</span>
+          <span data-i18n="ja">ゼリー</span>
+          <span data-i18n="ko">젤리</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Extra tough, but always drops an item when it finally breaks.</span>
+          <span data-i18n="ja">耐久力が高いかわりに、壊すと必ずアイテムをドロップします。</span>
+          <span data-i18n="ko">내구도가 높은 대신, 부수면 반드시 아이템을 드롭합니다.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="items-section" id="items">
+    <h2>
+      <span data-i18n="en">Items</span>
+      <span data-i18n="ja">アイテム</span>
+      <span data-i18n="ko">아이템</span>
+    </h2>
+    <div class="items-grid">
+      <div class="item-card">
+        <div class="item-icon">🔵</div>
+        <h3>
+          <span data-i18n="en">Multi Ball</span>
+          <span data-i18n="ja">マルチボール</span>
+          <span data-i18n="ko">멀티볼</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Splits your ball into more balls for double the brick-breaking power.</span>
+          <span data-i18n="ja">ボールが増えて、一気にブロックを壊せるようになります。</span>
+          <span data-i18n="ko">공이 늘어나 한 번에 더 많은 벽돌을 깰 수 있어요.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🏓</div>
+        <h3>
+          <span data-i18n="en">Paddle+</span>
+          <span data-i18n="ja">パドル+</span>
+          <span data-i18n="ko">패들 확장</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Temporarily widens your paddle so it's easier to keep the ball in play.</span>
+          <span data-i18n="ja">一定時間パドルが大きくなり、ボールを受け止めやすくなります。</span>
+          <span data-i18n="ko">일정 시간 패들이 커져서 공을 받기 쉬워집니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🚀</div>
+        <h3>
+          <span data-i18n="en">Missile</span>
+          <span data-i18n="ja">ミサイル</span>
+          <span data-i18n="ko">미사일</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Auto-fires missiles that blast through bricks for you.</span>
+          <span data-i18n="ja">自動でミサイルを発射し、ブロックを次々に破壊してくれます。</span>
+          <span data-i18n="ko">자동으로 미사일을 발사해 벽돌을 연달아 부숴줍니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🛡️</div>
+        <h3>
+          <span data-i18n="en">Shield</span>
+          <span data-i18n="ja">シールド</span>
+          <span data-i18n="ko">실드</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Catches your ball once so a lucky miss doesn't cost you a life.</span>
+          <span data-i18n="ja">ボールを1回だけ受け止めてくれる、うっかりミスを防ぐアイテムです。</span>
+          <span data-i18n="ko">공을 한 번 막아줘서 실수로 인한 라이프 손실을 막아줍니다.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">❤️</div>
+        <h3>
+          <span data-i18n="en">Bonus Life</span>
+          <span data-i18n="ja">ボーナスライフ</span>
+          <span data-i18n="ko">보너스 라이프</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Adds an extra life so you can keep playing longer.</span>
+          <span data-i18n="ja">ライフが1つ増えて、長くプレイできるようになります。</span>
+          <span data-i18n="ko">라이프가 하나 늘어나 더 오래 플레이할 수 있어요.</span>
+        </p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🟠</div>
+        <h3>
+          <span data-i18n="en">Ball Size Up</span>
+          <span data-i18n="ja">ボールサイズアップ</span>
+          <span data-i18n="ko">볼 사이즈 업</span>
+        </h3>
+        <p>
+          <span data-i18n="en">Doubles your ball's size and lets it smash straight through bricks for a while.</span>
+          <span data-i18n="ja">一定時間ボールが大きくなり、ブロックを貫通して壊せるようになります。</span>
+          <span data-i18n="ko">일정 시간 공이 커지고 벽돌을 관통해서 부술 수 있어요.</span>
+        </p>
+      </div>
     </div>
   </div>
 
