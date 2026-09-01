@@ -191,6 +191,7 @@
     .screenshot-row {
       display: flex;
       justify-content: center;
+      justify-content: safe center;
       gap: 14px;
       overflow-x: auto;
       padding: 4px 20px 8px 4px;
@@ -393,13 +394,17 @@
     }
 
     .bricks-grid .item-icon {
-      height: 57px;
+      height: 78px;
+    }
+
+    .items-grid .item-icon {
+      height: 62px;
     }
 
     .item-capsule {
       position: relative;
-      width: 44px;
-      height: 44px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.85);
       flex-shrink: 0;
@@ -410,8 +415,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 36px;
-      height: 36px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: var(--capsule-color, #999);
       transform: translate(-50%, -50%);
@@ -421,8 +426,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 32px;
-      height: 32px;
+      width: 45px;
+      height: 45px;
       transform: translate(-50%, -50%);
     }
 
@@ -441,11 +446,11 @@
 
     .brick-icon {
       position: relative;
-      width: 64px;
-      height: 18px;
-      border-radius: 5px;
-      border: 2px solid #2d336c;
-      box-shadow: 1px 2px 2px rgba(45, 51, 108, 0.35);
+      width: 90px;
+      height: 25px;
+      border-radius: 7px;
+      border: 3px solid #2d336c;
+      box-shadow: 1.5px 3px 3px rgba(45, 51, 108, 0.35);
     }
 
     .brick-basic {
@@ -460,29 +465,29 @@
     }
 
     .brick-basic-chip {
-      width: 64px;
-      height: 18px;
-      border-radius: 5px;
+      width: 90px;
+      height: 25px;
+      border-radius: 7px;
       background: #8fc6eb;
-      border: 2px solid #2d336c;
-      box-shadow: 1px 2px 2px rgba(45, 51, 108, 0.35);
+      border: 3px solid #2d336c;
+      box-shadow: 1.5px 3px 3px rgba(45, 51, 108, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.62rem;
+      font-size: 0.85rem;
       font-weight: 700;
       line-height: 1;
       color: #1a2452;
     }
 
     .brick-basic-chip.dur-2 {
-      border-width: 3px;
+      border-width: 4px;
       border-color: #3f9d5c;
     }
 
     .brick-balloon-track {
       position: relative;
-      height: 20px;
+      height: 28px;
     }
 
     .brick-balloon {
@@ -494,15 +499,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
+      width: 28px;
+      height: 28px;
       pointer-events: none;
     }
 
     .brick-moving-track {
       position: relative;
       width: 200px;
-      height: 18px;
+      height: 25px;
     }
 
     .brick-moving {
@@ -516,22 +521,22 @@
 
     @keyframes brick-moving-ping-pong {
       from { transform: translateX(0); }
-      to { transform: translateX(136px); }
+      to { transform: translateX(110px); }
     }
 
     .brick-jelly-track {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 48px;
+      height: 67px;
     }
 
     .brick-jelly {
-      width: 128px;
+      width: 180px;
       min-width: 0;
-      height: 48px;
-      border-radius: 24px;
-      border-width: 4px;
+      height: 67px;
+      border-radius: 33px;
+      border-width: 5px;
       border-color: #b5930b;
       background: #f7df7b;
       animation: brick-jelly-squash 1.8s ease-in-out infinite;
@@ -630,33 +635,71 @@
 
     .modes-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 16px;
       margin-bottom: 28px;
-    }
-
-    @media (max-width: 560px) {
-      .modes-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     .mode-card {
       background: #faf5ea;
       border-radius: 12px;
-      padding: 22px 20px;
+      padding: 20px 24px;
+      border: 2px solid var(--mode-color, transparent);
+      display: flex;
+      align-items: stretch;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .mode-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 110px;
+      text-align: center;
+    }
+
+    .mode-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .mode-divider {
+      align-self: stretch;
+      width: 1.5px;
+      background: var(--mode-color, #c2a06e);
+      margin: 10px 0;
     }
 
     .mode-card h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 0;
       color: #7a5c3a;
     }
 
     .mode-card p {
+      display: flex;
+      align-items: center;
+      flex: 1;
       font-size: 0.88rem;
       color: #5a5a5a;
+    }
+
+    @media (max-width: 480px) {
+      .mode-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .mode-divider {
+        display: none;
+      }
+
+      .mode-card p {
+        text-align: center;
+      }
     }
 
     .worlds-label {
@@ -744,6 +787,7 @@
       margin-bottom: 8px;
       padding-left: 14px;
       position: relative;
+      text-align: left;
     }
 
     .action-label::before {
@@ -1158,12 +1202,16 @@
       <span data-i18n="ko">모드 &amp; 월드</span>
     </h2>
     <div class="modes-grid">
-      <div class="mode-card">
-        <h3>
-          <span data-i18n="en">Item Mode</span>
-          <span data-i18n="ja">アイテムモード</span>
-          <span data-i18n="ko">아이템 모드</span>
-        </h3>
+      <div class="mode-card" style="--mode-color:#7AD994;">
+        <div class="mode-label">
+          <div class="mode-icon">🎁</div>
+          <h3>
+            <span data-i18n="en">Item Mode</span>
+            <span data-i18n="ja">アイテムモード</span>
+            <span data-i18n="ko">아이템 모드</span>
+          </h3>
+        </div>
+        <div class="mode-divider"></div>
         <p>
           <span data-i18n="en">Bricks drop power-up items as you play — collect them to power through each stage.</span>
           <span data-i18n="ja">ブロックからアイテムが出現。集めながらステージを攻略しましょう。</span>
@@ -1171,12 +1219,16 @@
         </p>
       </div>
 
-      <div class="mode-card">
-        <h3>
-          <span data-i18n="en">Classic Mode</span>
-          <span data-i18n="ja">クラシックモード</span>
-          <span data-i18n="ko">클래식 모드</span>
-        </h3>
+      <div class="mode-card" style="--mode-color:#80B8F5;">
+        <div class="mode-label">
+          <div class="mode-icon">🕹️</div>
+          <h3>
+            <span data-i18n="en">Classic Mode</span>
+            <span data-i18n="ja">クラシックモード</span>
+            <span data-i18n="ko">클래식 모드</span>
+          </h3>
+        </div>
+        <div class="mode-divider"></div>
         <p>
           <span data-i18n="en">No items, just you, the paddle, and the ball — pure brick-breaking.</span>
           <span data-i18n="ja">アイテムなしのシンプルな対決。純粋なブロック崩しを楽しめます。</span>
