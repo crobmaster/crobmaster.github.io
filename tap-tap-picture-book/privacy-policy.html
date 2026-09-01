@@ -10,16 +10,36 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                    "Helvetica Neue", Arial, sans-serif;
-      background: #fdf8f3;
+      background: #f6f0e2;
       color: #2c2c2c;
       line-height: 1.75;
     }
 
     header {
-      background: #ff7b54;
-      color: #fff;
+      background: #e6d7b8;
+      color: #4a3826;
       text-align: center;
-      padding: 48px 24px 40px;
+      padding: 20px 24px 40px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: rgba(74, 56, 38, 0.75);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .app-icon-lg {
+      display: block;
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      border: 2px solid #c2a06e;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin: 0 auto 16px;
     }
 
     header h1 {
@@ -31,7 +51,7 @@
     header p {
       margin-top: 8px;
       font-size: 0.95rem;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .lang-switch {
@@ -46,9 +66,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      border: 1.5px solid rgba(74, 56, 38, 0.4);
       background: transparent;
-      color: #fff;
+      color: #4a3826;
       padding: 6px 16px;
       border-radius: 999px;
       font-size: 0.85rem;
@@ -59,8 +79,8 @@
 
     .lang-switch button.active,
     .lang-switch button:hover {
-      background: #fff;
-      color: #ff7b54;
+      background: #4a3826;
+      color: #fff;
     }
 
     .lang-switch .flag {
@@ -72,9 +92,13 @@
     }
 
     main {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
+      width: min(92%, 780px);
+      margin: 40px auto 80px;
+      padding: 40px 32px;
+      background: #fff;
+      border: 1.5px solid #c2a06e;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
 
     section {
@@ -84,10 +108,10 @@
     h2 {
       font-size: 1.15rem;
       font-weight: 700;
-      color: #ff7b54;
+      color: #7a5c3a;
       margin-bottom: 12px;
       padding-bottom: 6px;
-      border-bottom: 2px solid #ffe5db;
+      border-bottom: 2px solid #e6d7b8;
     }
 
     p, li {
@@ -104,8 +128,8 @@
     }
 
     .highlight-box {
-      background: #fff7f4;
-      border-left: 4px solid #ff7b54;
+      background: #faf3e4;
+      border-left: 4px solid #c2a06e;
       border-radius: 6px;
       padding: 16px 20px;
       margin-top: 12px;
@@ -113,7 +137,7 @@
 
     .highlight-box p {
       font-weight: 600;
-      color: #cc4e2a;
+      color: #7a5c3a;
     }
 
     footer {
@@ -121,10 +145,10 @@
       padding: 32px 24px;
       font-size: 0.82rem;
       color: #999;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #e6d7b8;
     }
 
-    a { color: #ff7b54; text-decoration: none; }
+    a { color: #7a5c3a; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     [data-i18n] { display: none; }
@@ -144,7 +168,14 @@
     html[data-lang="es"] h2 [data-i18n="es"],
     html[data-lang="pt"] h2 [data-i18n="pt"],
     html[data-lang="fr"] h2 [data-i18n="fr"],
-    html[data-lang="de"] h2 [data-i18n="de"] {
+    html[data-lang="de"] h2 [data-i18n="de"],
+    html[data-lang="en"] .back-link [data-i18n="en"],
+    html[data-lang="ja"] .back-link [data-i18n="ja"],
+    html[data-lang="ko"] .back-link [data-i18n="ko"],
+    html[data-lang="es"] .back-link [data-i18n="es"],
+    html[data-lang="pt"] .back-link [data-i18n="pt"],
+    html[data-lang="fr"] .back-link [data-i18n="fr"],
+    html[data-lang="de"] .back-link [data-i18n="de"] {
       display: inline;
     }
   </style>
@@ -152,7 +183,17 @@
 <body>
 
 <header>
-  <h1>🐣 Tap-Tap Picture Book</h1>
+  <a class="back-link" href="index.html">
+    <span data-i18n="en">&larr; Back to Tap Tap Picture Book</span>
+    <span data-i18n="ja">&larr; トントン絵本 に戻る</span>
+    <span data-i18n="ko">&larr; 톡톡 그림책 으로 돌아가기</span>
+    <span data-i18n="es">&larr; Volver a Tap Tap Picture Book</span>
+    <span data-i18n="pt">&larr; Voltar para Tap Tap Picture Book</span>
+    <span data-i18n="fr">&larr; Retour à Tap Tap Picture Book</span>
+    <span data-i18n="de">&larr; Zurück zu Tap Tap Picture Book</span>
+  </a>
+  <img class="app-icon-lg" src="icon.png" alt="" />
+  <h1>Tap Tap Picture Book</h1>
   <p>
     <span data-i18n="en">Privacy Policy</span>
     <span data-i18n="ja">プライバシーポリシー</span>
