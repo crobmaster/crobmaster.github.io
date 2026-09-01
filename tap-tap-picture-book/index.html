@@ -266,26 +266,26 @@
 
     .features {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 1000px) {
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 440px) {
-      .features {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
 
     .feature-card {
       background: #faf5ea;
       border-radius: 12px;
-      padding: 26px 20px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: stretch;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .feature-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 110px;
       text-align: center;
     }
 
@@ -296,19 +296,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      margin: 0 auto 14px;
+      font-size: 1.8rem;
+      margin: 0 auto 10px;
+    }
+
+    .feature-divider {
+      align-self: stretch;
+      width: 1.5px;
+      background: #c2a06e;
+      margin: 10px 0;
     }
 
     .feature-card h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 0;
     }
 
     .feature-card p {
+      display: flex;
+      align-items: center;
+      flex: 1;
       font-size: 0.85rem;
       color: #5a5a5a;
+    }
+
+    @media (max-width: 480px) {
+      .feature-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .feature-divider {
+        display: none;
+      }
+
+      .feature-card p {
+        text-align: center;
+      }
     }
 
     .items-section,
@@ -336,20 +361,8 @@
 
     .rules-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: 1fr;
       gap: 16px;
-    }
-
-    @media (max-width: 1000px) {
-      .rules-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .rules-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     .items-grid,
@@ -541,6 +554,78 @@
       font-size: 0.78rem;
       color: #5a5a5a;
       line-height: 1.5;
+    }
+
+    .rules-grid .item-card {
+      display: flex;
+      align-items: stretch;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .rules-grid .rule-divider {
+      align-self: stretch;
+      width: 1.5px;
+      background: #c2a06e;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 480px) {
+      .rules-grid .rule-divider {
+        display: none;
+      }
+    }
+
+    .rules-grid .rule-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 110px;
+      text-align: center;
+    }
+
+    .rules-grid .item-icon {
+      height: auto;
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    .rules-grid .item-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .rules-grid .item-card p,
+    .rules-grid .item-card ul {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      font-size: 0.85rem;
+    }
+
+    .rules-grid .item-card ul {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 6px;
+      padding-left: 1.1em;
+    }
+
+    .rules-grid .item-card ul li {
+      color: #5a5a5a;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      .rules-grid .item-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .rules-grid .item-card p {
+        text-align: center;
+      }
     }
 
     .modes-grid {
@@ -850,12 +935,15 @@
     </h2>
     <div class="features">
     <div class="feature-card">
-      <div class="feature-icon" style="background:#e3f2fd;">🎨</div>
-      <h3>
-        <span data-i18n="en">200+ Stages</span>
-        <span data-i18n="ja">200以上のステージ</span>
-        <span data-i18n="ko">200개 이상의 스테이지</span>
-      </h3>
+      <div class="feature-label">
+        <div class="feature-icon" style="background:#e3f2fd;">🎨</div>
+        <h3>
+          <span data-i18n="en">200+ Stages</span>
+          <span data-i18n="ja">200以上のステージ</span>
+          <span data-i18n="ko">200개 이상의 스테이지</span>
+        </h3>
+      </div>
+      <div class="feature-divider"></div>
       <p>
         <span data-i18n="en">Break through beautifully illustrated bricks across more than 200 stages.</span>
         <span data-i18n="ja">絵本イラストでできたカラフルなブロックを壊しながら、200以上のステージに挑戦できます。</span>
@@ -864,12 +952,15 @@
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon" style="background:#fff3c4;">🕹️</div>
-      <h3>
-        <span data-i18n="en">One-Tap Controls</span>
-        <span data-i18n="ja">シンプルなワンタップ操作</span>
-        <span data-i18n="ko">간단한 원터치 조작</span>
-      </h3>
+      <div class="feature-label">
+        <div class="feature-icon" style="background:#fff3c4;">🕹️</div>
+        <h3>
+          <span data-i18n="en">One-Tap Controls</span>
+          <span data-i18n="ja">シンプルなワンタップ操作</span>
+          <span data-i18n="ko">간단한 원터치 조작</span>
+        </h3>
+      </div>
+      <div class="feature-divider"></div>
       <p>
         <span data-i18n="en">Simple, one-tap controls — easy to pick up, fun to master.</span>
         <span data-i18n="ja">誰でも気軽に、長く楽しめるシンプルな操作性です。</span>
@@ -878,12 +969,15 @@
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon" style="background:#f1ebfa;">🎁</div>
-      <h3>
-        <span data-i18n="en">Power-Up Items</span>
-        <span data-i18n="ja">アイテムで盛り上げる</span>
-        <span data-i18n="ko">아이템으로 파워업</span>
-      </h3>
+      <div class="feature-label">
+        <div class="feature-icon" style="background:#f1ebfa;">🎁</div>
+        <h3>
+          <span data-i18n="en">Power-Up Items</span>
+          <span data-i18n="ja">アイテムで盛り上げる</span>
+          <span data-i18n="ko">아이템으로 파워업</span>
+        </h3>
+      </div>
+      <div class="feature-divider"></div>
       <p>
         <span data-i18n="en">Collect and use a variety of items to power up your run.</span>
         <span data-i18n="ja">さまざまなアイテムを集めて使えば、プレイがもっと楽しくなります。</span>
@@ -892,12 +986,15 @@
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon" style="background:#e6f7ec;">🌍</div>
-      <h3>
-        <span data-i18n="en">Unlock New Worlds</span>
-        <span data-i18n="ja">新しいワールドを解放</span>
-        <span data-i18n="ko">새로운 월드 해금</span>
-      </h3>
+      <div class="feature-label">
+        <div class="feature-icon" style="background:#e6f7ec;">🌍</div>
+        <h3>
+          <span data-i18n="en">Unlock New Worlds</span>
+          <span data-i18n="ja">新しいワールドを解放</span>
+          <span data-i18n="ko">새로운 월드 해금</span>
+        </h3>
+      </div>
+      <div class="feature-divider"></div>
       <p>
         <span data-i18n="en">Unlock new worlds as you progress.</span>
         <span data-i18n="ja">進めるごとに新しいワールドが解放されます。</span>
@@ -930,87 +1027,126 @@
     </h2>
     <div class="rules-grid">
       <div class="item-card">
-        <div class="item-icon">🎯</div>
-        <h3>
-          <span data-i18n="en">Goal</span>
-          <span data-i18n="ja">目的</span>
-          <span data-i18n="ko">목표</span>
-        </h3>
-        <p>
-          <span data-i18n="en">Clear a stage by destroying every breakable brick before you run out of lives.</span>
-          <span data-i18n="ja">壊せるブロックをすべて壊せばステージクリア。ライフがなくなる前に頑張ろう。</span>
-          <span data-i18n="ko">라이프가 다 떨어지기 전에 부술 수 있는 벽돌을 모두 없애면 스테이지 클리어!</span>
-        </p>
+        <div class="rule-label">
+          <div class="item-icon">🎯</div>
+          <h3>
+            <span data-i18n="en">Goal</span>
+            <span data-i18n="ja">目的</span>
+            <span data-i18n="ko">목표</span>
+          </h3>
+        </div>
+        <div class="rule-divider"></div>
+        <ul>
+          <li>
+            <span data-i18n="en">Destroy every breakable brick to clear the stage.</span>
+            <span data-i18n="ja">壊せるブロックをすべて壊せばステージクリア。</span>
+            <span data-i18n="ko">깰 수 있는 벽돌을 모두 없애면 스테이지 클리어!</span>
+          </li>
+          <li>
+            <span data-i18n="en">Do it before you run out of lives.</span>
+            <span data-i18n="ja">ライフがなくなる前に頑張ろう。</span>
+            <span data-i18n="ko">라이프가 다 떨어지기 전에 끝내세요.</span>
+          </li>
+        </ul>
       </div>
 
       <div class="item-card">
-        <div class="item-icon">👆</div>
-        <h3>
-          <span data-i18n="en">Aim &amp; Launch</span>
-          <span data-i18n="ja">狙って発射</span>
-          <span data-i18n="ko">조준 &amp; 발사</span>
-        </h3>
-        <p>
-          <span data-i18n="en">Drag to aim your paddle, then release to launch the ball.</span>
-          <span data-i18n="ja">画面をドラッグしてパドルを動かし、指を離すとボールが発射されます。</span>
-          <span data-i18n="ko">화면을 드래그해 패들을 움직인 뒤, 손을 떼면 공이 발사됩니다.</span>
-        </p>
+        <div class="rule-label">
+          <div class="item-icon">👆</div>
+          <h3>
+            <span data-i18n="en">Aim &amp; Launch</span>
+            <span data-i18n="ja">狙って発射</span>
+            <span data-i18n="ko">조준 &amp; 발사</span>
+          </h3>
+        </div>
+        <div class="rule-divider"></div>
+        <ul>
+          <li>
+            <span data-i18n="en">Drag to aim your paddle, then release to launch the ball.</span>
+            <span data-i18n="ja">画面をドラッグしてパドルを動かし、指を離すとボールが発射されます。</span>
+            <span data-i18n="ko">화면을 드래그해 패들을 움직인 뒤, 손을 떼면 공이 발사됩니다.</span>
+          </li>
+          <li>
+            <span data-i18n="en">Where it hits the paddle changes the bounce angle.</span>
+            <span data-i18n="ja">パドルに当たる位置によって跳ね返る角度が変わります。</span>
+            <span data-i18n="ko">패들에 맞는 위치에 따라 튕기는 각도가 달라집니다.</span>
+          </li>
+          <li>
+            <span data-i18n="en">Center for a straighter shot, the edges for a sharper one.</span>
+            <span data-i18n="ja">中央なら垂直に近く、端に当てるほど鋭い角度に。</span>
+            <span data-i18n="ko">중앙에 맞히면 수직에 가깝고, 끝에 맞힐수록 날카로운 각도가 됩니다.</span>
+          </li>
+        </ul>
       </div>
 
       <div class="item-card">
-        <div class="item-icon">❤️</div>
-        <h3>
-          <span data-i18n="en">Lives</span>
-          <span data-i18n="ja">ライフ</span>
-          <span data-i18n="ko">라이프</span>
-        </h3>
-        <p>
-          <span data-i18n="en">You start with 3 lives — lose one each time the ball drops off the bottom.</span>
-          <span data-i18n="ja">ライフは3つスタート。ボールを落とすたびに1つ減ります。</span>
-          <span data-i18n="ko">라이프는 3개로 시작하며, 공을 놓칠 때마다 하나씩 줄어듭니다.</span>
-        </p>
+        <div class="rule-label">
+          <div class="item-icon">❤️</div>
+          <h3>
+            <span data-i18n="en">Lives</span>
+            <span data-i18n="ja">ライフ</span>
+            <span data-i18n="ko">라이프</span>
+          </h3>
+        </div>
+        <div class="rule-divider"></div>
+        <ul>
+          <li>
+            <span data-i18n="en">You start with 3 lives.</span>
+            <span data-i18n="ja">ライフは3つスタート。</span>
+            <span data-i18n="ko">라이프는 3개로 시작합니다.</span>
+          </li>
+          <li>
+            <span data-i18n="en">Lose one each time the ball drops off the bottom.</span>
+            <span data-i18n="ja">ボールを落とすたびに1つ減ります。</span>
+            <span data-i18n="ko">공을 놓칠 때마다 하나씩 줄어듭니다.</span>
+          </li>
+          <li>
+            <span data-i18n="en">Run out of lives and it's game over.</span>
+            <span data-i18n="ja">ライフが0になるとゲームオーバーです。</span>
+            <span data-i18n="ko">라이프가 0이 되면 게임 오버입니다.</span>
+          </li>
+        </ul>
       </div>
 
       <div class="item-card">
-        <div class="item-icon">🔥</div>
-        <h3>
-          <span data-i18n="en">Combo</span>
-          <span data-i18n="ja">コンボ</span>
-          <span data-i18n="ko">콤보</span>
-        </h3>
+        <div class="rule-label">
+          <div class="item-icon">🔥</div>
+          <h3>
+            <span data-i18n="en">Combo</span>
+            <span data-i18n="ja">コンボ</span>
+            <span data-i18n="ko">콤보</span>
+          </h3>
+        </div>
+        <div class="rule-divider"></div>
         <p>
           <span data-i18n="en">Hit bricks back-to-back without touching the paddle for bonus combo points.</span>
-          <span data-i18n="ja">パドルに当てずにブロックを連続で壊すと、コンボボーナスがもらえます。</span>
+          <span data-i18n="ja">パドルに当てずにブロックを連続で壊すと、コンボボーナススコアがもらえます。</span>
           <span data-i18n="ko">패들에 닿지 않고 벽돌을 연속으로 맞히면 콤보 보너스 점수를 받을 수 있어요.</span>
         </p>
       </div>
 
       <div class="item-card">
-        <div class="item-icon">⭐</div>
-        <h3>
-          <span data-i18n="en">Star Rating</span>
-          <span data-i18n="ja">星評価</span>
-          <span data-i18n="ko">별 등급</span>
-        </h3>
-        <p>
-          <span data-i18n="en">Clear without losing a life for 3 stars — fewer hearts left means fewer stars.</span>
-          <span data-i18n="ja">ライフを1つも失わずにクリアすれば★3つ。減るほど星の数も減ります。</span>
-          <span data-i18n="ko">라이프를 하나도 잃지 않고 클리어하면 별 3개. 잃을수록 별이 줄어듭니다.</span>
-        </p>
-      </div>
-
-      <div class="item-card">
-        <div class="item-icon">📺</div>
-        <h3>
-          <span data-i18n="en">Revive</span>
-          <span data-i18n="ja">復活</span>
-          <span data-i18n="ko">부활</span>
-        </h3>
-        <p>
-          <span data-i18n="en">Out of lives? Watch an ad to revive with 2 hearts and keep going.</span>
-          <span data-i18n="ja">ライフが尽きても、広告を見ればハート2つで復活して続きから挑戦できます。</span>
-          <span data-i18n="ko">라이프가 다 떨어져도 광고를 보면 하트 2개로 부활해 이어서 도전할 수 있어요.</span>
-        </p>
+        <div class="rule-label">
+          <div class="item-icon">⭐</div>
+          <h3>
+            <span data-i18n="en">Star Rating</span>
+            <span data-i18n="ja">星評価</span>
+            <span data-i18n="ko">별 등급</span>
+          </h3>
+        </div>
+        <div class="rule-divider"></div>
+        <ul>
+          <li>
+            <span data-i18n="en">Clear without losing a life for 3 stars.</span>
+            <span data-i18n="ja">ライフを1つも失わずにクリアすれば★3つ。</span>
+            <span data-i18n="ko">라이프를 하나도 잃지 않고 클리어하면 별 3개.</span>
+          </li>
+          <li>
+            <span data-i18n="en">Fewer hearts left means fewer stars.</span>
+            <span data-i18n="ja">ライフが減るほど星の数も減ります。</span>
+            <span data-i18n="ko">잃을수록 별이 줄어듭니다.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
