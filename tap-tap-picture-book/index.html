@@ -71,8 +71,13 @@
 
     .lang-switch {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
+    }
+
+    .lang-switch button {
+      flex: 0 0 auto;
     }
 
     .lang-switch button {
@@ -95,10 +100,15 @@
 
     .header-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
       padding-left: 24px;
       border-left: 1px solid rgba(74, 56, 38, 0.3);
+    }
+
+    .header-links a {
+      flex: 0 0 auto;
     }
 
     .header-links a {
@@ -965,13 +975,21 @@
     [data-i18n] { display: none; }
     html[data-lang="en"] [data-i18n="en"],
     html[data-lang="ja"] [data-i18n="ja"],
-    html[data-lang="ko"] [data-i18n="ko"] {
+    html[data-lang="ko"] [data-i18n="ko"],
+    html[data-lang="es"] [data-i18n="es"],
+    html[data-lang="pt"] [data-i18n="pt"],
+    html[data-lang="fr"] [data-i18n="fr"],
+    html[data-lang="de"] [data-i18n="de"] {
       display: block;
     }
 
     html[data-lang="en"] span[data-i18n="en"],
     html[data-lang="ja"] span[data-i18n="ja"],
-    html[data-lang="ko"] span[data-i18n="ko"] {
+    html[data-lang="ko"] span[data-i18n="ko"],
+    html[data-lang="es"] span[data-i18n="es"],
+    html[data-lang="pt"] span[data-i18n="pt"],
+    html[data-lang="fr"] span[data-i18n="fr"],
+    html[data-lang="de"] span[data-i18n="de"] {
       display: inline;
     }
   </style>
@@ -983,6 +1001,10 @@
     <span data-i18n="en">&larr; Back to Crob Apps</span>
     <span data-i18n="ja">&larr; Crob Apps に戻る</span>
     <span data-i18n="ko">&larr; Crob Apps로 돌아가기</span>
+    <span data-i18n="es">&larr; Volver a Crob Apps</span>
+    <span data-i18n="pt">&larr; Voltar para Crob Apps</span>
+    <span data-i18n="fr">&larr; Retour à Crob Apps</span>
+    <span data-i18n="de">&larr; Zurück zu Crob Apps</span>
   </a>
   <div>
     <img class="app-icon-lg" src="src/icon.png" alt="" />
@@ -990,11 +1012,19 @@
       <span data-i18n="en">Tap Tap Picture Book</span>
       <span data-i18n="ja">トントン絵本 - かわいいブロック崩し</span>
       <span data-i18n="ko">톡톡 그림책 - 힐링 벽돌깨기</span>
+      <span data-i18n="es">Tap Tap Picture Book</span>
+      <span data-i18n="pt">Tap Tap Picture Book</span>
+      <span data-i18n="fr">Tap Tap Picture Book</span>
+      <span data-i18n="de">Tap Tap Picture Book</span>
     </h1>
     <p class="tagline">
       <span data-i18n="en">A casual brick-breaker where every brick is a piece of picture book art.<br>Bounce the ball, break through beautifully illustrated bricks, and clear each stage!</span>
       <span data-i18n="ja">絵本のイラストでできたブロックを壊す、カジュアルなブロック崩しゲームです。<br>ボールを弾いて、カラフルな絵本ブロックを壊しながらステージをクリアしましょう！</span>
       <span data-i18n="ko">그림책 일러스트로 만들어진 벽돌을 깨는 캐주얼 벽돌깨기 게임입니다.<br>공을 튕겨 알록달록한 그림책 벽돌을 깨고 스테이지를 클리어하세요!</span>
+      <span data-i18n="es">Un juego casual de romper bloques donde cada ladrillo es una pieza de arte de libro ilustrado.<br>¡Rebota la bola, rompe los coloridos ladrillos y completa cada nivel!</span>
+      <span data-i18n="pt">Um jogo casual de quebrar blocos onde cada bloco é uma peça de arte de livro ilustrado.<br>Rebata a bola, quebre os blocos coloridos e complete cada fase!</span>
+      <span data-i18n="fr">Un jeu de casse-briques où chaque brique est une œuvre d'art de livre illustré.<br>Faites rebondir la balle, cassez les briques colorées et terminez chaque niveau !</span>
+      <span data-i18n="de">Ein lockeres Breakout-Spiel, bei dem jeder Stein ein Stück Bilderbuch-Kunst ist.<br>Lass den Ball abprallen, zerstöre die bunten Steine und schließe jedes Level ab!</span>
     </p>
   </div>
   <div class="header-controls">
@@ -1002,6 +1032,10 @@
       <button type="button" data-set-lang="en">EN</button>
       <button type="button" data-set-lang="ja">日本語</button>
       <button type="button" data-set-lang="ko">한국어</button>
+      <button type="button" data-set-lang="es">Español</button>
+      <button type="button" data-set-lang="pt">Português</button>
+      <button type="button" data-set-lang="fr">Français</button>
+      <button type="button" data-set-lang="de">Deutsch</button>
     </div>
     <div class="header-links">
       <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
@@ -1016,36 +1050,64 @@
     <span data-i18n="en">Overview</span>
     <span data-i18n="ja">概要</span>
     <span data-i18n="ko">개요</span>
+    <span data-i18n="es">Resumen</span>
+    <span data-i18n="pt">Visão Geral</span>
+    <span data-i18n="fr">Aperçu</span>
+    <span data-i18n="de">Übersicht</span>
   </a>
   <a href="#features">
     <span data-i18n="en">Features</span>
     <span data-i18n="ja">特徴</span>
     <span data-i18n="ko">특징</span>
+    <span data-i18n="es">Características</span>
+    <span data-i18n="pt">Recursos</span>
+    <span data-i18n="fr">Fonctionnalités</span>
+    <span data-i18n="de">Funktionen</span>
   </a>
   <a href="#rules">
     <span data-i18n="en">How to Play</span>
     <span data-i18n="ja">遊び方</span>
     <span data-i18n="ko">플레이 방법</span>
+    <span data-i18n="es">Cómo Jugar</span>
+    <span data-i18n="pt">Como Jogar</span>
+    <span data-i18n="fr">Comment Jouer</span>
+    <span data-i18n="de">Spielanleitung</span>
   </a>
   <a href="#modes">
     <span data-i18n="en">Modes</span>
     <span data-i18n="ja">モード</span>
     <span data-i18n="ko">모드</span>
+    <span data-i18n="es">Modos</span>
+    <span data-i18n="pt">Modos</span>
+    <span data-i18n="fr">Modes</span>
+    <span data-i18n="de">Modi</span>
   </a>
   <a href="#bricks">
     <span data-i18n="en">Bricks</span>
     <span data-i18n="ja">ブロック</span>
     <span data-i18n="ko">벽돌</span>
+    <span data-i18n="es">Ladrillos</span>
+    <span data-i18n="pt">Blocos</span>
+    <span data-i18n="fr">Briques</span>
+    <span data-i18n="de">Steine</span>
   </a>
   <a href="#items">
     <span data-i18n="en">Items</span>
     <span data-i18n="ja">アイテム</span>
     <span data-i18n="ko">아이템</span>
+    <span data-i18n="es">Objetos</span>
+    <span data-i18n="pt">Itens</span>
+    <span data-i18n="fr">Objets</span>
+    <span data-i18n="de">Items</span>
   </a>
   <a href="#download">
     <span data-i18n="en">Get the app</span>
     <span data-i18n="ja">アプリを入手</span>
     <span data-i18n="ko">앱 받기</span>
+    <span data-i18n="es">Descargar</span>
+    <span data-i18n="pt">Baixar</span>
+    <span data-i18n="fr">Télécharger</span>
+    <span data-i18n="de">Herunterladen</span>
   </a>
  </div>
 </nav>
@@ -1057,36 +1119,64 @@
       <span data-i18n="en">Overview</span>
       <span data-i18n="ja">概要</span>
       <span data-i18n="ko">개요</span>
+      <span data-i18n="es">Resumen</span>
+      <span data-i18n="pt">Visão Geral</span>
+      <span data-i18n="fr">Aperçu</span>
+      <span data-i18n="de">Übersicht</span>
     </a>
     <a href="#features">
       <span data-i18n="en">Features</span>
       <span data-i18n="ja">特徴</span>
       <span data-i18n="ko">특징</span>
+      <span data-i18n="es">Características</span>
+      <span data-i18n="pt">Recursos</span>
+      <span data-i18n="fr">Fonctionnalités</span>
+      <span data-i18n="de">Funktionen</span>
     </a>
     <a href="#rules">
       <span data-i18n="en">How to Play</span>
       <span data-i18n="ja">遊び方</span>
       <span data-i18n="ko">플레이 방법</span>
+      <span data-i18n="es">Cómo Jugar</span>
+      <span data-i18n="pt">Como Jogar</span>
+      <span data-i18n="fr">Comment Jouer</span>
+      <span data-i18n="de">Spielanleitung</span>
     </a>
     <a href="#modes">
       <span data-i18n="en">Modes</span>
       <span data-i18n="ja">モード</span>
       <span data-i18n="ko">모드</span>
+      <span data-i18n="es">Modos</span>
+      <span data-i18n="pt">Modos</span>
+      <span data-i18n="fr">Modes</span>
+      <span data-i18n="de">Modi</span>
     </a>
     <a href="#bricks">
       <span data-i18n="en">Bricks</span>
       <span data-i18n="ja">ブロック</span>
       <span data-i18n="ko">벽돌</span>
+      <span data-i18n="es">Ladrillos</span>
+      <span data-i18n="pt">Blocos</span>
+      <span data-i18n="fr">Briques</span>
+      <span data-i18n="de">Steine</span>
     </a>
     <a href="#items">
       <span data-i18n="en">Items</span>
       <span data-i18n="ja">アイテム</span>
       <span data-i18n="ko">아이템</span>
+      <span data-i18n="es">Objetos</span>
+      <span data-i18n="pt">Itens</span>
+      <span data-i18n="fr">Objets</span>
+      <span data-i18n="de">Items</span>
     </a>
     <a href="#download">
       <span data-i18n="en">Get the app</span>
       <span data-i18n="ja">アプリを入手</span>
       <span data-i18n="ko">앱 받기</span>
+      <span data-i18n="es">Descargar</span>
+      <span data-i18n="pt">Baixar</span>
+      <span data-i18n="fr">Télécharger</span>
+      <span data-i18n="de">Herunterladen</span>
     </a>
   </nav>
 
@@ -1097,43 +1187,75 @@
       <span data-i18n="en">Overview &amp; Screenshots</span>
       <span data-i18n="ja">概要＆スクリーンショット</span>
       <span data-i18n="ko">개요 &amp; 스크린샷</span>
+      <span data-i18n="es">Resumen y Capturas de Pantalla</span>
+      <span data-i18n="pt">Visão Geral e Capturas de Tela</span>
+      <span data-i18n="fr">Aperçu et Captures d'Écran</span>
+      <span data-i18n="de">Übersicht & Screenshots</span>
     </h2>
     <p class="overview-subhead">
       <span data-i18n="en">Overview</span>
       <span data-i18n="ja">概要</span>
       <span data-i18n="ko">개요</span>
+      <span data-i18n="es">Resumen</span>
+      <span data-i18n="pt">Visão Geral</span>
+      <span data-i18n="fr">Aperçu</span>
+      <span data-i18n="de">Übersicht</span>
     </p>
     <div class="overview-grid">
       <div class="overview-item">
         <span data-i18n="en">A casual brick-breaker where every brick is a piece of picture book art.</span>
         <span data-i18n="ja">絵本のイラストでできたブロックを壊す、カジュアルなブロック崩しゲームです。</span>
         <span data-i18n="ko">그림책 일러스트로 만들어진 벽돌을 깨는 캐주얼 벽돌깨기 게임입니다.</span>
+        <span data-i18n="es">Un juego casual de romper bloques donde cada ladrillo es una pieza de arte de libro ilustrado.</span>
+        <span data-i18n="pt">Um jogo casual de quebrar blocos onde cada bloco é uma peça de arte de livro ilustrado.</span>
+        <span data-i18n="fr">Un jeu de casse-briques où chaque brique est une œuvre d'art de livre illustré.</span>
+        <span data-i18n="de">Ein lockeres Breakout-Spiel, bei dem jeder Stein ein Stück Bilderbuch-Kunst ist.</span>
       </div>
       <div class="overview-item">
         <span data-i18n="en">200+ stages to bounce your way through.</span>
         <span data-i18n="ja">200以上のステージに挑戦できます。</span>
         <span data-i18n="ko">200개 이상의 스테이지에 도전할 수 있습니다.</span>
+        <span data-i18n="es">Más de 200 niveles para superar.</span>
+        <span data-i18n="pt">Mais de 200 fases para superar.</span>
+        <span data-i18n="fr">Plus de 200 niveaux à découvrir.</span>
+        <span data-i18n="de">Über 200 Level zum Durchspielen.</span>
       </div>
       <div class="overview-item">
         <span data-i18n="en">Collect power-up items as you play.</span>
         <span data-i18n="ja">パワーアップアイテムを集めながらプレイできます。</span>
         <span data-i18n="ko">파워업 아이템을 모으며 플레이할 수 있습니다.</span>
+        <span data-i18n="es">Recolecta objetos especiales mientras juegas.</span>
+        <span data-i18n="pt">Colete itens especiais enquanto joga.</span>
+        <span data-i18n="fr">Collectionnez des objets bonus en jouant.</span>
+        <span data-i18n="de">Sammle Power-Up-Items beim Spielen.</span>
       </div>
       <div class="overview-item">
         <span data-i18n="en">Choose Item Mode or Classic Mode to match your playstyle.</span>
         <span data-i18n="ja">アイテムモード・クラシックモードから遊び方を選べます。</span>
         <span data-i18n="ko">아이템 모드와 클래식 모드 중 원하는 방식을 선택할 수 있습니다.</span>
+        <span data-i18n="es">Elige el modo Objetos o Clásico según tu estilo de juego.</span>
+        <span data-i18n="pt">Escolha o modo Itens ou Clássico de acordo com seu estilo.</span>
+        <span data-i18n="fr">Choisissez le mode Objets ou Classique selon votre style.</span>
+        <span data-i18n="de">Wähle den Item- oder den klassischen Modus.</span>
       </div>
       <div class="overview-item">
         <span data-i18n="en">5 colorful worlds to explore, plus a rotating Daily world.</span>
         <span data-i18n="ja">5つのカラフルなワールドと、日替わりのデイリーワールドを探検できます。</span>
         <span data-i18n="ko">5개의 컬러풀한 월드와 매일 바뀌는 데일리 월드를 탐험할 수 있습니다.</span>
+        <span data-i18n="es">5 mundos coloridos para explorar, además de un mundo Diario rotativo.</span>
+        <span data-i18n="pt">5 mundos coloridos para explorar, além de um mundo Diário rotativo.</span>
+        <span data-i18n="fr">5 mondes colorés à explorer, plus un monde Quotidien renouvelé.</span>
+        <span data-i18n="de">5 bunte Welten zum Entdecken, plus eine wechselnde tägliche Welt.</span>
       </div>
     </div>
     <p class="overview-subhead">
       <span data-i18n="en">Screenshots</span>
       <span data-i18n="ja">スクリーンショット</span>
       <span data-i18n="ko">스크린샷</span>
+      <span data-i18n="es">Capturas de Pantalla</span>
+      <span data-i18n="pt">Capturas de Tela</span>
+      <span data-i18n="fr">Captures d'Écran</span>
+      <span data-i18n="de">Screenshots</span>
     </p>
     <div class="screenshot-row">
       <img data-shot="1" src="src/screenshots/ja/shot-1.jpg" width="640" height="1138" alt="" />
@@ -1149,6 +1271,10 @@
       <span data-i18n="en">▶ Play on Google Play</span>
       <span data-i18n="ja">▶ Google Playでプレイする</span>
       <span data-i18n="ko">▶ Google Play에서 플레이하기</span>
+      <span data-i18n="es">▶ Jugar en Google Play</span>
+      <span data-i18n="pt">▶ Jogar no Google Play</span>
+      <span data-i18n="fr">▶ Jouer sur Google Play</span>
+      <span data-i18n="de">▶ Auf Google Play spielen</span>
     </a>
   </div>
 
@@ -1157,6 +1283,10 @@
       <span data-i18n="en">Features</span>
       <span data-i18n="ja">特徴</span>
       <span data-i18n="ko">특징</span>
+      <span data-i18n="es">Características</span>
+      <span data-i18n="pt">Recursos</span>
+      <span data-i18n="fr">Fonctionnalités</span>
+      <span data-i18n="de">Funktionen</span>
     </h2>
     <div class="features">
     <div class="feature-card">
@@ -1166,6 +1296,10 @@
           <span data-i18n="en">200+ Stages</span>
           <span data-i18n="ja">200以上のステージ</span>
           <span data-i18n="ko">200개 이상의 스테이지</span>
+          <span data-i18n="es">Más de 200 Niveles</span>
+          <span data-i18n="pt">Mais de 200 Fases</span>
+          <span data-i18n="fr">Plus de 200 Niveaux</span>
+          <span data-i18n="de">Über 200 Level</span>
         </h3>
       </div>
       <div class="feature-divider"></div>
@@ -1173,6 +1307,10 @@
         <span data-i18n="en">Break through beautifully illustrated bricks across more than 200 stages.</span>
         <span data-i18n="ja">絵本イラストでできたカラフルなブロックを壊しながら、200以上のステージに挑戦できます。</span>
         <span data-i18n="ko">아름다운 일러스트 벽돌을 깨며 200개 이상의 스테이지에 도전하세요.</span>
+        <span data-i18n="es">Rompe hermosos ladrillos ilustrados a lo largo de más de 200 niveles.</span>
+        <span data-i18n="pt">Quebre lindos blocos ilustrados ao longo de mais de 200 fases.</span>
+        <span data-i18n="fr">Détruisez de magnifiques briques illustrées à travers plus de 200 niveaux.</span>
+        <span data-i18n="de">Zerstöre wunderschön illustrierte Steine in über 200 Levels.</span>
       </p>
     </div>
 
@@ -1183,6 +1321,10 @@
           <span data-i18n="en">One-Tap Controls</span>
           <span data-i18n="ja">シンプルなワンタップ操作</span>
           <span data-i18n="ko">간단한 원터치 조작</span>
+          <span data-i18n="es">Controles de Un Toque</span>
+          <span data-i18n="pt">Controles de Um Toque</span>
+          <span data-i18n="fr">Contrôles à Une Touche</span>
+          <span data-i18n="de">Ein-Tipp-Steuerung</span>
         </h3>
       </div>
       <div class="feature-divider"></div>
@@ -1190,6 +1332,10 @@
         <span data-i18n="en">Simple, one-tap controls — easy to pick up, fun to master.</span>
         <span data-i18n="ja">誰でも気軽に、長く楽しめるシンプルな操作性です。</span>
         <span data-i18n="ko">누구나 쉽게, 오래도록 즐길 수 있는 간단한 조작입니다.</span>
+        <span data-i18n="es">Controles simples de un toque: fáciles de aprender, divertidos de dominar.</span>
+        <span data-i18n="pt">Controles simples de um toque: fáceis de aprender, divertidos de dominar.</span>
+        <span data-i18n="fr">Contrôles simples à une touche : faciles à prendre en main, agréables à maîtriser.</span>
+        <span data-i18n="de">Einfache Ein-Tipp-Steuerung — leicht zu erlernen, spannend zu meistern.</span>
       </p>
     </div>
 
@@ -1200,6 +1346,10 @@
           <span data-i18n="en">Power-Up Items</span>
           <span data-i18n="ja">アイテムで盛り上げる</span>
           <span data-i18n="ko">아이템으로 파워업</span>
+          <span data-i18n="es">Objetos Especiales</span>
+          <span data-i18n="pt">Itens Especiais</span>
+          <span data-i18n="fr">Objets Bonus</span>
+          <span data-i18n="de">Power-Up-Items</span>
         </h3>
       </div>
       <div class="feature-divider"></div>
@@ -1207,6 +1357,10 @@
         <span data-i18n="en">Collect and use a variety of items to power up your run.</span>
         <span data-i18n="ja">さまざまなアイテムを集めて使えば、プレイがもっと楽しくなります。</span>
         <span data-i18n="ko">다양한 아이템을 모아 사용하면 플레이가 더욱 풍성해집니다.</span>
+        <span data-i18n="es">Recolecta y usa una gran variedad de objetos para potenciar tu partida.</span>
+        <span data-i18n="pt">Colete e use uma grande variedade de itens para potencializar sua jogada.</span>
+        <span data-i18n="fr">Collectionnez et utilisez une grande variété d'objets pour dynamiser votre partie.</span>
+        <span data-i18n="de">Sammle und nutze eine Vielzahl von Items, um dein Spiel aufzuwerten.</span>
       </p>
     </div>
 
@@ -1217,6 +1371,10 @@
           <span data-i18n="en">Unlock New Worlds</span>
           <span data-i18n="ja">新しいワールドを解放</span>
           <span data-i18n="ko">새로운 월드 해금</span>
+          <span data-i18n="es">Desbloquea Nuevos Mundos</span>
+          <span data-i18n="pt">Desbloqueie Novos Mundos</span>
+          <span data-i18n="fr">Débloquez de Nouveaux Mondes</span>
+          <span data-i18n="de">Neue Welten Freischalten</span>
         </h3>
       </div>
       <div class="feature-divider"></div>
@@ -1224,6 +1382,10 @@
         <span data-i18n="en">Unlock new worlds as you progress.</span>
         <span data-i18n="ja">進めるごとに新しいワールドが解放されます。</span>
         <span data-i18n="ko">진행하며 새로운 월드를 해금할 수 있습니다.</span>
+        <span data-i18n="es">Desbloquea nuevos mundos a medida que avanzas.</span>
+        <span data-i18n="pt">Desbloqueie novos mundos conforme avança.</span>
+        <span data-i18n="fr">Débloquez de nouveaux mondes au fil de votre progression.</span>
+        <span data-i18n="de">Schalte neue Welten frei, während du fortschreitest.</span>
       </p>
     </div>
     </div>
@@ -1234,6 +1396,10 @@
       <span data-i18n="en">How to Play</span>
       <span data-i18n="ja">遊び方</span>
       <span data-i18n="ko">플레이 방법</span>
+      <span data-i18n="es">Cómo Jugar</span>
+      <span data-i18n="pt">Como Jogar</span>
+      <span data-i18n="fr">Comment Jouer</span>
+      <span data-i18n="de">Spielanleitung</span>
     </h2>
     <div class="rules-grid">
       <div class="item-card">
@@ -1243,6 +1409,10 @@
             <span data-i18n="en">Goal</span>
             <span data-i18n="ja">目的</span>
             <span data-i18n="ko">목표</span>
+            <span data-i18n="es">Objetivo</span>
+            <span data-i18n="pt">Objetivo</span>
+            <span data-i18n="fr">Objectif</span>
+            <span data-i18n="de">Ziel</span>
           </h3>
         </div>
         <div class="rule-divider"></div>
@@ -1251,11 +1421,19 @@
             <span data-i18n="en">Destroy every breakable brick to clear the stage.</span>
             <span data-i18n="ja">壊せるブロックをすべて壊せばステージクリアです。</span>
             <span data-i18n="ko">깰 수 있는 벽돌을 모두 없애면 스테이지 클리어입니다!</span>
+            <span data-i18n="es">Destruye todos los ladrillos rompibles para superar el nivel.</span>
+            <span data-i18n="pt">Destrua todos os blocos quebráveis para completar a fase.</span>
+            <span data-i18n="fr">Détruisez toutes les briques cassables pour terminer le niveau.</span>
+            <span data-i18n="de">Zerstöre alle zerstörbaren Steine, um das Level abzuschließen.</span>
           </li>
           <li>
             <span data-i18n="en">Finish before your lives run out.</span>
             <span data-i18n="ja">ライフがなくなる前にクリアを目指しましょう。</span>
             <span data-i18n="ko">라이프가 다 떨어지기 전에 클리어를 목표로 해 보세요.</span>
+            <span data-i18n="es">Términalo antes de quedarte sin vidas.</span>
+            <span data-i18n="pt">Termine antes que suas vidas acabem.</span>
+            <span data-i18n="fr">Terminez-le avant de perdre toutes vos vies.</span>
+            <span data-i18n="de">Schließe es ab, bevor deine Leben aufgebraucht sind.</span>
           </li>
         </ul>
       </div>
@@ -1267,6 +1445,10 @@
             <span data-i18n="en">Aim &amp; Launch</span>
             <span data-i18n="ja">狙って発射</span>
             <span data-i18n="ko">조준 &amp; 발사</span>
+            <span data-i18n="es">Apuntar y Lanzar</span>
+            <span data-i18n="pt">Mirar e Lançar</span>
+            <span data-i18n="fr">Viser et Lancer</span>
+            <span data-i18n="de">Zielen & Starten</span>
           </h3>
         </div>
         <div class="rule-divider"></div>
@@ -1275,16 +1457,28 @@
             <span data-i18n="en">Drag to aim your paddle, then release to launch the ball.</span>
             <span data-i18n="ja">画面をドラッグしてパドルを動かし、指を離すとボールが発射されます。</span>
             <span data-i18n="ko">화면을 드래그해 패들을 움직인 뒤, 손을 떼면 공이 발사됩니다.</span>
+            <span data-i18n="es">Arrastra para apuntar la pala y suelta para lanzar la bola.</span>
+            <span data-i18n="pt">Arraste para mirar a raquete e solte para lançar a bola.</span>
+            <span data-i18n="fr">Faites glisser pour viser la raquette, puis relâchez pour lancer la balle.</span>
+            <span data-i18n="de">Ziehe, um dein Paddle auszurichten, und lass los, um den Ball zu starten.</span>
           </li>
           <li>
             <span data-i18n="en">Where it hits the paddle changes the bounce angle.</span>
             <span data-i18n="ja">パドルに当たる位置によって跳ね返る角度が変わります。</span>
             <span data-i18n="ko">패들에 맞는 위치에 따라 튕기는 각도가 달라집니다.</span>
+            <span data-i18n="es">El punto donde golpea la pala cambia el ángulo de rebote.</span>
+            <span data-i18n="pt">O ponto onde bate na raquete muda o ângulo de rebote.</span>
+            <span data-i18n="fr">L'endroit où elle touche la raquette change l'angle de rebond.</span>
+            <span data-i18n="de">Die Trefferstelle auf dem Paddle verändert den Abprallwinkel.</span>
           </li>
           <li>
             <span data-i18n="en">Center for a straighter shot, the edges for a sharper one.</span>
             <span data-i18n="ja">中央なら垂直に近く、端に当てるほど鋭い角度になります。</span>
             <span data-i18n="ko">중앙에 맞히면 수직에 가깝고, 끝에 맞힐수록 날카로운 각도가 됩니다.</span>
+            <span data-i18n="es">El centro da un ángulo más recto; los extremos, uno más cerrado.</span>
+            <span data-i18n="pt">O centro dá um ângulo mais reto; as bordas, um mais fechado.</span>
+            <span data-i18n="fr">Le centre donne un angle plus droit, les bords un angle plus prononcé.</span>
+            <span data-i18n="de">Die Mitte ergibt einen steileren Winkel, die Ränder einen schärferen.</span>
           </li>
         </ul>
       </div>
@@ -1296,6 +1490,10 @@
             <span data-i18n="en">Lives</span>
             <span data-i18n="ja">ライフ</span>
             <span data-i18n="ko">라이프</span>
+            <span data-i18n="es">Vidas</span>
+            <span data-i18n="pt">Vidas</span>
+            <span data-i18n="fr">Vies</span>
+            <span data-i18n="de">Leben</span>
           </h3>
         </div>
         <div class="rule-divider"></div>
@@ -1304,16 +1502,28 @@
             <span data-i18n="en">You start with 3 lives.</span>
             <span data-i18n="ja">ライフは3つでスタートします。</span>
             <span data-i18n="ko">라이프는 3개로 시작합니다.</span>
+            <span data-i18n="es">Empiezas con 3 vidas.</span>
+            <span data-i18n="pt">Você começa com 3 vidas.</span>
+            <span data-i18n="fr">Vous commencez avec 3 vies.</span>
+            <span data-i18n="de">Du startest mit 3 Leben.</span>
           </li>
           <li>
             <span data-i18n="en">Lose one each time the ball drops off the bottom.</span>
             <span data-i18n="ja">ボールを落とすたびに1つ減ります。</span>
             <span data-i18n="ko">공을 놓칠 때마다 하나씩 줄어듭니다.</span>
+            <span data-i18n="es">Pierdes una cada vez que la bola cae por abajo.</span>
+            <span data-i18n="pt">Você perde uma toda vez que a bola cai.</span>
+            <span data-i18n="fr">Vous en perdez une à chaque fois que la balle tombe en bas.</span>
+            <span data-i18n="de">Du verlierst eines, wenn der Ball unten herausfällt.</span>
           </li>
           <li>
             <span data-i18n="en">Run out of lives and it's game over.</span>
             <span data-i18n="ja">ライフが0になるとゲームオーバーです。</span>
             <span data-i18n="ko">라이프가 0이 되면 게임 오버입니다.</span>
+            <span data-i18n="es">Si te quedas sin vidas, es fin del juego.</span>
+            <span data-i18n="pt">Se as vidas acabarem, é fim de jogo.</span>
+            <span data-i18n="fr">Si vous n'avez plus de vies, c'est game over.</span>
+            <span data-i18n="de">Sind alle Leben aufgebraucht, ist das Spiel vorbei.</span>
           </li>
         </ul>
       </div>
@@ -1325,6 +1535,10 @@
             <span data-i18n="en">Combo</span>
             <span data-i18n="ja">コンボ</span>
             <span data-i18n="ko">콤보</span>
+            <span data-i18n="es">Combo</span>
+            <span data-i18n="pt">Combo</span>
+            <span data-i18n="fr">Combo</span>
+            <span data-i18n="de">Combo</span>
           </h3>
         </div>
         <div class="rule-divider"></div>
@@ -1332,6 +1546,10 @@
           <span data-i18n="en">Hit bricks back-to-back without touching the paddle for bonus combo points.</span>
           <span data-i18n="ja">パドルに当てずにブロックを連続で壊すと、コンボボーナススコアがもらえます。</span>
           <span data-i18n="ko">패들에 닿지 않고 벽돌을 연속으로 맞히면 콤보 보너스 점수를 받을 수 있어요.</span>
+          <span data-i18n="es">Golpea ladrillos seguidos sin tocar la pala para ganar puntos de combo extra.</span>
+          <span data-i18n="pt">Acerte blocos seguidos sem tocar na raquete para ganhar pontos de combo bônus.</span>
+          <span data-i18n="fr">Enchâînez les briques sans toucher la raquette pour gagner des points de combo bonus.</span>
+          <span data-i18n="de">Triff Steine hintereinander, ohne das Paddle zu berühren, für Combo-Bonuspunkte.</span>
         </p>
       </div>
 
@@ -1342,6 +1560,10 @@
             <span data-i18n="en">Star Rating</span>
             <span data-i18n="ja">星評価</span>
             <span data-i18n="ko">별 등급</span>
+            <span data-i18n="es">Calificación de Estrellas</span>
+            <span data-i18n="pt">Classificação por Estrelas</span>
+            <span data-i18n="fr">Notation en Étoiles</span>
+            <span data-i18n="de">Sternebewertung</span>
           </h3>
         </div>
         <div class="rule-divider"></div>
@@ -1350,11 +1572,19 @@
             <span data-i18n="en">Clear without losing a life for 3 stars.</span>
             <span data-i18n="ja">ライフを1つも失わずにクリアすれば★3つです。</span>
             <span data-i18n="ko">라이프를 하나도 잃지 않고 클리어하면 별 3개입니다.</span>
+            <span data-i18n="es">Supera el nivel sin perder ninguna vida para conseguir 3 estrellas.</span>
+            <span data-i18n="pt">Complete sem perder nenhuma vida para conseguir 3 estrelas.</span>
+            <span data-i18n="fr">Terminez sans perdre de vie pour obtenir 3 étoiles.</span>
+            <span data-i18n="de">Schließe ab, ohne ein Leben zu verlieren, für 3 Sterne.</span>
           </li>
           <li>
             <span data-i18n="en">Fewer hearts left means fewer stars.</span>
             <span data-i18n="ja">ライフが減るほど星の数も減ります。</span>
             <span data-i18n="ko">잃을수록 별이 줄어듭니다.</span>
+            <span data-i18n="es">Cuantos menos corazones te queden, menos estrellas obtendrás.</span>
+            <span data-i18n="pt">Quanto menos corações restarem, menos estrelas você ganha.</span>
+            <span data-i18n="fr">Moins il vous reste de cœurs, moins vous obtenez d'étoiles.</span>
+            <span data-i18n="de">Weniger übrige Herzen bedeuten weniger Sterne.</span>
           </li>
         </ul>
       </div>
@@ -1366,11 +1596,19 @@
       <span data-i18n="en">Modes &amp; Worlds</span>
       <span data-i18n="ja">モード＆ワールド</span>
       <span data-i18n="ko">모드 &amp; 월드</span>
+      <span data-i18n="es">Modos y Mundos</span>
+      <span data-i18n="pt">Modos e Mundos</span>
+      <span data-i18n="fr">Modes et Mondes</span>
+      <span data-i18n="de">Modi & Welten</span>
     </h2>
     <p class="overview-subhead">
       <span data-i18n="en">Modes</span>
       <span data-i18n="ja">モード</span>
       <span data-i18n="ko">모드</span>
+      <span data-i18n="es">Modos</span>
+      <span data-i18n="pt">Modos</span>
+      <span data-i18n="fr">Modes</span>
+      <span data-i18n="de">Modi</span>
     </p>
     <div class="modes-grid">
       <div class="mode-card" style="--mode-color:#7AD994;">
@@ -1380,6 +1618,10 @@
             <span data-i18n="en">Item Mode</span>
             <span data-i18n="ja">アイテムモード</span>
             <span data-i18n="ko">아이템 모드</span>
+            <span data-i18n="es">Modo Objetos</span>
+            <span data-i18n="pt">Modo Itens</span>
+            <span data-i18n="fr">Mode Objets</span>
+            <span data-i18n="de">Item-Modus</span>
           </h3>
         </div>
         <div class="mode-divider"></div>
@@ -1387,6 +1629,10 @@
           <span data-i18n="en">Bricks drop power-up items as you play — collect them to power through each stage.</span>
           <span data-i18n="ja">ブロックからアイテムが出現します。集めながらステージを攻略できます。</span>
           <span data-i18n="ko">벽돌에서 아이템이 등장해요. 모으면서 스테이지를 공략해 보세요.</span>
+          <span data-i18n="es">Los ladrillos sueltan objetos especiales mientras juegas: recógelos para superar cada nivel.</span>
+          <span data-i18n="pt">Os blocos soltam itens especiais enquanto você joga: colete-os para superar cada fase.</span>
+          <span data-i18n="fr">Les briques libèrent des objets bonus pendant que vous jouez : ramassez-les pour venir à bout de chaque niveau.</span>
+          <span data-i18n="de">Beim Spielen fallen Power-Up-Items aus Steinen — sammle sie, um dich durch jedes Level zu kämpfen.</span>
         </p>
       </div>
 
@@ -1397,6 +1643,10 @@
             <span data-i18n="en">Classic Mode</span>
             <span data-i18n="ja">クラシックモード</span>
             <span data-i18n="ko">클래식 모드</span>
+            <span data-i18n="es">Modo Clásico</span>
+            <span data-i18n="pt">Modo Clássico</span>
+            <span data-i18n="fr">Mode Classique</span>
+            <span data-i18n="de">Klassischer Modus</span>
           </h3>
         </div>
         <div class="mode-divider"></div>
@@ -1404,6 +1654,10 @@
           <span data-i18n="en">No items, just you, the paddle, and the ball — pure brick-breaking.</span>
           <span data-i18n="ja">アイテムなしのシンプルな対決です。純粋なブロック崩しを楽しめます。</span>
           <span data-i18n="ko">아이템 없이 순수하게 즐기는 클래식한 벽돌깨기입니다.</span>
+          <span data-i18n="es">Sin objetos: solo tú, la pala y la bola. Rompe ladrillos en su forma más pura.</span>
+          <span data-i18n="pt">Sem itens: só você, a raquete e a bola. Quebra-blocos em sua forma mais pura.</span>
+          <span data-i18n="fr">Sans objets : juste vous, la raquette et la balle. Le casse-briques dans sa forme la plus pure.</span>
+          <span data-i18n="de">Keine Items, nur du, das Paddle und der Ball — Breakout in Reinform.</span>
         </p>
       </div>
     </div>
@@ -1412,19 +1666,27 @@
       <span data-i18n="en">Worlds</span>
       <span data-i18n="ja">ワールド</span>
       <span data-i18n="ko">월드</span>
+      <span data-i18n="es">Mundos</span>
+      <span data-i18n="pt">Mundos</span>
+      <span data-i18n="fr">Mondes</span>
+      <span data-i18n="de">Welten</span>
     </p>
     <p class="worlds-label">
       <span data-i18n="en">5 worlds to explore, plus a rotating Daily world.</span>
       <span data-i18n="ja">5つのワールドに加えて、日替わりの「デイリー」ワールドも探検できます。</span>
       <span data-i18n="ko">5개의 월드와, 매일 바뀌는 데일리 월드까지 탐험할 수 있습니다.</span>
+      <span data-i18n="es">5 mundos para explorar, además de un mundo Diario rotativo.</span>
+      <span data-i18n="pt">5 mundos para explorar, além de um mundo Diário rotativo.</span>
+      <span data-i18n="fr">5 mondes à explorer, plus un monde Quotidien renouvelé.</span>
+      <span data-i18n="de">5 Welten zum Entdecken, plus eine wechselnde tägliche Welt.</span>
     </p>
     <div class="worlds-row">
-      <span class="world-chip">🌱 <span data-i18n="en">Beginning</span><span data-i18n="ja">始まり</span><span data-i18n="ko">시작</span></span>
-      <span class="world-chip">🌿 <span data-i18n="en">Nature</span><span data-i18n="ja">自然</span><span data-i18n="ko">자연</span></span>
-      <span class="world-chip">🌊 <span data-i18n="en">Sea</span><span data-i18n="ja">海</span><span data-i18n="ko">바다</span></span>
-      <span class="world-chip">🍰 <span data-i18n="en">Food</span><span data-i18n="ja">食べ物</span><span data-i18n="ko">음식</span></span>
-      <span class="world-chip">☁️ <span data-i18n="en">Sky</span><span data-i18n="ja">空</span><span data-i18n="ko">하늘</span></span>
-      <span class="world-chip">📅 <span data-i18n="en">Daily</span><span data-i18n="ja">デイリー</span><span data-i18n="ko">데일리</span></span>
+      <span class="world-chip">🌱 <span data-i18n="en">Beginning</span><span data-i18n="ja">始まり</span><span data-i18n="ko">시작</span><span data-i18n="es">Inicio</span><span data-i18n="pt">Início</span><span data-i18n="fr">Début</span><span data-i18n="de">Anfang</span></span>
+      <span class="world-chip">🌿 <span data-i18n="en">Nature</span><span data-i18n="ja">自然</span><span data-i18n="ko">자연</span><span data-i18n="es">Naturaleza</span><span data-i18n="pt">Natureza</span><span data-i18n="fr">Nature</span><span data-i18n="de">Natur</span></span>
+      <span class="world-chip">🌊 <span data-i18n="en">Sea</span><span data-i18n="ja">海</span><span data-i18n="ko">바다</span><span data-i18n="es">Mar</span><span data-i18n="pt">Mar</span><span data-i18n="fr">Mer</span><span data-i18n="de">Meer</span></span>
+      <span class="world-chip">🍰 <span data-i18n="en">Food</span><span data-i18n="ja">食べ物</span><span data-i18n="ko">음식</span><span data-i18n="es">Comida</span><span data-i18n="pt">Comida</span><span data-i18n="fr">Cuisine</span><span data-i18n="de">Essen</span></span>
+      <span class="world-chip">☁️ <span data-i18n="en">Sky</span><span data-i18n="ja">空</span><span data-i18n="ko">하늘</span><span data-i18n="es">Cielo</span><span data-i18n="pt">Céu</span><span data-i18n="fr">Ciel</span><span data-i18n="de">Himmel</span></span>
+      <span class="world-chip">📅 <span data-i18n="en">Daily</span><span data-i18n="ja">デイリー</span><span data-i18n="ko">데일리</span><span data-i18n="es">Diario</span><span data-i18n="pt">Diário</span><span data-i18n="fr">Quotidien</span><span data-i18n="de">Täglich</span></span>
     </div>
   </div>
 
@@ -1433,6 +1695,10 @@
       <span data-i18n="en">Bricks</span>
       <span data-i18n="ja">ブロックの種類</span>
       <span data-i18n="ko">벽돌 종류</span>
+      <span data-i18n="es">Ladrillos</span>
+      <span data-i18n="pt">Blocos</span>
+      <span data-i18n="fr">Briques</span>
+      <span data-i18n="de">Steine</span>
     </h2>
     <div class="bricks-grid">
       <div class="item-card">
@@ -1446,11 +1712,19 @@
           <span data-i18n="en">Basic</span>
           <span data-i18n="ja">通常</span>
           <span data-i18n="ko">기본</span>
+          <span data-i18n="es">Normal</span>
+          <span data-i18n="pt">Normal</span>
+          <span data-i18n="fr">Normale</span>
+          <span data-i18n="de">Normal</span>
         </h3>
         <p>
           <span data-i18n="en">Takes one or more hits to break — a ring and number show how many hits remain.</span>
           <span data-i18n="ja">ブロックによって耐久が異なり、壊れるまでの回数がリングと数字で表示されます。</span>
           <span data-i18n="ko">벽돌마다 내구도가 다르며, 링과 숫자로 남은 타격 횟수를 확인할 수 있습니다.</span>
+          <span data-i18n="es">Necesita uno o más golpes para romperse: un anillo y un número muestran los golpes restantes.</span>
+          <span data-i18n="pt">Precisa de um ou mais golpes para quebrar: um anel e um número mostram quantos golpes faltam.</span>
+          <span data-i18n="fr">Nécessite un ou plusieurs coups pour se briser — un anneau et un chiffre indiquent les coups restants.</span>
+          <span data-i18n="de">Braucht einen oder mehrere Treffer zum Zerbrechen — ein Ring und eine Zahl zeigen die verbleibenden Treffer.</span>
         </p>
       </div>
 
@@ -1465,11 +1739,19 @@
           <span data-i18n="en">Balloon</span>
           <span data-i18n="ja">風船</span>
           <span data-i18n="ko">풍선</span>
+          <span data-i18n="es">Globo</span>
+          <span data-i18n="pt">Balão</span>
+          <span data-i18n="fr">Ballon</span>
+          <span data-i18n="de">Ballon</span>
         </h3>
         <p>
           <span data-i18n="en">Inflates before popping — destroying it also damages nearby bricks.</span>
           <span data-i18n="ja">少し膨らんでから弾け、周囲のブロックにもダメージが広がります。</span>
           <span data-i18n="ko">부풀어 오르다 터지며, 주변 벽돌에도 피해를 줍니다.</span>
+          <span data-i18n="es">Se infla antes de estallar; al destruirlo también daña los ladrillos cercanos.</span>
+          <span data-i18n="pt">Infla antes de estourar — ao destruí-lo, também causa dano aos blocos próximos.</span>
+          <span data-i18n="fr">Gonfle avant d'éclater — sa destruction endommage aussi les briques voisines.</span>
+          <span data-i18n="de">Bläht sich auf, bevor er platzt — seine Zerstörung beschädigt auch benachbarte Steine.</span>
         </p>
       </div>
 
@@ -1483,11 +1765,19 @@
           <span data-i18n="en">Moving</span>
           <span data-i18n="ja">移動</span>
           <span data-i18n="ko">이동</span>
+          <span data-i18n="es">Móvil</span>
+          <span data-i18n="pt">Móvel</span>
+          <span data-i18n="fr">Mobile</span>
+          <span data-i18n="de">Beweglich</span>
         </h3>
         <p>
           <span data-i18n="en">Slides back and forth, so timing your hit takes a little more skill.</span>
           <span data-i18n="ja">左右に動き回るブロックです。当てるにはタイミングが必要です。</span>
           <span data-i18n="ko">좌우로 움직이는 벽돌이라 타이밍을 맞춰야 해요.</span>
+          <span data-i18n="es">Se desliza de un lado a otro, así que hace falta más precisión para acertarle.</span>
+          <span data-i18n="pt">Desliza de um lado para o outro, então acertá-lo exige um pouco mais de habilidade.</span>
+          <span data-i18n="fr">Glisse d'un côté à l'autre, ce qui demande un peu plus de précision pour le toucher.</span>
+          <span data-i18n="de">Bewegt sich hin und her — das Timing für einen Treffer erfordert etwas mehr Geschick.</span>
         </p>
       </div>
 
@@ -1501,11 +1791,19 @@
           <span data-i18n="en">Jelly</span>
           <span data-i18n="ja">ゼリー</span>
           <span data-i18n="ko">젤리</span>
+          <span data-i18n="es">Gelatina</span>
+          <span data-i18n="pt">Geleia</span>
+          <span data-i18n="fr">Gélatine</span>
+          <span data-i18n="de">Gelee</span>
         </h3>
         <p>
           <span data-i18n="en">Extra tough, but always drops an item when it finally breaks.</span>
           <span data-i18n="ja">耐久力が高いかわりに、壊すと必ずアイテムをドロップします。</span>
           <span data-i18n="ko">내구도가 높은 대신, 부수면 반드시 아이템을 드롭합니다.</span>
+          <span data-i18n="es">Extra resistente, pero siempre suelta un objeto cuando finalmente se rompe.</span>
+          <span data-i18n="pt">Extra resistente, mas sempre solta um item quando finalmente quebra.</span>
+          <span data-i18n="fr">Très résistante, mais elle libère toujours un objet quand elle finit par se briser.</span>
+          <span data-i18n="de">Extra widerstandsfähig, lässt aber beim endgültigen Zerbrechen immer ein Item fallen.</span>
         </p>
       </div>
     </div>
@@ -1516,6 +1814,10 @@
       <span data-i18n="en">Items</span>
       <span data-i18n="ja">アイテム</span>
       <span data-i18n="ko">아이템</span>
+      <span data-i18n="es">Objetos</span>
+      <span data-i18n="pt">Itens</span>
+      <span data-i18n="fr">Objets</span>
+      <span data-i18n="de">Items</span>
     </h2>
     <div class="items-grid">
       <div class="item-card">
@@ -1528,11 +1830,19 @@
           <span data-i18n="en">Multi Ball</span>
           <span data-i18n="ja">マルチボール</span>
           <span data-i18n="ko">멀티볼</span>
+          <span data-i18n="es">Multibola</span>
+          <span data-i18n="pt">Multibola</span>
+          <span data-i18n="fr">Multi-balle</span>
+          <span data-i18n="de">Multiball</span>
         </h3>
         <p>
           <span data-i18n="en">Splits your ball into more balls for double the brick-breaking power.</span>
           <span data-i18n="ja">ボールが増えて、一気にブロックを壊せるようになります。</span>
           <span data-i18n="ko">공이 늘어나 한 번에 더 많은 벽돌을 깰 수 있어요.</span>
+          <span data-i18n="es">Divide tu bola en más bolas para duplicar el poder de destrucción.</span>
+          <span data-i18n="pt">Divide sua bola em mais bolas, dobrando o poder de destruição.</span>
+          <span data-i18n="fr">Divise votre balle en plusieurs balles pour doubler la puissance de destruction.</span>
+          <span data-i18n="de">Teilt deinen Ball in mehrere Bälle für doppelte Zerstörungskraft.</span>
         </p>
       </div>
 
@@ -1546,11 +1856,19 @@
           <span data-i18n="en">Paddle+</span>
           <span data-i18n="ja">パドル+</span>
           <span data-i18n="ko">패들 확장</span>
+          <span data-i18n="es">Pala+</span>
+          <span data-i18n="pt">Raquete+</span>
+          <span data-i18n="fr">Raquette+</span>
+          <span data-i18n="de">Paddle+</span>
         </h3>
         <p>
           <span data-i18n="en">Temporarily widens your paddle so it's easier to keep the ball in play.</span>
           <span data-i18n="ja">一定時間パドルが大きくなり、ボールを受け止めやすくなります。</span>
           <span data-i18n="ko">일정 시간 패들이 커져서 공을 받기 쉬워집니다.</span>
+          <span data-i18n="es">Ensancha tu pala temporalmente para que sea más fácil mantener la bola en juego.</span>
+          <span data-i18n="pt">Alarga sua raquete temporariamente, facilitando manter a bola em jogo.</span>
+          <span data-i18n="fr">Élargit temporairement votre raquette pour garder plus facilement la balle en jeu.</span>
+          <span data-i18n="de">Verbreitert dein Paddle vorübergehend, damit du den Ball leichter im Spiel hältst.</span>
         </p>
       </div>
 
@@ -1564,11 +1882,19 @@
           <span data-i18n="en">Missile</span>
           <span data-i18n="ja">ミサイル</span>
           <span data-i18n="ko">미사일</span>
+          <span data-i18n="es">Misil</span>
+          <span data-i18n="pt">Míssil</span>
+          <span data-i18n="fr">Missile</span>
+          <span data-i18n="de">Rakete</span>
         </h3>
         <p>
           <span data-i18n="en">Auto-fires missiles that blast through bricks for you.</span>
           <span data-i18n="ja">自動でミサイルを発射し、ブロックを次々に破壊してくれます。</span>
           <span data-i18n="ko">자동으로 미사일을 발사해 벽돌을 연달아 부숴줍니다.</span>
+          <span data-i18n="es">Dispara misiles automáticamente que destruyen ladrillos por ti.</span>
+          <span data-i18n="pt">Dispara mísseis automaticamente que destroem blocos para você.</span>
+          <span data-i18n="fr">Tire automatiquement des missiles qui détruisent les briques pour vous.</span>
+          <span data-i18n="de">Feuert automatisch Raketen ab, die Steine für dich zerstören.</span>
         </p>
       </div>
 
@@ -1582,11 +1908,19 @@
           <span data-i18n="en">Shield</span>
           <span data-i18n="ja">シールド</span>
           <span data-i18n="ko">실드</span>
+          <span data-i18n="es">Escudo</span>
+          <span data-i18n="pt">Escudo</span>
+          <span data-i18n="fr">Bouclier</span>
+          <span data-i18n="de">Schild</span>
         </h3>
         <p>
           <span data-i18n="en">Catches your ball once so a lucky miss doesn't cost you a life.</span>
           <span data-i18n="ja">ボールを1回だけ受け止めてくれる、うっかりミスを防ぐアイテムです。</span>
           <span data-i18n="ko">공을 한 번 막아줘서 실수로 인한 라이프 손실을 막아줍니다.</span>
+          <span data-i18n="es">Atrapa tu bola una vez, así un descuido no te cuesta una vida.</span>
+          <span data-i18n="pt">Segura sua bola uma vez, então um deslize não custa uma vida.</span>
+          <span data-i18n="fr">Rattrape votre balle une fois, pour qu'un raté ne vous coûte pas une vie.</span>
+          <span data-i18n="de">Fängt deinen Ball einmal ab, damit ein Ausrutscher dich kein Leben kostet.</span>
         </p>
       </div>
 
@@ -1600,11 +1934,19 @@
           <span data-i18n="en">Bonus Life</span>
           <span data-i18n="ja">ボーナスライフ</span>
           <span data-i18n="ko">보너스 라이프</span>
+          <span data-i18n="es">Vida extra</span>
+          <span data-i18n="pt">Vida extra</span>
+          <span data-i18n="fr">Vie bonus</span>
+          <span data-i18n="de">Extraleben</span>
         </h3>
         <p>
           <span data-i18n="en">Adds an extra life so you can keep playing longer.</span>
           <span data-i18n="ja">ライフが1つ増えて、長くプレイできるようになります。</span>
           <span data-i18n="ko">라이프가 하나 늘어나 더 오래 플레이할 수 있어요.</span>
+          <span data-i18n="es">Añade una vida extra para que puedas seguir jugando más tiempo.</span>
+          <span data-i18n="pt">Adiciona uma vida extra para você continuar jogando por mais tempo.</span>
+          <span data-i18n="fr">Ajoute une vie supplémentaire pour continuer à jouer plus longtemps.</span>
+          <span data-i18n="de">Fügt ein Extraleben hinzu, damit du länger weiterspielen kannst.</span>
         </p>
       </div>
 
@@ -1618,11 +1960,19 @@
           <span data-i18n="en">Ball Size Up</span>
           <span data-i18n="ja">ボールサイズアップ</span>
           <span data-i18n="ko">볼 사이즈 업</span>
+          <span data-i18n="es">Bola más grande</span>
+          <span data-i18n="pt">Bola maior</span>
+          <span data-i18n="fr">Balle plus grande</span>
+          <span data-i18n="de">Größerer Ball</span>
         </h3>
         <p>
           <span data-i18n="en">Doubles your ball's size and lets it smash straight through bricks for a while.</span>
           <span data-i18n="ja">一定時間ボールが大きくなり、ブロックを貫通して壊せるようになります。</span>
           <span data-i18n="ko">일정 시간 공이 커지고 벽돌을 관통해서 부술 수 있어요.</span>
+          <span data-i18n="es">Duplica el tamaño de tu bola y le permite atravesar los ladrillos por un tiempo.</span>
+          <span data-i18n="pt">Dobra o tamanho da sua bola e permite que ela atravesse os blocos por um tempo.</span>
+          <span data-i18n="fr">Double la taille de votre balle et lui permet de traverser les briques pendant un moment.</span>
+          <span data-i18n="de">Verdoppelt die Größe deines Balls, sodass er eine Zeit lang direkt durch Steine kracht.</span>
         </p>
       </div>
     </div>
@@ -1633,6 +1983,10 @@
       <span data-i18n="en">Get the app</span>
       <span data-i18n="ja">アプリを入手</span>
       <span data-i18n="ko">앱 받기</span>
+      <span data-i18n="es">Descargar</span>
+      <span data-i18n="pt">Baixar</span>
+      <span data-i18n="fr">Télécharger</span>
+      <span data-i18n="de">Herunterladen</span>
     </h2>
     <div class="app-actions">
       <div class="action-item">
@@ -1640,12 +1994,20 @@
           <span data-i18n="en">Download or scan the QR code to get the app</span>
           <span data-i18n="ja">ダウンロード、またはQRコードをスキャンして入手</span>
           <span data-i18n="ko">다운로드하거나 QR코드를 스캔해서 받기</span>
+          <span data-i18n="es">Descarga o escanea el código QR para conseguir la app</span>
+          <span data-i18n="pt">Baixe ou escaneie o código QR para obter o app</span>
+          <span data-i18n="fr">Téléchargez ou scannez le code QR pour obtenir l'app</span>
+          <span data-i18n="de">Lade die App herunter oder scanne den QR-Code</span>
         </p>
         <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook" target="_blank" rel="noopener">
           <span class="btn btn-primary">
             <span data-i18n="en">▶ Google Play</span>
             <span data-i18n="ja">▶ Google Play</span>
             <span data-i18n="ko">▶ Google Play</span>
+            <span data-i18n="es">▶ Google Play</span>
+            <span data-i18n="pt">▶ Google Play</span>
+            <span data-i18n="fr">▶ Google Play</span>
+            <span data-i18n="de">▶ Google Play</span>
           </span>
           <img class="app-qr" src="src/qr-code.png" alt="QR code linking to Tap Tap Picture Book on Google Play" width="260" height="260">
         </a>
@@ -1655,12 +2017,20 @@
           <span data-i18n="en">How this app handles your data</span>
           <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
           <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
+          <span data-i18n="es">Cómo esta app maneja tus datos</span>
+          <span data-i18n="pt">Como este app trata seus dados</span>
+          <span data-i18n="fr">Comment cette application traite vos données</span>
+          <span data-i18n="de">Wie diese App mit deinen Daten umgeht</span>
         </p>
         <a class="action-box action-box-secondary" href="privacy-policy.html" target="_blank" rel="noopener">
           <span class="btn btn-secondary">
             <span data-i18n="en">Privacy Policy</span>
             <span data-i18n="ja">プライバシーポリシー</span>
             <span data-i18n="ko">개인정보 처리방침</span>
+            <span data-i18n="es">Política de Privacidad</span>
+            <span data-i18n="pt">Política de Privacidade</span>
+            <span data-i18n="fr">Politique de Confidentialité</span>
+            <span data-i18n="de">Datenschutzrichtlinie</span>
           </span>
         </a>
       </div>
@@ -1676,6 +2046,10 @@
     <span data-i18n="en">Questions? Contact:</span>
     <span data-i18n="ja">お問い合わせ:</span>
     <span data-i18n="ko">문의:</span>
+    <span data-i18n="es">¿Preguntas? Contacto:</span>
+    <span data-i18n="pt">Dúvidas? Contato:</span>
+    <span data-i18n="fr">Des questions ? Contact :</span>
+    <span data-i18n="de">Fragen? Kontakt:</span>
     &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
   </p>
   <p style="margin-top: 8px;">
@@ -1695,11 +2069,15 @@
 
 <script>
   (function () {
-    var supported = ['en', 'ja', 'ko'];
+    var supported = ['en', 'ja', 'ko', 'es', 'pt', 'fr', 'de'];
     var titles = {
       en: 'Tap Tap Picture Book – Crob Apps',
       ja: 'トントン絵本 - かわいいブロック崩し – Crob Apps',
-      ko: '톡톡 그림책 - 힐링 벽돌깨기 – Crob Apps'
+      ko: '톡톡 그림책 - 힐링 벽돌깨기 – Crob Apps',
+      es: 'Tap Tap Picture Book – Crob Apps',
+      pt: 'Tap Tap Picture Book – Crob Apps',
+      fr: 'Tap Tap Picture Book – Crob Apps',
+      de: 'Tap Tap Picture Book – Crob Apps'
     };
     var html = document.documentElement;
     var buttons = document.querySelectorAll('[data-set-lang]');
