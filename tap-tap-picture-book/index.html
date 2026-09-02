@@ -60,11 +60,19 @@
       max-width: min(90%, 700px);
     }
 
+    .header-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
     .lang-switch {
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 24px;
     }
 
     .lang-switch button {
@@ -83,6 +91,41 @@
     .lang-switch button:hover {
       background: #4a3826;
       color: #fff;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding-left: 24px;
+      border-left: 1px solid rgba(74, 56, 38, 0.3);
+    }
+
+    .header-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1.5px solid rgba(74, 56, 38, 0.4);
+      background: transparent;
+      color: #4a3826;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .header-links a:hover {
+      background: #4a3826;
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .header-links {
+        padding-left: 0;
+        border-left: none;
+      }
     }
 
     main {
@@ -954,10 +997,16 @@
       <span data-i18n="ko">그림책 일러스트로 만들어진 벽돌을 깨는 캐주얼 벽돌깨기 게임입니다.<br>공을 튕겨 알록달록한 그림책 벽돌을 깨고 스테이지를 클리어하세요!</span>
     </p>
   </div>
-  <div class="lang-switch">
-    <button type="button" data-set-lang="en">EN</button>
-    <button type="button" data-set-lang="ja">日本語</button>
-    <button type="button" data-set-lang="ko">한국어</button>
+  <div class="header-controls">
+    <div class="lang-switch">
+      <button type="button" data-set-lang="en">EN</button>
+      <button type="button" data-set-lang="ja">日本語</button>
+      <button type="button" data-set-lang="ko">한국어</button>
+    </div>
+    <div class="header-links">
+      <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
+      <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">𝕏 X</a>
+    </div>
   </div>
 </header>
 
@@ -1628,6 +1677,11 @@
     <span data-i18n="ja">お問い合わせ:</span>
     <span data-i18n="ko">문의:</span>
     &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
+  </p>
+  <p style="margin-top: 8px;">
+    <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">Google Play</a>
+    &nbsp;·&nbsp;
+    <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">X</a>
   </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>

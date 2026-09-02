@@ -46,11 +46,19 @@
       opacity: 0.9;
     }
 
+    .header-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
     .lang-switch {
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 24px;
     }
 
     .lang-switch button {
@@ -67,6 +75,41 @@
 
     .lang-switch button.active,
     .lang-switch button:hover {
+      background: #fff;
+      color: #2f7f99;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding-left: 24px;
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .header-links {
+        padding-left: 0;
+        border-left: none;
+      }
+    }
+
+    .header-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      background: transparent;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .header-links a:hover {
       background: #fff;
       color: #2f7f99;
     }
@@ -307,10 +350,16 @@
     <span data-i18n="ja">ひとつずつ、丁寧に作るアプリたち。</span>
     <span data-i18n="ko">하나씩, 정성껏 만드는 앱들.</span>
   </p>
-  <div class="lang-switch">
-    <button type="button" data-set-lang="en">EN</button>
-    <button type="button" data-set-lang="ja">日本語</button>
-    <button type="button" data-set-lang="ko">한국어</button>
+  <div class="header-controls">
+    <div class="lang-switch">
+      <button type="button" data-set-lang="en">EN</button>
+      <button type="button" data-set-lang="ja">日本語</button>
+      <button type="button" data-set-lang="ko">한국어</button>
+    </div>
+    <div class="header-links">
+      <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
+      <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">𝕏 X</a>
+    </div>
   </div>
 </header>
 
@@ -346,7 +395,7 @@
             <span data-i18n="ja">ダウンロード、またはQRコードをスキャンして入手</span>
             <span data-i18n="ko">다운로드하거나 QR코드를 스캔해서 받기</span>
           </p>
-          <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook">
+          <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook" target="_blank" rel="noopener">
             <span class="btn btn-primary">
               <span data-i18n="en">▶ Google Play</span>
               <span data-i18n="ja">▶ Google Play</span>
@@ -361,7 +410,7 @@
             <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
             <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
           </p>
-          <a class="action-box action-box-secondary" href="tap-tap-picture-book/privacy-policy.html">
+          <a class="action-box action-box-secondary" href="tap-tap-picture-book/privacy-policy.html" target="_blank" rel="noopener">
             <span class="btn btn-secondary">
               <span data-i18n="en">Privacy Policy</span>
               <span data-i18n="ja">プライバシーポリシー</span>
@@ -391,6 +440,11 @@
     <span data-i18n="ja">お問い合わせ:</span>
     <span data-i18n="ko">문의:</span>
     &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
+  </p>
+  <p style="margin-top: 8px;">
+    <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">Google Play</a>
+    &nbsp;·&nbsp;
+    <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">X</a>
   </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
