@@ -57,8 +57,13 @@
 
     .lang-switch {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
+    }
+
+    .lang-switch button {
+      flex: 0 0 auto;
     }
 
     .lang-switch button {
@@ -81,6 +86,7 @@
 
     .header-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
       padding-left: 24px;
@@ -330,13 +336,21 @@
     [data-i18n] { display: none; }
     html[data-lang="en"] [data-i18n="en"],
     html[data-lang="ja"] [data-i18n="ja"],
-    html[data-lang="ko"] [data-i18n="ko"] {
+    html[data-lang="ko"] [data-i18n="ko"],
+    html[data-lang="es"] [data-i18n="es"],
+    html[data-lang="pt"] [data-i18n="pt"],
+    html[data-lang="fr"] [data-i18n="fr"],
+    html[data-lang="de"] [data-i18n="de"] {
       display: block;
     }
 
     html[data-lang="en"] h2 span[data-i18n="en"],
     html[data-lang="ja"] h2 span[data-i18n="ja"],
-    html[data-lang="ko"] h2 span[data-i18n="ko"] {
+    html[data-lang="ko"] h2 span[data-i18n="ko"],
+    html[data-lang="es"] h2 span[data-i18n="es"],
+    html[data-lang="pt"] h2 span[data-i18n="pt"],
+    html[data-lang="fr"] h2 span[data-i18n="fr"],
+    html[data-lang="de"] h2 span[data-i18n="de"] {
       display: inline;
     }
   </style>
@@ -346,15 +360,23 @@
 <header>
   <h1><img src="icon.png" alt="" /> Crob Apps</h1>
   <p>
-    <span data-i18n="en">Small apps, built one at a time.</span>
-    <span data-i18n="ja">ひとつずつ、丁寧に作るアプリたち。</span>
-    <span data-i18n="ko">하나씩, 정성껏 만드는 앱들.</span>
+    <span data-i18n="en">Ideas, turned into apps — little by little.</span>
+    <span data-i18n="ja">思いついたものを、少しずつ形にするアプリたち。</span>
+    <span data-i18n="ko">떠오른 아이디어를, 조금씩 형태로 만드는 앱들.</span>
+    <span data-i18n="es">Ideas que voy convirtiendo en apps, poco a poco.</span>
+    <span data-i18n="pt">Ideias que vou transformando em apps, pouco a pouco.</span>
+    <span data-i18n="fr">Des idées que je transforme en applis, petit à petit.</span>
+    <span data-i18n="de">Ideen, die ich Schritt für Schritt zu Apps mache.</span>
   </p>
   <div class="header-controls">
     <div class="lang-switch">
       <button type="button" data-set-lang="en">EN</button>
       <button type="button" data-set-lang="ja">日本語</button>
       <button type="button" data-set-lang="ko">한국어</button>
+      <button type="button" data-set-lang="es">Español</button>
+      <button type="button" data-set-lang="pt">Português</button>
+      <button type="button" data-set-lang="fr">Français</button>
+      <button type="button" data-set-lang="de">Deutsch</button>
     </div>
     <div class="header-links">
       <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
@@ -369,6 +391,10 @@
     <span data-i18n="en">This page introduces the apps I develop. More apps will be added here as they are released.</span>
     <span data-i18n="ja">このページでは、私が開発しているアプリを紹介しています。今後リリースするアプリもここに追加していきます。</span>
     <span data-i18n="ko">이 페이지에서는 제가 개발하는 앱을 소개합니다. 앞으로 출시되는 앱도 이곳에 추가할 예정입니다.</span>
+    <span data-i18n="es">Esta página presenta las apps que desarrollo. Se irán añadiendo más a medida que se publiquen.</span>
+    <span data-i18n="pt">Esta página apresenta os apps que eu desenvolvo. Mais apps serão adicionados aqui conforme forem lançados.</span>
+    <span data-i18n="fr">Cette page présente les applications que je développe. D'autres seront ajoutées ici au fur et à mesure de leur sortie.</span>
+    <span data-i18n="de">Diese Seite stellt die Apps vor, die ich entwickle. Weitere Apps werden hier ergänzt, sobald sie erscheinen.</span>
   </p>
 
   <div class="app-grid">
@@ -380,6 +406,10 @@
           <span data-i18n="en">Tap Tap Picture Book</span>
           <span data-i18n="ja">トントン絵本 - かわいいブロック崩し</span>
           <span data-i18n="ko">톡톡 그림책 - 힐링 벽돌깨기</span>
+          <span data-i18n="es">Tap Tap Picture Book</span>
+          <span data-i18n="pt">Tap Tap Picture Book</span>
+          <span data-i18n="fr">Tap Tap Picture Book</span>
+          <span data-i18n="de">Tap Tap Picture Book</span>
           <span class="link-arrow">›</span>
         </h2>
       </a>
@@ -387,6 +417,10 @@
         <span data-i18n="en">Break bricks made of picture book art in this casual arcade adventure!</span>
         <span data-i18n="ja">絵本のイラストでできたブロックを壊す、かわいいアーケードゲーム！</span>
         <span data-i18n="ko">그림책 일러스트로 만든 벽돌을 깨는 힐링 아케이드 게임!</span>
+        <span data-i18n="es">¡Rompe ladrillos hechos de arte de libro ilustrado en este arcade relajante!</span>
+        <span data-i18n="pt">Quebre blocos feitos de arte de livro ilustrado neste arcade relaxante!</span>
+        <span data-i18n="fr">Cassez des briques faites d'art de livre illustré dans cet arcade relaxant !</span>
+        <span data-i18n="de">Zerstöre Steine aus Bilderbuch-Kunst in diesem entspannenden Arcade-Spiel!</span>
       </p>
       <div class="app-actions">
         <div class="action-item">
@@ -394,12 +428,20 @@
             <span data-i18n="en">Download or scan the QR code to get the app</span>
             <span data-i18n="ja">ダウンロード、またはQRコードをスキャンして入手</span>
             <span data-i18n="ko">다운로드하거나 QR코드를 스캔해서 받기</span>
+            <span data-i18n="es">Descarga o escanea el código QR para conseguir la app</span>
+            <span data-i18n="pt">Baixe ou escaneie o código QR para obter o app</span>
+            <span data-i18n="fr">Téléchargez ou scannez le code QR pour obtenir l'app</span>
+            <span data-i18n="de">Lade die App herunter oder scanne den QR-Code</span>
           </p>
           <a class="action-box action-box-play" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook" target="_blank" rel="noopener">
             <span class="btn btn-primary">
               <span data-i18n="en">▶ Google Play</span>
               <span data-i18n="ja">▶ Google Play</span>
               <span data-i18n="ko">▶ Google Play</span>
+              <span data-i18n="es">▶ Google Play</span>
+              <span data-i18n="pt">▶ Google Play</span>
+              <span data-i18n="fr">▶ Google Play</span>
+              <span data-i18n="de">▶ Google Play</span>
             </span>
             <img class="app-qr" src="tap-tap-picture-book/src/qr-code.png" alt="QR code linking to Tap Tap Picture Book on Google Play" width="300" height="300">
           </a>
@@ -409,12 +451,20 @@
             <span data-i18n="en">How this app handles your data</span>
             <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
             <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
+            <span data-i18n="es">Cómo esta app maneja tus datos</span>
+            <span data-i18n="pt">Como este app trata seus dados</span>
+            <span data-i18n="fr">Comment cette application traite vos données</span>
+            <span data-i18n="de">Wie diese App mit deinen Daten umgeht</span>
           </p>
           <a class="action-box action-box-secondary" href="tap-tap-picture-book/privacy-policy.html" target="_blank" rel="noopener">
             <span class="btn btn-secondary">
               <span data-i18n="en">Privacy Policy</span>
               <span data-i18n="ja">プライバシーポリシー</span>
               <span data-i18n="ko">개인정보 처리방침</span>
+              <span data-i18n="es">Política de Privacidad</span>
+              <span data-i18n="pt">Política de Privacidade</span>
+              <span data-i18n="fr">Politique de Confidentialité</span>
+              <span data-i18n="de">Datenschutzrichtlinie</span>
             </span>
           </a>
         </div>
@@ -427,6 +477,10 @@
         <span data-i18n="en">More apps coming soon</span>
         <span data-i18n="ja">次のアプリを準備中です</span>
         <span data-i18n="ko">다음 앱을 준비 중입니다</span>
+        <span data-i18n="es">Próximamente más apps</span>
+        <span data-i18n="pt">Mais apps em breve</span>
+        <span data-i18n="fr">D'autres applis à venir</span>
+        <span data-i18n="de">Weitere Apps folgen bald</span>
       </p>
     </div>
 
@@ -439,6 +493,10 @@
     <span data-i18n="en">Questions? Contact:</span>
     <span data-i18n="ja">お問い合わせ:</span>
     <span data-i18n="ko">문의:</span>
+    <span data-i18n="es">¿Preguntas? Contacto:</span>
+    <span data-i18n="pt">Dúvidas? Contato:</span>
+    <span data-i18n="fr">Des questions ? Contact :</span>
+    <span data-i18n="de">Fragen? Kontakt:</span>
     &nbsp;<a href="mailto:crobmaster@gmail.com">crobmaster@gmail.com</a>
   </p>
   <p style="margin-top: 8px;">
@@ -451,7 +509,7 @@
 
 <script>
   (function () {
-    var supported = ['en', 'ja', 'ko'];
+    var supported = ['en', 'ja', 'ko', 'es', 'pt', 'fr', 'de'];
     var html = document.documentElement;
     var buttons = document.querySelectorAll('[data-set-lang]');
 
