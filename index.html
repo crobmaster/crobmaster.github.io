@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crob Apps</title>
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
+
+  <meta name="description" content="Ideas, turned into apps — little by little. Crob Apps introduces the mobile apps I develop, including Tap Tap Picture Book." />
+  <link rel="canonical" href="https://crobmaster.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Crob Apps" />
+  <meta property="og:url" content="https://crobmaster.github.io/" />
+  <meta property="og:title" content="Crob Apps" />
+  <meta property="og:description" content="Ideas, turned into apps — little by little. Crob Apps introduces the mobile apps I develop, including Tap Tap Picture Book." />
+  <meta property="og:image" content="https://crobmaster.github.io/icon.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="Crob Apps logo" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Crob Apps" />
+  <meta name="twitter:description" content="Ideas, turned into apps — little by little. Crob Apps introduces the mobile apps I develop, including Tap Tap Picture Book." />
+  <meta name="twitter:image" content="https://crobmaster.github.io/icon.png" />
+  <meta name="twitter:image:alt" content="Crob Apps logo" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -380,7 +400,6 @@
     </div>
     <div class="header-links">
       <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
-      <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">𝕏 X</a>
     </div>
   </div>
 </header>
@@ -501,8 +520,6 @@
   </p>
   <p style="margin-top: 8px;">
     <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">Google Play</a>
-    &nbsp;·&nbsp;
-    <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">X</a>
   </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
@@ -514,7 +531,7 @@
     var buttons = document.querySelectorAll('[data-set-lang]');
 
     function setLang(lang) {
-      if (supported.indexOf(lang) === -1) lang = 'ja';
+      if (supported.indexOf(lang) === -1) lang = 'en';
       html.setAttribute('data-lang', lang);
       html.setAttribute('lang', lang);
       buttons.forEach(function (btn) {
@@ -531,8 +548,8 @@
 
     var saved = null;
     try { saved = localStorage.getItem('crobmaster-lang'); } catch (e) {}
-    var browserLang = (navigator.language || 'ja').slice(0, 2);
-    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+    var browserLang = (navigator.language || 'en').slice(0, 2);
+    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'en'));
   })();
 </script>
 

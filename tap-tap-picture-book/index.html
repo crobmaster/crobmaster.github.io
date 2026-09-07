@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>トントン絵本 - かわいいブロック崩し – Crob Apps</title>
+  <title>Tap Tap Picture Book – Crob Apps</title>
   <link rel="icon" type="image/png" href="src/icon.png" />
   <link rel="apple-touch-icon" href="src/icon.png" />
+
+  <meta name="description" content="Break bricks made of picture book art in this casual arcade adventure! Over 200 illustrated stages, collectible items, and simple one-tap controls." />
+  <link rel="canonical" href="https://crobmaster.github.io/tap-tap-picture-book/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Crob Apps" />
+  <meta property="og:url" content="https://crobmaster.github.io/tap-tap-picture-book/" />
+  <meta property="og:title" content="Tap Tap Picture Book" />
+  <meta property="og:description" content="Break bricks made of picture book art in this casual arcade adventure! Over 200 illustrated stages, collectible items, and simple one-tap controls." />
+  <meta property="og:image" content="https://crobmaster.github.io/tap-tap-picture-book/src/icon.png" />
+  <meta property="og:image:width" content="896" />
+  <meta property="og:image:height" content="896" />
+  <meta property="og:image:alt" content="Tap Tap Picture Book app icon" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tap Tap Picture Book" />
+  <meta name="twitter:description" content="Break bricks made of picture book art in this casual arcade adventure! Over 200 illustrated stages, collectible items, and simple one-tap controls." />
+  <meta name="twitter:image" content="https://crobmaster.github.io/tap-tap-picture-book/src/icon.png" />
+  <meta name="twitter:image:alt" content="Tap Tap Picture Book app icon" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1039,7 +1059,6 @@
     </div>
     <div class="header-links">
       <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
-      <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">𝕏 X</a>
     </div>
   </div>
 </header>
@@ -2054,8 +2073,6 @@
   </p>
   <p style="margin-top: 8px;">
     <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">Google Play</a>
-    &nbsp;·&nbsp;
-    <a href="https://x.com/crob_cgpg_study" target="_blank" rel="noopener">X</a>
   </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
@@ -2084,7 +2101,7 @@
     var screenshots = document.querySelectorAll('.screenshot-row img[data-shot]');
 
     function setLang(lang) {
-      if (supported.indexOf(lang) === -1) lang = 'ja';
+      if (supported.indexOf(lang) === -1) lang = 'en';
       html.setAttribute('data-lang', lang);
       html.setAttribute('lang', lang);
       document.title = titles[lang];
@@ -2105,8 +2122,8 @@
 
     var saved = null;
     try { saved = localStorage.getItem('crobmaster-lang'); } catch (e) {}
-    var browserLang = (navigator.language || 'ja').slice(0, 2);
-    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+    var browserLang = (navigator.language || 'en').slice(0, 2);
+    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'en'));
   })();
 
   (function () {
