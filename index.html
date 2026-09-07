@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -531,7 +531,7 @@
     var buttons = document.querySelectorAll('[data-set-lang]');
 
     function setLang(lang) {
-      if (supported.indexOf(lang) === -1) lang = 'ja';
+      if (supported.indexOf(lang) === -1) lang = 'en';
       html.setAttribute('data-lang', lang);
       html.setAttribute('lang', lang);
       buttons.forEach(function (btn) {
@@ -548,8 +548,8 @@
 
     var saved = null;
     try { saved = localStorage.getItem('crobmaster-lang'); } catch (e) {}
-    var browserLang = (navigator.language || 'ja').slice(0, 2);
-    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'ja'));
+    var browserLang = (navigator.language || 'en').slice(0, 2);
+    setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'en'));
   })();
 </script>
 
