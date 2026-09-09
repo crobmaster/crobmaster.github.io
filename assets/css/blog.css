@@ -226,6 +226,24 @@ article.post h1.post-title {
 
 .post-content p { margin-bottom: 16px; }
 
+.post-content figure {
+  margin: 24px 0;
+}
+
+.post-content img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid #dcecf0;
+}
+
+.post-content figcaption {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #8a8a8a;
+  text-align: center;
+}
+
 .post-content ul,
 .post-content ol {
   margin: 0 0 16px 1.4em;
