@@ -1,0 +1,22 @@
+---
+layout: default
+title: Categories
+description: Browse Crob Apps Dev Blog posts by category.
+permalink: /blog/categories/
+---
+<p class="blog-intro">Browse posts by category.</p>
+
+{% assign category_pairs = site.categories | sort %}
+{% for category in category_pairs %}
+<section class="category-group">
+  <h2 class="category-heading" id="{{ category[0] | slugify }}">{{ category[0] }}</h2>
+  <ul class="post-list">
+    {% for post in category[1] %}
+    <li>
+      <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
+      <a class="post-title-link" href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

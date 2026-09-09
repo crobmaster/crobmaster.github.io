@@ -1,8 +1,8 @@
 ---
 title: "Debugging a Silent Google Play Games Services Achievement Import Failure"
 date: 2026-09-09
-categories: [android, godot]
-tags: [godot, android, google-play-games, debugging]
+categories: [android]
+tags: [android, google-play-games, debugging]
 description: "A GPGS achievement ZIP passed validation but silently failed to save — the cause turned out to be an undocumented bulkCreate validation rule."
 image: /assets/images/posts/gpgs-achievement-import-failure/achievements-list.png
 ---

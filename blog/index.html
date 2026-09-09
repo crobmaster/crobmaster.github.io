@@ -14,6 +14,11 @@ permalink: /blog/
   <li>
     <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
     <a class="post-title-link" href="{{ post.url }}">{{ post.title }}</a>
+    {% if post.categories.size > 0 %}
+      {% for category in post.categories %}
+      <a class="category-badge" href="/blog/categories/#{{ category | slugify }}">{{ category }}</a>
+      {% endfor %}
+    {% endif %}
     <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 32 }}</p>
   </li>
   {% else %}
