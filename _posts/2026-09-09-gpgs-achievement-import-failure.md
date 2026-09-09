@@ -3,6 +3,8 @@ title: "Debugging a Silent Google Play Games Services Achievement Import Failure
 date: 2026-09-09
 categories: [android, godot]
 tags: [godot, android, google-play-games, debugging]
+description: "A GPGS achievement ZIP passed validation but silently failed to save — the cause turned out to be an undocumented bulkCreate validation rule."
+image: /assets/images/posts/gpgs-achievement-import-failure/achievements-list.png
 ---
 
 While adding Google Play Games Services (GPGS) achievements to *Tap Tap Picture Book* (my Godot game), I prepared a bulk-import ZIP for Play Console's "Import achievements" feature — 110 achievements across 7 languages, following the [official CSV format](https://developer.android.com/games/pgs/integrate-achievements) (`AchievementsMetadata.csv`, `AchievementsLocalizations.csv`, `AchievementsIconsMappings.csv`, plus icon assets). What followed was a two-part debugging saga: first a locale-code mixup, then a much stranger silent save failure that took a full binary-search investigation to crack.
