@@ -1,7 +1,10 @@
 ---
 title: "CJK Font Fallback in Godot 4: One Theme, Three Scripts"
 date: 2026-09-09
+categories: [godot]
 tags: [godot, i18n, fonts]
+description: "How Tap Tap Picture Book renders Latin, Japanese, and Korean from one Godot Theme, using FontVariation fallbacks and a font-level baseline fix."
+image: /icon.png
 ---
 
 *Tap Tap Picture Book* ships in seven languages, three of which — English, Japanese, and Korean — need real script coverage rather than a placeholder tofu box. Godot 4 makes this workable with a single global `Theme`, but getting there took a few non-obvious steps: a base font with a glyph hole, a fallback chain, a baseline mismatch, and a font-size gotcha in the theme system itself. This is a walkthrough of how the UI font pipeline in `game_state.gd` ended up shaped the way it did.

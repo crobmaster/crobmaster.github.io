@@ -2,15 +2,23 @@
 layout: default
 title: Blog
 description: Development notes from Crob Apps — Godot, mobile game dev, and the occasional detour, written up as they happen.
+image: /icon.png
 permalink: /blog/
 ---
 <p class="blog-intro">Development notes from Crob Apps — Godot, mobile game dev, and the occasional detour, written up as they happen.</p>
+
+{% include apps-preview.html %}
 
 <ul class="post-list">
   {% for post in site.posts %}
   <li>
     <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
     <a class="post-title-link" href="{{ post.url }}">{{ post.title }}</a>
+    {% if post.categories.size > 0 %}
+      {% for category in post.categories %}
+      <a class="category-badge" href="/blog/categories/#{{ category | slugify }}">{{ category }}</a>
+      {% endfor %}
+    {% endif %}
     <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 32 }}</p>
   </li>
   {% else %}

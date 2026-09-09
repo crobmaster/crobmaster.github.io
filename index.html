@@ -31,6 +31,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; }
+
+    #blog, #apps { scroll-margin-top: 24px; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                    "Helvetica Neue", Arial, sans-serif;
@@ -140,6 +144,63 @@
     .header-links a:hover {
       background: #fff;
       color: #2f7f99;
+    }
+
+    .page-nav-top {
+      overflow-x: auto;
+      background: #fff;
+      border-bottom: 1.5px solid #2f7f99;
+    }
+
+    .page-nav-top-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .page-nav-top a {
+      flex: 1;
+      text-align: center;
+      white-space: nowrap;
+      padding: 14px 22px;
+      border-left: 1px solid #dcecf0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2f7f99;
+      text-decoration: none;
+    }
+
+    .page-nav-top a:last-child {
+      border-right: 1px solid #dcecf0;
+    }
+
+    .page-nav-top a:hover {
+      background: #f2f9fb;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: #2f7f99;
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 500;
+      transition: opacity 0.15s;
+    }
+
+    .back-to-top:hover {
+      opacity: 0.85;
     }
 
     main {
@@ -476,9 +537,32 @@
   </div>
 </header>
 
+<nav class="page-nav-top">
+  <div class="page-nav-top-inner">
+    <a href="#blog">
+      <span data-i18n="en">Dev Blog</span>
+      <span data-i18n="ja">開発ブログ</span>
+      <span data-i18n="ko">개발 블로그</span>
+      <span data-i18n="es">Blog de desarrollo</span>
+      <span data-i18n="pt">Blog de desenvolvimento</span>
+      <span data-i18n="fr">Blog de développement</span>
+      <span data-i18n="de">Entwickler-Blog</span>
+    </a>
+    <a href="#apps">
+      <span data-i18n="en">Apps</span>
+      <span data-i18n="ja">アプリ</span>
+      <span data-i18n="ko">앱</span>
+      <span data-i18n="es">Apps</span>
+      <span data-i18n="pt">Apps</span>
+      <span data-i18n="fr">Applis</span>
+      <span data-i18n="de">Apps</span>
+    </a>
+  </div>
+</nav>
+
 <main>
 
-  <section class="section blog-section">
+  <section class="section blog-section" id="blog">
     <h2 class="section-title">
       <span data-i18n="en">Dev Blog</span>
       <span data-i18n="ja">開発ブログ</span>
@@ -522,7 +606,7 @@
     </p>
   </section>
 
-  <section class="section apps-section">
+  <section class="section apps-section" id="apps">
   <h2 class="section-title">
     <span data-i18n="en">Apps</span>
     <span data-i18n="ja">アプリ</span>
@@ -652,6 +736,8 @@
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
 
+<button class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
+
 <script>
   (function () {
     var supported = ['en', 'ja', 'ko', 'es', 'pt', 'fr', 'de'];
@@ -679,6 +765,10 @@
     var browserLang = (navigator.language || 'en').slice(0, 2);
     setLang(saved || (supported.indexOf(browserLang) !== -1 ? browserLang : 'en'));
   })();
+
+  document.querySelector('.back-to-top').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 </body>

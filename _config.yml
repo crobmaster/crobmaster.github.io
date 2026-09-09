@@ -10,6 +10,11 @@ author:
   name: Crobmaster
   email: crobmaster@gmail.com
 
+logo: /icon.png
+
+twitter:
+  card: summary_large_image
+
 permalink: /blog/:title/
 
 markdown: kramdown
