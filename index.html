@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,6 +344,76 @@
       font-size: 0.9rem;
     }
 
+    .section {
+      margin-bottom: 64px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 28px;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .blog-section-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 8px 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .blog-preview-list {
+      list-style: none;
+    }
+
+    .blog-preview-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .blog-preview-list li:last-child {
+      border-bottom: none;
+    }
+
+    .blog-preview-date {
+      display: block;
+      font-size: 0.78rem;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .blog-preview-list a {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+
+    .blog-preview-list a:hover {
+      color: #2f7f99;
+      text-decoration: underline;
+    }
+
+    .section-more {
+      text-align: center;
+      margin-top: 24px;
+    }
+
     footer {
       text-align: center;
       padding: 32px 24px;
@@ -406,6 +478,60 @@
 
 <main>
 
+  <section class="section blog-section">
+    <h2 class="section-title">
+      <span data-i18n="en">Dev Blog</span>
+      <span data-i18n="ja">開発ブログ</span>
+      <span data-i18n="ko">개발 블로그</span>
+      <span data-i18n="es">Blog de desarrollo</span>
+      <span data-i18n="pt">Blog de desenvolvimento</span>
+      <span data-i18n="fr">Blog de développement</span>
+      <span data-i18n="de">Entwickler-Blog</span>
+    </h2>
+    <p class="section-desc">
+      <span data-i18n="en">Notes on how these apps get built — Godot, mobile dev, and the occasional detour.</span>
+      <span data-i18n="ja">アプリ開発の裏側を綴った開発ノート — Godot、モバイル開発、時々脱線も。</span>
+      <span data-i18n="ko">앱을 만드는 과정을 담은 개발 노트 — Godot, 모바일 개발, 가끔 딴길로 새는 이야기까지.</span>
+      <span data-i18n="es">Notas sobre cómo se construyen estas apps — Godot, desarrollo móvil y alguna que otra desviación.</span>
+      <span data-i18n="pt">Notas sobre como esses apps são construídos — Godot, desenvolvimento mobile e alguns desvios ocasionais.</span>
+      <span data-i18n="fr">Des notes sur la façon dont ces applis sont conçues — Godot, développement mobile et quelques détours.</span>
+      <span data-i18n="de">Notizen darüber, wie diese Apps entstehen — Godot, mobile Entwicklung und der ein oder andere Umweg.</span>
+    </p>
+    <div class="blog-section-inner">
+      <ul class="blog-preview-list">
+        {% for post in site.posts limit:3 %}
+        <li>
+          <span class="blog-preview-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+        {% else %}
+        <li>Coming soon.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="section-more">
+      <a class="btn btn-secondary" href="/blog/">
+        <span data-i18n="en">View all posts →</span>
+        <span data-i18n="ja">すべての記事を見る →</span>
+        <span data-i18n="ko">모든 글 보기 →</span>
+        <span data-i18n="es">Ver todas las entradas →</span>
+        <span data-i18n="pt">Ver todas as postagens →</span>
+        <span data-i18n="fr">Voir tous les articles →</span>
+        <span data-i18n="de">Alle Beiträge ansehen →</span>
+      </a>
+    </p>
+  </section>
+
+  <section class="section apps-section">
+  <h2 class="section-title">
+    <span data-i18n="en">Apps</span>
+    <span data-i18n="ja">アプリ</span>
+    <span data-i18n="ko">앱</span>
+    <span data-i18n="es">Apps</span>
+    <span data-i18n="pt">Apps</span>
+    <span data-i18n="fr">Applis</span>
+    <span data-i18n="de">Apps</span>
+  </h2>
   <p class="intro">
     <span data-i18n="en">This page introduces the apps I develop. More apps will be added here as they are released.</span>
     <span data-i18n="ja">このページでは、私が開発しているアプリを紹介しています。今後リリースするアプリもここに追加していきます。</span>
@@ -504,6 +630,8 @@
     </div>
 
   </div>
+
+  </section>
 
 </main>
 
