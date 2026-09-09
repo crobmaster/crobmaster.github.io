@@ -1,6 +1,7 @@
 ---
 title: "CJK Font Fallback in Godot 4: One Theme, Three Scripts"
 date: 2026-09-09
+categories: [godot]
 tags: [godot, i18n, fonts]
 ---
 
