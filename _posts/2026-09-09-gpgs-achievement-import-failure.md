@@ -19,7 +19,7 @@ My first instinct was to check Google's [general supported languages list](https
 
 Same error, unchanged.
 
-**The actual fix**: the error message's "supported by the game" doesn't refer to Google's general language list at all — it refers to the specific set of languages *this project* has registered under **Play Console → Play Games Services → Configuration → Edit properties → Manage translations**. Whatever locale codes are configured there (checked by literally opening that screen) are the only ones the CSV importer will accept, regardless of what any general documentation says. My original codes (`ko-KR`, `ja-JP`, `de-DE`, plus `es-419`, `pt-BR`, `fr-FR`) turned out to be exactly right once I matched them against that screen — my "fix" had actually broken things further.
+**The actual fix**: the error message's "supported by the game" doesn't refer to Google's general language list at all — it refers to the specific set of languages *this project* has registered under **Play Console → Play Games Services → Configuration → Edit properties → Manage translations**. Whatever locale codes are configured there (checked by literally opening that screen) are the only ones the CSV importer will accept, regardless of what any general documentation says. My original codes (`ko-KR`, `ja-JP`, `de-DE`, plus `es-419`, `pt-BR`, `fr-FR` — these are just the languages my project happens to register; yours will depend on your own configuration) turned out to be exactly right once I matched them against that screen — my "fix" had actually broken things further.
 
 **Lesson**: when an error says "supported by X," check X's actual live configuration before consulting general documentation. Generic references can be true in general and still not apply to your specific setup.
 
@@ -28,7 +28,7 @@ Same error, unchanged.
 With the locale issue fixed, uploading the ZIP now showed a green checkmark — "4 files imported successfully."
 
 <figure>
-  <img src="/assets/images/posts/gpgs-achievement-import-failure/import-success.png" alt="Play Console import screen showing gpgs_achievements_import.zip with a green checkmark and '4 files imported successfully'." />
+  <img src="/assets/images/posts/gpgs-achievement-import-failure/import-success.png" alt="Play Console import screen showing the uploaded ZIP with a green checkmark and '4 files imported successfully'." />
   <figcaption>The Play Console UI is in Japanese here (my account's console language) — the screenshots below are too, but the text isn't essential to follow along.</figcaption>
 </figure>
 
@@ -69,14 +69,14 @@ I approached this as a binary search, changing exactly one variable per test:
    </figure>
 
    Field `1: 3` is the gRPC status code for `INVALID_ARGUMENT`. Field `2` is a human string — but a completely generic one. Still no field-level detail.
-5. **Strip down to the essentials**: Both `AchievementsLocalizations.csv` and `AchievementsIconsMappings.csv` are optional per spec. I built a ZIP with *only* `AchievementsMetadata.csv`, one achievement, no icon at all:
+5. **Strip down to the essentials**: Both `AchievementsLocalizations.csv` and `AchievementsIconsMappings.csv` are optional per spec. I built a ZIP with *only* `AchievementsMetadata.csv`, one achievement, no icon at all (the row below is an example test row):
 
    ```
    First Step,Clear 1 stage,True,1,Revealed,5,10
    ```
 
    Still failed, identically. This ruled out localization and icon files entirely — the bug had to be in `AchievementsMetadata.csv` itself, or somewhere outside the file altogether.
-6. **Sanity check: can this project create achievements at all?** I tried creating a single achievement manually through the Play Console UI (no CSV involved). The save button threw a generic, unrelated-looking error toast (`予期しないエラーが発生しました... (7263940F)`) — but refreshing the list showed the achievement had actually been created. This confirmed the project itself wasn't blocked; the problem was specific to the bulk-import (`bulkCreate`) code path.
+6. **Sanity check: can this project create achievements at all?** I tried creating a single achievement manually through the Play Console UI (no CSV involved). The save button threw a generic, unrelated-looking "An unexpected error occurred" toast — but refreshing the list showed the achievement had actually been created. This confirmed the project itself wasn't blocked; the problem was specific to the bulk-import (`bulkCreate`) code path.
 7. **The actual culprit**: Comparing my one remaining test row against what a "normal" quick-created achievement probably looks like, I suspected the combination of `Incremental value = True` with `Steps Needed = 1`. I tested:
    - `Incremental=False` (non-incremental), same row otherwise → succeeded.
    - `Incremental=True`, `Steps Needed=50` (not 1) → succeeded.
