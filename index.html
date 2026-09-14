@@ -422,6 +422,16 @@
       margin-bottom: 12px;
     }
 
+    .section-title-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .section-title-link:hover {
+      color: #2f7f99;
+      text-decoration: underline;
+    }
+
     .section-desc {
       text-align: center;
       max-width: 620px;
@@ -565,13 +575,15 @@
 
   <section class="section blog-section" id="blog">
     <h2 class="section-title">
-      <span data-i18n="en">Dev Blog</span>
-      <span data-i18n="ja">開発ブログ</span>
-      <span data-i18n="ko">개발 블로그</span>
-      <span data-i18n="es">Blog de desarrollo</span>
-      <span data-i18n="pt">Blog de desenvolvimento</span>
-      <span data-i18n="fr">Blog de développement</span>
-      <span data-i18n="de">Entwickler-Blog</span>
+      <a class="section-title-link" href="/blog/">
+        <span data-i18n="en">Dev Blog</span>
+        <span data-i18n="ja">開発ブログ</span>
+        <span data-i18n="ko">개발 블로그</span>
+        <span data-i18n="es">Blog de desarrollo</span>
+        <span data-i18n="pt">Blog de desenvolvimento</span>
+        <span data-i18n="fr">Blog de développement</span>
+        <span data-i18n="de">Entwickler-Blog</span>
+      </a>
     </h2>
     <p class="section-desc">
       <span data-i18n="en">Notes on how these apps get built — Godot, mobile dev, and the occasional detour.</span>
