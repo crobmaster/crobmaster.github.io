@@ -82,6 +82,13 @@ main {
   padding: 48px 24px 80px;
 }
 
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
 .blog-intro {
   color: #555;
   font-size: 0.95rem;
