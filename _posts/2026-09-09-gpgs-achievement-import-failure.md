@@ -7,7 +7,15 @@ description: "A GPGS achievement ZIP passed validation but silently failed to sa
 image: /assets/images/posts/gpgs-achievement-import-failure/achievements-list.png
 ---
 
-While adding Google Play Games Services (GPGS) achievements to *Tap Tap Picture Book* (my Godot game), I prepared a bulk-import ZIP for Play Console's "Import achievements" feature — 110 achievements across 7 languages, following the [official CSV format](https://developer.android.com/games/pgs/integrate-achievements) (`AchievementsMetadata.csv`, `AchievementsLocalizations.csv`, `AchievementsIconsMappings.csv`, plus icon assets). What followed was a two-part debugging saga: first a locale-code mixup, then a much stranger silent save failure that took a full binary-search investigation to crack.
+While adding Google Play Games Services (GPGS) achievements to *Tap Tap Picture Book* (my Godot game), I prepared a bulk-import ZIP for Play Console's "Import achievements" feature:
+
+- **Size:** 110 achievements across 7 languages.
+- **Format:** the [official CSV format](https://developer.android.com/games/pgs/integrate-achievements) — `AchievementsMetadata.csv`, `AchievementsLocalizations.csv`, `AchievementsIconsMappings.csv`, plus icon assets.
+
+What followed was a two-part debugging saga:
+
+1. a locale-code mixup, then
+2. a much stranger silent save failure that took a full binary-search investigation to crack.
 
 ## Part 1: "Unsupported language/region"
 
@@ -19,7 +27,12 @@ My first instinct was to check Google's [general supported languages list](https
 
 Same error, unchanged.
 
-**The actual fix**: the error message's "supported by the game" doesn't refer to Google's general language list at all — it refers to the specific set of languages *this project* has registered under **Play Console → Play Games Services → Configuration → Edit properties → Manage translations**. Whatever locale codes are configured there (checked by literally opening that screen) are the only ones the CSV importer will accept, regardless of what any general documentation says. My original codes (`ko-KR`, `ja-JP`, `de-DE`, plus `es-419`, `pt-BR`, `fr-FR` — these are just the languages my project happens to register; yours will depend on your own configuration) turned out to be exactly right once I matched them against that screen — my "fix" had actually broken things further.
+**The actual fix**:
+
+- **What "supported by the game" means:** not Google's general language list, but the languages *this project* has registered under **Play Console → Play Games Services → Configuration → Edit properties → Manage translations**.
+- **What the importer accepts:** only the locale codes configured on that screen, regardless of what general documentation says.
+- **What happened to my codes:** my original codes (`ko-KR`, `ja-JP`, `de-DE`, `es-419`, `pt-BR`, `fr-FR`) were exactly right once matched against that screen. My "fix" had actually broken things further.
+  - These are just the languages my project registers; yours will depend on your own configuration.
 
 **Lesson**: when an error says "supported by X," check X's actual live configuration before consulting general documentation. Generic references can be true in general and still not apply to your specific setup.
 
@@ -49,7 +62,14 @@ I approached this as a binary search, changing exactly one variable per test:
 
 1. **Scale**: Full 110-achievement ZIP → fails. Reduced to a 2-achievement ZIP → same failure. Ruled out: data volume, and any single bad row among the other 108.
 2. **Icon transparency**: The placeholder icon (reused from the app icon) had an alpha channel. Flattened it to an opaque RGB PNG on a white background, retried the 2-achievement ZIP → same failure. Ruled out: icon transparency.
-3. **Re-verify the spec, verbatim**: Re-fetched the official CSV format documentation and diffed every field against my files — column order, no header row, `Name` uniqueness, `Points` (multiples of 5, 5–200), `Steps Needed` (max 10,000), ZIP constraints (file count, size, no subdirectories). Everything matched exactly. Ruled out: the CSV format itself.
+3. **Re-verify the spec, verbatim**: Re-fetched the official CSV format documentation and diffed every field against my files:
+   - column order and no header row
+   - `Name` uniqueness
+   - `Points` (multiples of 5, 5–200)
+   - `Steps Needed` (max 10,000)
+   - ZIP constraints (file count, size, no subdirectories)
+
+   Everything matched exactly. Ruled out: the CSV format itself.
 4. **Open the browser console**: This is where real signal appeared. The failing call was `POST .../achievements:bulkCreate` returning HTTP 400.
 
    <figure>
@@ -77,15 +97,26 @@ I approached this as a binary search, changing exactly one variable per test:
 
    Still failed, identically. This ruled out localization and icon files entirely — the bug had to be in `AchievementsMetadata.csv` itself, or somewhere outside the file altogether.
 6. **Sanity check: can this project create achievements at all?** I tried creating a single achievement manually through the Play Console UI (no CSV involved). The save button threw a generic, unrelated-looking "An unexpected error occurred" toast — but refreshing the list showed the achievement had actually been created. This confirmed the project itself wasn't blocked; the problem was specific to the bulk-import (`bulkCreate`) code path.
-7. **The actual culprit**: Comparing my one remaining test row against what a "normal" quick-created achievement probably looks like, I suspected the combination of `Incremental value = True` with `Steps Needed = 1`. I tested:
-   - `Incremental=False` (non-incremental), same row otherwise → succeeded.
-   - `Incremental=True`, `Steps Needed=50` (not 1) → succeeded.
+7. **The actual culprit**: Comparing my one remaining test row against what a "normal" quick-created achievement probably looks like, I suspected the combination of `Incremental value = True` with `Steps Needed = 1`. I tested each combination with the row otherwise unchanged:
 
-   That pinned it down precisely: `bulkCreate` silently rejects any achievement where `Incremental value` is `True` and `Steps Needed` is `1`. This constraint appears nowhere in the official documentation. My best guess is that a single-step "incremental" achievement is functionally identical to a non-incremental one, so the backend rejects it as a degenerate case — but the API gives zero indication of this, and the UI's generic "invalid argument" error makes it effectively undiscoverable without decoding the raw network request.
+   | `Incremental value` | `Steps Needed` | Save result |
+   |---|---|---|
+   | `True` | `1` | Failed |
+   | `False` | (blank) | Succeeded |
+   | `True` | `50` | Succeeded |
+
+   That pinned it down precisely:
+
+   - **The rule:** `bulkCreate` silently rejects any achievement where `Incremental value` is `True` and `Steps Needed` is `1`.
+   - **Documented?** No — this constraint appears nowhere in the official documentation.
+   - **Likely reason:** a single-step "incremental" achievement is functionally identical to a non-incremental one, so the backend probably rejects it as a degenerate case.
+   - **Why it's hard to find:** the API gives no indication, and the UI's generic "invalid argument" error is effectively undiscoverable without decoding the raw network request.
 
 ### The fix
 
-Of my 110 achievements, 23 were "do this once" achievements (first stage clear, first world clear, first ad watched, etc.) that I'd modeled as incremental with a target of 1 step — which is precisely the pattern that triggers this bug. Converting all 23 to non-incremental achievements (`Incremental=False`, blank `Steps Needed`) fixed the import completely, and arguably improved the design too: a "do it once" achievement doesn't need step tracking in the first place, so unlocking it directly via `unlock_achievement()` (instead of `set_achievement_steps()`) is both correct behavior and a workaround for an undocumented server-side validation quirk.
+- **The affected achievements:** 23 of my 110 were "do this once" achievements (first stage clear, first world clear, first ad watched, etc.) modeled as incremental with a target of 1 step — exactly the pattern that triggers this bug.
+- **The change:** converting all 23 to non-incremental achievements (`Incremental=False`, blank `Steps Needed`) fixed the import completely.
+- **A better design anyway:** a "do it once" achievement doesn't need step tracking. Unlocking it directly with `unlock_achievement()` instead of `set_achievement_steps()` is the correct behavior, and it also avoids the undocumented validation rule.
 
 <figure>
   <img src="/assets/images/posts/gpgs-achievement-import-failure/achievements-list.png" alt="Play Console achievements list showing all imported achievements (First Step, Breaker Novice, Breaker Veteran, and more) with unpublished status, ready to review and publish." />
