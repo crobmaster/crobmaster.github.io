@@ -197,6 +197,59 @@
       min-width: 0;
     }
 
+    .release-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      background: #2f7f99;
+      color: #fff;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .release-banner:hover {
+      background: #28697e;
+    }
+
+    .release-banner .release-ver {
+      flex: 0 0 auto;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 2px 12px;
+      white-space: nowrap;
+    }
+
+    .release-banner .release-date {
+      font-size: 0.82rem;
+      font-weight: 600;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+
+    .release-banner .release-cta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+      padding: 2px 12px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      .release-banner {
+        font-size: 0.86rem;
+        padding: 10px 16px;
+      }
+    }
+
     .page-nav-top {
       overflow-x: auto;
       background: #fff;
@@ -1062,6 +1115,30 @@
     </div>
   </div>
 </header>
+
+<!-- Latest release notice. Each release: update the version, the date, and the 7 message lines. -->
+<a class="release-banner" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook" target="_blank" rel="noopener">
+  <span class="release-ver">🎉 v1.3.0</span>
+  <span class="release-msg">
+    <span data-i18n="en">Google Play Games achievements and cloud saves are here!</span>
+    <span data-i18n="ja">Google Play ゲームズの実績とクラウドセーブに対応！</span>
+    <span data-i18n="ko">Google Play 게임즈 업적과 클라우드 저장을 지원합니다!</span>
+    <span data-i18n="es">¡Ya con logros de Google Play Juegos y guardado en la nube!</span>
+    <span data-i18n="pt">Agora com conquistas do Google Play Jogos e salvamento na nuvem!</span>
+    <span data-i18n="fr">Succès Google Play Jeux et sauvegarde cloud désormais disponibles !</span>
+    <span data-i18n="de">Google Play Games-Erfolge und Cloud-Speicherung sind da!</span>
+  </span>
+  <span class="release-date">2026.09.18</span>
+  <span class="release-cta">
+    <span data-i18n="en">View on Google Play &rarr;</span>
+    <span data-i18n="ja">Google Play で見る &rarr;</span>
+    <span data-i18n="ko">Google Play에서 보기 &rarr;</span>
+    <span data-i18n="es">Ver en Google Play &rarr;</span>
+    <span data-i18n="pt">Ver no Google Play &rarr;</span>
+    <span data-i18n="fr">Voir sur Google Play &rarr;</span>
+    <span data-i18n="de">Bei Google Play ansehen &rarr;</span>
+  </span>
+</a>
 
 <nav class="page-nav-top">
  <div class="page-nav-top-inner">

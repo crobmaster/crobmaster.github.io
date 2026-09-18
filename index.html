@@ -289,6 +289,42 @@
       margin-bottom: 20px;
     }
 
+    .card-release {
+      background: #eaf3f7;
+      border-left: 3px solid #2f7f99;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    .card-release-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      margin-bottom: 2px;
+    }
+
+    .card-release-ver {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #2f7f99;
+      white-space: nowrap;
+    }
+
+    .card-release-date {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #7a5c3a;
+      white-space: nowrap;
+    }
+
+    .card-release-msg {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      line-height: 1.55;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -664,6 +700,22 @@
         <span data-i18n="fr">Cassez des briques faites d'art de livre illustré dans cet arcade relaxant !</span>
         <span data-i18n="de">Zerstöre Steine aus Bilderbuch-Kunst in diesem entspannenden Arcade-Spiel!</span>
       </p>
+      <!-- Latest release notice. Keep the version, date and messages in sync with tap-tap-picture-book/index.html. -->
+      <div class="card-release">
+        <span class="card-release-head">
+          <span class="card-release-ver">🎉 v1.3.0</span>
+          <span class="card-release-date">2026.09.18</span>
+        </span>
+        <span class="card-release-msg">
+          <span data-i18n="en">Google Play Games achievements and cloud saves are here!</span>
+          <span data-i18n="ja">Google Play ゲームズの実績とクラウドセーブに対応！</span>
+          <span data-i18n="ko">Google Play 게임즈 업적과 클라우드 저장을 지원합니다!</span>
+          <span data-i18n="es">¡Ya con logros de Google Play Juegos y guardado en la nube!</span>
+          <span data-i18n="pt">Agora com conquistas do Google Play Jogos e salvamento na nuvem!</span>
+          <span data-i18n="fr">Succès Google Play Jeux et sauvegarde cloud désormais disponibles !</span>
+          <span data-i18n="de">Google Play Games-Erfolge und Cloud-Speicherung sind da!</span>
+        </span>
+      </div>
       <div class="app-actions">
         <div class="action-item">
           <p class="action-label">
