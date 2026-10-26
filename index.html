@@ -290,10 +290,17 @@
     }
 
     .card-release {
+      display: block;
+      text-decoration: none;
+      transition: opacity 0.15s;
       background: #eaf3f7;
       border-left: 3px solid #2f7f99;
       border-radius: 8px;
       padding: 10px 14px;
+    }
+
+    .card-release:hover {
+      opacity: 0.85;
     }
 
     .card-release-head {
@@ -341,6 +348,11 @@
 
     .btn-primary {
       background: #2f7f99;
+      color: #fff;
+    }
+
+    .btn-itch {
+      background: #fa5c5c;
       color: #fff;
     }
 
@@ -701,21 +713,21 @@
         <span data-i18n="de">Zerstöre Steine aus Bilderbuch-Kunst in diesem entspannenden Arcade-Spiel!</span>
       </p>
       <!-- Latest release notice. Keep the version, date and messages in sync with tap-tap-picture-book/index.html. -->
-      <div class="card-release">
+      <a class="card-release" href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">
         <span class="card-release-head">
-          <span class="card-release-ver">🎉 v1.3.0</span>
-          <span class="card-release-date">2026.09.18</span>
+          <span class="card-release-ver">🎮 Web Demo</span>
+          <span class="card-release-date">2026.10.26</span>
         </span>
         <span class="card-release-msg">
-          <span data-i18n="en">Google Play Games achievements and cloud saves are here!</span>
-          <span data-i18n="ja">Google Play ゲームズの実績とクラウドセーブに対応！</span>
-          <span data-i18n="ko">Google Play 게임즈 업적과 클라우드 저장을 지원합니다!</span>
-          <span data-i18n="es">¡Ya con logros de Google Play Juegos y guardado en la nube!</span>
-          <span data-i18n="pt">Agora com conquistas do Google Play Jogos e salvamento na nuvem!</span>
-          <span data-i18n="fr">Succès Google Play Jeux et sauvegarde cloud désormais disponibles !</span>
-          <span data-i18n="de">Google Play Games-Erfolge und Cloud-Speicherung sind da!</span>
+          <span data-i18n="en">Free browser demo now on itch.io — play Worlds 1–3 right away!</span>
+          <span data-i18n="ja">itch.io でブラウザ版の無料デモを公開！ワールド1〜3をすぐに遊べます</span>
+          <span data-i18n="ko">itch.io에서 브라우저 무료 데모 공개! 월드 1~3을 바로 플레이하세요</span>
+          <span data-i18n="es">¡Demo gratis para navegador en itch.io! Juega ya los mundos 1–3</span>
+          <span data-i18n="pt">Demo grátis para navegador no itch.io! Jogue já os mundos 1–3</span>
+          <span data-i18n="fr">Démo gratuite sur navigateur sur itch.io ! Jouez dès maintenant aux mondes 1 à 3</span>
+          <span data-i18n="de">Kostenlose Browser-Demo auf itch.io! Spiele jetzt die Welten 1–3</span>
         </span>
-      </div>
+      </a>
       <div class="app-actions">
         <div class="action-item">
           <p class="action-label">
@@ -738,6 +750,28 @@
               <span data-i18n="de">▶ Google Play</span>
             </span>
             <img class="app-qr" src="tap-tap-picture-book/src/qr-code.png" alt="QR code linking to Tap Tap Picture Book on Google Play" width="300" height="300">
+          </a>
+        </div>
+        <div class="action-item">
+          <p class="action-label">
+            <span data-i18n="en">Try the free demo in your browser on itch.io</span>
+            <span data-i18n="ja">itch.io でブラウザ版の無料デモを遊ぶ</span>
+            <span data-i18n="ko">itch.io에서 브라우저 무료 데모 플레이</span>
+            <span data-i18n="es">Prueba la demo gratis en tu navegador en itch.io</span>
+            <span data-i18n="pt">Experimente a demo grátis no navegador no itch.io</span>
+            <span data-i18n="fr">Essayez la démo gratuite dans votre navigateur sur itch.io</span>
+            <span data-i18n="de">Teste die kostenlose Demo im Browser auf itch.io</span>
+          </p>
+          <a class="action-box action-box-secondary" href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">
+            <span class="btn btn-itch">
+              <span data-i18n="en">🎮 Free Demo</span>
+              <span data-i18n="ja">🎮 無料デモ</span>
+              <span data-i18n="ko">🎮 무료 데모</span>
+              <span data-i18n="es">🎮 Demo gratis</span>
+              <span data-i18n="pt">🎮 Demo grátis</span>
+              <span data-i18n="fr">🎮 Démo gratuite</span>
+              <span data-i18n="de">🎮 Gratis-Demo</span>
+            </span>
           </a>
         </div>
         <div class="action-item">

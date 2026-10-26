@@ -952,13 +952,21 @@
     }
 
     .mid-cta {
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
       margin-bottom: 56px;
     }
 
     .mid-cta .btn {
       font-size: 1rem;
       padding: 14px 32px;
+    }
+
+    .btn-itch {
+      background: #fa5c5c;
+      color: #fff;
     }
 
     .btn-secondary {
@@ -1112,31 +1120,32 @@
     </div>
     <div class="header-links">
       <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">▶ Google Play</a>
+      <a href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">🎮 itch.io</a>
     </div>
   </div>
 </header>
 
 <!-- Latest release notice. Each release: update the version, the date, and the 7 message lines. -->
-<a class="release-banner" href="https://play.google.com/store/apps/details?id=com.crobapps.taptappicturebook" target="_blank" rel="noopener">
-  <span class="release-ver">🎉 v1.3.0</span>
+<a class="release-banner" href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">
+  <span class="release-ver">🎮 Web Demo</span>
   <span class="release-msg">
-    <span data-i18n="en">Google Play Games achievements and cloud saves are here!</span>
-    <span data-i18n="ja">Google Play ゲームズの実績とクラウドセーブに対応！</span>
-    <span data-i18n="ko">Google Play 게임즈 업적과 클라우드 저장을 지원합니다!</span>
-    <span data-i18n="es">¡Ya con logros de Google Play Juegos y guardado en la nube!</span>
-    <span data-i18n="pt">Agora com conquistas do Google Play Jogos e salvamento na nuvem!</span>
-    <span data-i18n="fr">Succès Google Play Jeux et sauvegarde cloud désormais disponibles !</span>
-    <span data-i18n="de">Google Play Games-Erfolge und Cloud-Speicherung sind da!</span>
+    <span data-i18n="en">Free browser demo now on itch.io — play Worlds 1–3 right away!</span>
+    <span data-i18n="ja">itch.io でブラウザ版の無料デモを公開！ワールド1〜3をすぐに遊べます</span>
+    <span data-i18n="ko">itch.io에서 브라우저 무료 데모 공개! 월드 1~3을 바로 플레이하세요</span>
+    <span data-i18n="es">¡Demo gratis para navegador en itch.io! Juega ya los mundos 1–3</span>
+    <span data-i18n="pt">Demo grátis para navegador no itch.io! Jogue já os mundos 1–3</span>
+    <span data-i18n="fr">Démo gratuite sur navigateur sur itch.io ! Jouez dès maintenant aux mondes 1 à 3</span>
+    <span data-i18n="de">Kostenlose Browser-Demo auf itch.io! Spiele jetzt die Welten 1–3</span>
   </span>
-  <span class="release-date">2026.09.18</span>
+  <span class="release-date">2026.10.26</span>
   <span class="release-cta">
-    <span data-i18n="en">View on Google Play &rarr;</span>
-    <span data-i18n="ja">Google Play で見る &rarr;</span>
-    <span data-i18n="ko">Google Play에서 보기 &rarr;</span>
-    <span data-i18n="es">Ver en Google Play &rarr;</span>
-    <span data-i18n="pt">Ver no Google Play &rarr;</span>
-    <span data-i18n="fr">Voir sur Google Play &rarr;</span>
-    <span data-i18n="de">Bei Google Play ansehen &rarr;</span>
+    <span data-i18n="en">Play on itch.io &rarr;</span>
+    <span data-i18n="ja">itch.io で遊ぶ &rarr;</span>
+    <span data-i18n="ko">itch.io에서 플레이 &rarr;</span>
+    <span data-i18n="es">Jugar en itch.io &rarr;</span>
+    <span data-i18n="pt">Jogar no itch.io &rarr;</span>
+    <span data-i18n="fr">Jouer sur itch.io &rarr;</span>
+    <span data-i18n="de">Auf itch.io spielen &rarr;</span>
   </span>
 </a>
 
@@ -1371,6 +1380,15 @@
       <span data-i18n="pt">▶ Jogar no Google Play</span>
       <span data-i18n="fr">▶ Jouer sur Google Play</span>
       <span data-i18n="de">▶ Auf Google Play spielen</span>
+    </a>
+    <a class="btn btn-itch" href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">
+      <span data-i18n="en">🎮 Try the Free Demo</span>
+      <span data-i18n="ja">🎮 無料デモを遊ぶ</span>
+      <span data-i18n="ko">🎮 무료 데모 플레이하기</span>
+      <span data-i18n="es">🎮 Probar la demo gratis</span>
+      <span data-i18n="pt">🎮 Jogar a demo grátis</span>
+      <span data-i18n="fr">🎮 Essayer la démo gratuite</span>
+      <span data-i18n="de">🎮 Gratis-Demo spielen</span>
     </a>
   </div>
 
@@ -2110,6 +2128,28 @@
       </div>
       <div class="action-item">
         <p class="action-label">
+          <span data-i18n="en">Try the free demo in your browser on itch.io</span>
+          <span data-i18n="ja">itch.io でブラウザ版の無料デモを遊ぶ</span>
+          <span data-i18n="ko">itch.io에서 브라우저 무료 데모 플레이</span>
+          <span data-i18n="es">Prueba la demo gratis en tu navegador en itch.io</span>
+          <span data-i18n="pt">Experimente a demo grátis no navegador no itch.io</span>
+          <span data-i18n="fr">Essayez la démo gratuite dans votre navigateur sur itch.io</span>
+          <span data-i18n="de">Teste die kostenlose Demo im Browser auf itch.io</span>
+        </p>
+        <a class="action-box action-box-secondary" href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">
+          <span class="btn btn-itch">
+            <span data-i18n="en">🎮 Free Demo</span>
+            <span data-i18n="ja">🎮 無料デモ</span>
+            <span data-i18n="ko">🎮 무료 데모</span>
+            <span data-i18n="es">🎮 Demo gratis</span>
+            <span data-i18n="pt">🎮 Demo grátis</span>
+            <span data-i18n="fr">🎮 Démo gratuite</span>
+            <span data-i18n="de">🎮 Gratis-Demo</span>
+          </span>
+        </a>
+      </div>
+      <div class="action-item">
+        <p class="action-label">
           <span data-i18n="en">How this app handles your data</span>
           <span data-i18n="ja">このアプリの個人情報の取り扱いについて</span>
           <span data-i18n="ko">이 앱의 개인정보 처리 방식에 대해</span>
@@ -2150,6 +2190,8 @@
   </p>
   <p style="margin-top: 8px;">
     <a href="https://play.google.com/store/apps/developer?id=CrobApps" target="_blank" rel="noopener">Google Play</a>
+    &nbsp;·&nbsp;
+    <a href="https://crobmaster.itch.io/tap-tap-picture-book" target="_blank" rel="noopener">itch.io</a>
   </p>
   <p style="margin-top: 4px;">&copy; 2026 Crobmaster. All rights reserved.</p>
 </footer>
